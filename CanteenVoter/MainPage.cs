@@ -32,7 +32,7 @@ namespace CanteenVoter
         {
             dataMenu.DataSource = GetdataMenu();
             this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            if (getUsername == "ShiiikK")
+            if (getUsername == "ShiiikK" || getUsername == "Mentalill")
             {
                 lbAdminPanel.Visible = true;
             }
