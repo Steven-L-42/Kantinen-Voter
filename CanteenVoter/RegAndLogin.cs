@@ -1,25 +1,22 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace CanteenVoter
 {
     public partial class RegAndLogin : Form
     {
-
         public RegAndLogin()
         {
             InitializeComponent();
-           
         }
-       
+
         public Boolean checkTextBoxesValues()
         {
-
             string username = txUsername.Text.Trim();
             string password = txPassword.Text.Trim();
-           
+
             if (username.Equals("Benutzername")
                 || password.Equals("Passwort"))
             {
@@ -29,13 +26,12 @@ namespace CanteenVoter
             {
                 return false;
             }
-
         }
 
         public Boolean checkUsername()
         {
             Datenbank db = new Datenbank();
-           
+
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             MySqlCommand command = new MySqlCommand("SELECT * FROM `UserTable` WHERE `Benutzername` = @Benutzername", db.getConnection());
@@ -53,7 +49,6 @@ namespace CanteenVoter
             {
                 return false;
             }
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -99,8 +94,6 @@ namespace CanteenVoter
             MySqlCommand command = new MySqlCommand(@"INSERT INTO UserTable SET Benutzername=@Benutzername,  Passwort=@Passwort;" +
                                                      "INSERT INTO UserMenueTable SET Benutzername=@Benutzername", db.getConnection());
 
-
-
             command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
             command.Parameters.Add("@Passwort", MySqlDbType.VarChar).Value = Encryptor.MD5Hash(txPassword.Text.Trim());
 
@@ -117,7 +110,6 @@ namespace CanteenVoter
                     //
                     if (txPassword.Text.Equals(txPasswordCompare.Text))
                     {
-
                         // Überprüft ob der Benutzername bereits existiert
                         //
                         if (checkUsername())
@@ -133,12 +125,10 @@ namespace CanteenVoter
                                 AlertClass.Show("Dein Account wurde erstellt.", Alert.enmType.Success);
                                 chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
                                 lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
-
                             }
                             else
                             {
                                 AlertClass.Show("ERROR", Alert.enmType.Warning);
-
                             }
                         }
                     }
@@ -165,7 +155,6 @@ namespace CanteenVoter
 
         private void chBoxPasswordShowL_CheckedChanged(object sender, EventArgs e)
         {
-           
             if (txPassword.PasswordChar == (char)0)
             {
                 txPassword.PasswordChar = '*';
@@ -192,12 +181,11 @@ namespace CanteenVoter
 
         private void lbClose_Click(object sender, EventArgs e)
         {
-            this.Close(); 
+            this.Close();
         }
 
         private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
         {
-
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -208,19 +196,18 @@ namespace CanteenVoter
         private void lbRegisterTab_Click(object sender, EventArgs e)
         {
             chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
-           lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
+            lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
         }
 
         private void lbExistAccount_Click(object sender, EventArgs e)
         {
             chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
             lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
-
         }
 
         private void txPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter && !lbPasswordCompare.Visible)
+            if (e.KeyCode == Keys.Enter && !lbPasswordCompare.Visible)
             {
                 LoginMethod();
             }
@@ -249,6 +236,7 @@ namespace CanteenVoter
             txPassword.Text = Properties.Settings.Default.txPassword;
             EnableDoubleBuffering();
         }
+
         public void EnableDoubleBuffering()
         {
             this.SetStyle(ControlStyles.DoubleBuffer |

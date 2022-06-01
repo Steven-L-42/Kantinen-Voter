@@ -4,10 +4,9 @@ namespace CanteenVoter
 {
     public partial class UserAcp
     {
-        class Datenbank
+        private class Datenbank
         {
             private MySqlConnection connection = new MySqlConnection("Server=sql4.freemysqlhosting.net;Database=sql4496417;user=sql4496417;Pwd=3ci2PdzRDR;SslMode=none;port=3306");
-
 
             // Eine Methode die eine Datenbank Verbindung nur dann öffnet, wenn sie gerade noch geschlossen ist
             //
@@ -38,4 +37,3 @@ namespace CanteenVoter
         }
     }
 }
-

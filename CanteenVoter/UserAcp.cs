@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CanteenVoter
@@ -20,7 +14,6 @@ namespace CanteenVoter
 
         public UserAcp()
         {
-
             InitializeComponent();
         }
 
@@ -32,6 +25,7 @@ namespace CanteenVoter
             getData();
             EnableDoubleBuffering();
         }
+
         public void EnableDoubleBuffering()
         {
             this.SetStyle(ControlStyles.DoubleBuffer |
@@ -40,6 +34,7 @@ namespace CanteenVoter
                true);
             this.UpdateStyles();
         }
+
         private void UserAcp_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -55,7 +50,7 @@ namespace CanteenVoter
         {
             Datenbank db = new Datenbank();
 
-            // Aktualisiere und überschreibe vorhandene Daten oder wenn keine vorhanden, 
+            // Aktualisiere und überschreibe vorhandene Daten oder wenn keine vorhanden,
             // schreibe eingegeben Daten in die Datenbank.
             // Diese Aktion wird nur Einträge bei dem Konto vornehmen, dessen Benutzername mit dem des Logins übereinstimmt.
             //
@@ -63,7 +58,7 @@ namespace CanteenVoter
                                                     "Nachname='" + txSurname.Text + "'," +
                                                     "Geburtsdatum='" + dateBorn.Text + "', " +
                                                     "Allergene='" + txAllergic.Text + "' " +
-                                                    "WHERE Benutzername='" + this.getUsername + "'", 
+                                                    "WHERE Benutzername='" + this.getUsername + "'",
                                                     db.getConnection());
 
             // Öffnet die DB Verbindung
@@ -118,7 +113,6 @@ namespace CanteenVoter
                     txSurname.Text = dt.Rows[0]["Nachname"].ToString();
                     dateBorn.Text = dt.Rows[0]["Geburtsdatum"].ToString();
                     txAllergic.Text = dt.Rows[0]["Allergene"].ToString();
-                    txYourMenue.Text = dt.Rows[0]["Menue"].ToString();
                 }
             }
             catch (MySqlException ex)
@@ -135,12 +129,10 @@ namespace CanteenVoter
         {
             this.Close();
         }
+
         private void btnDecline_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-       
-
-       
     }
 }

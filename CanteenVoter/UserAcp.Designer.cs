@@ -39,8 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dateBorn = new System.Windows.Forms.DateTimePicker();
             this.lbClose = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txYourMenue = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnDecline
@@ -178,34 +176,6 @@
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label5.Location = new System.Drawing.Point(173, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 15);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Dein Menü";
-            // 
-            // txYourMenue
-            // 
-            this.txYourMenue.BackColor = System.Drawing.SystemColors.Menu;
-            this.txYourMenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txYourMenue.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txYourMenue.DetectUrls = false;
-            this.txYourMenue.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txYourMenue.Location = new System.Drawing.Point(169, 157);
-            this.txYourMenue.Name = "txYourMenue";
-            this.txYourMenue.ReadOnly = true;
-            this.txYourMenue.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txYourMenue.Size = new System.Drawing.Size(99, 39);
-            this.txYourMenue.TabIndex = 0;
-            this.txYourMenue.TabStop = false;
-            this.txYourMenue.Text = "";
-            // 
             // UserAcp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -214,8 +184,6 @@
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(325, 385);
-            this.Controls.Add(this.txYourMenue);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbClose);
             this.Controls.Add(this.dateBorn);
             this.Controls.Add(this.label4);
@@ -252,7 +220,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateBorn;
         private System.Windows.Forms.Label lbClose;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox txYourMenue;
     }
 }

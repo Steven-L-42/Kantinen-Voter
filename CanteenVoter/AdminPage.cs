@@ -7,7 +7,8 @@ namespace CanteenVoter
 {
     public partial class AdminPage : Form
     {
-        string id;
+        private string id;
+
         public AdminPage()
         {
             InitializeComponent();
@@ -19,7 +20,6 @@ namespace CanteenVoter
             dataMenu.DataSource = GetdataMenu();
             this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            
             cmbMenue.Items.Add("Menü wählen...");
 
             cmbMenue.Items.Add("Menü A \n" +
@@ -36,6 +36,7 @@ namespace CanteenVoter
             cmbMenue.SelectedIndex = 0;
             EnableDoubleBuffering();
         }
+
         public void EnableDoubleBuffering()
         {
             this.SetStyle(ControlStyles.DoubleBuffer |
@@ -44,6 +45,7 @@ namespace CanteenVoter
                true);
             this.UpdateStyles();
         }
+
         private void InitializeEvents()
         {
             txMonday.GotFocus += TxMonday_GotFocus;
@@ -61,6 +63,7 @@ namespace CanteenVoter
         }
 
         #region InitializeEvents
+
         private void TxSuturday_LostFocus(object sender, EventArgs e)
         {
             if (txSuturday.Text == String.Empty)
@@ -108,6 +111,7 @@ namespace CanteenVoter
             if (txWednesday.Text == "MITTWOCH")
                 txWednesday.Text = String.Empty;
         }
+
         private void TxTuesday_LostFocus(object sender, EventArgs e)
         {
             if (txTuesday.Text == String.Empty)
@@ -132,7 +136,7 @@ namespace CanteenVoter
                 txMonday.Text = String.Empty;
         }
 
-        #endregion
+        #endregion InitializeEvents
 
         private void AdminPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
@@ -161,7 +165,6 @@ namespace CanteenVoter
                 }
             }
             return table;
-
         }
 
         public void SqlInsert()
@@ -183,7 +186,7 @@ namespace CanteenVoter
             db.openConnection();
             try
             {
-                // Führt die Anweisung durch 
+                // Führt die Anweisung durch
                 //
                 if (command.ExecuteNonQuery() == 1)
                 {
@@ -265,7 +268,5 @@ namespace CanteenVoter
         {
             this.Close();
         }
-
     }
 }
-

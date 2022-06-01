@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CanteenVoter.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using CanteenVoter.Properties;
 
 namespace CanteenVoter
 {
@@ -17,6 +17,7 @@ namespace CanteenVoter
             timer1.Interval = 1;
             action = enmAction.close;
         }
+
         public enum enmAction
         {
             wait,
@@ -31,6 +32,7 @@ namespace CanteenVoter
             Error,
             Info
         }
+
         private Alert.enmAction action;
         private int x, y;
 
@@ -52,9 +54,7 @@ namespace CanteenVoter
                     this.y = this.Height * i + 5 * i;
                     this.Location = new Point(this.x, this.y);
                     break;
-
                 }
-
             }
             this.x = Screen.PrimaryScreen.WorkingArea.Width - base.Width - 5;
 
@@ -64,20 +64,22 @@ namespace CanteenVoter
                     this.pictureBox1.Image = Resources.success;
                     this.BackColor = Color.SeaGreen;
                     break;
+
                 case enmType.Error:
                     this.pictureBox1.Image = Resources.error;
                     this.BackColor = Color.DarkRed;
                     break;
+
                 case enmType.Info:
                     this.pictureBox1.Image = Resources.info;
                     this.BackColor = Color.RoyalBlue;
                     break;
+
                 case enmType.Warning:
                     this.pictureBox1.Image = Resources.warning;
                     this.BackColor = Color.DarkOrange;
                     break;
             }
-
 
             this.lblMsg.Text = msg;
 
@@ -89,7 +91,6 @@ namespace CanteenVoter
 
         private void Alert_Load(object sender, EventArgs e)
         {
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -100,6 +101,7 @@ namespace CanteenVoter
                     timer1.Interval = 5000;
                     action = enmAction.close;
                     break;
+
                 case Alert.enmAction.start:
                     this.timer1.Interval = 1;
                     this.Opacity += 0.1;
@@ -115,6 +117,7 @@ namespace CanteenVoter
                         }
                     }
                     break;
+
                 case enmAction.close:
                     timer1.Interval = 1;
                     this.Opacity -= 0.1;
