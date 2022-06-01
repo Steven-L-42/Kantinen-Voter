@@ -12,9 +12,10 @@ using System.Windows.Forms;
 
 namespace CanteenVoter
 {
+
     public partial class MainPage : Form
     {
-
+        string day;
         // Ich vergebe ich die Rechte auf das setzen meines Benutzernames, den erhalten ich aus dem Login Bereich.
         // Anschließend beim Aufruf des UserACP's wird diese Information
         // weitergegeben um weitere Aktionen mit dem Benutzernamen auszuführen
@@ -26,17 +27,30 @@ namespace CanteenVoter
         public MainPage()
         {
             InitializeComponent();
+         
         }
-
+      
         private void MainPage_Load(object sender, EventArgs e)
         {
+          
             dataMenu.DataSource = GetdataMenu();
             this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             if (getUsername == "ShiiikK" || getUsername == "Mentalill")
             {
                 lbAdminPanel.Visible = true;
             }
+            EnableDoubleBuffering();
+     
 
+        }
+
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
         }
 
         private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
@@ -67,14 +81,15 @@ namespace CanteenVoter
             }
             return table;
         }
-
+     
         private void SelectMenu(string menu)
         {
-            Datenbank db = new Datenbank();
-            MySqlCommand command = new MySqlCommand(@"UPDATE UserTable SET Menue='" + menu + "' " +
-                                                    "WHERE Benutzername='" + this.getUsername + "'",
-                                                    db.getConnection());
 
+            Datenbank db = new Datenbank();
+            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day + "='" + menu + "' " +
+                                                            "WHERE Benutzername='" + this.getUsername + "'",
+                                                            db.getConnection());
+            db.openConnection();
             // Öffnet die DB Verbindung
             //
             db.openConnection();
@@ -85,6 +100,29 @@ namespace CanteenVoter
                 if (command.ExecuteNonQuery() == 1)
                 {
                     AlertClass.Show("Dein Menü wurde erfolgreich gewählt!", Alert.enmType.Success);
+                    switch (day)
+                    {
+                        case "Montag":
+                            lbMonday.Text = menu;
+                            break;
+                        case "Dienstag":
+                            lbTuesday.Text = menu;
+                            break;
+                        case "Mittwoch":
+                            lbWednesday.Text = menu;
+                            break;
+                        case "Donnerstag":
+                            lbThursday.Text = menu;
+                            break;
+                        case "Freitag":
+                            lbFriday.Text = menu;
+                            break;
+                        case "Samstag":
+                            lbSaturday.Text = menu;
+                            break;
+                      
+                    }
+                    dataMenu.ClearSelection();
                 }
                 else
                 {
@@ -93,6 +131,7 @@ namespace CanteenVoter
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
             }
             finally
@@ -143,7 +182,7 @@ namespace CanteenVoter
 
         private void btnMenuA_Click(object sender, EventArgs e)
         {
-          
+
             SelectMenu("Menü A \n" +
                        "(Normal Kost)");
         }
@@ -177,6 +216,20 @@ namespace CanteenVoter
             var admin = new AdminPage();
             admin.Show();
 
+        }
+
+        private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                day = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                // MessageBox.Show(day.ToString());
+               
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                AlertClass.Show("Es können nur Reihen markiert werden!", Alert.enmType.Info);
+            }
         }
     }
 }

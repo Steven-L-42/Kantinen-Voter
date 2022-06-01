@@ -194,7 +194,7 @@
             // 
             this.txYourMenue.BackColor = System.Drawing.SystemColors.Menu;
             this.txYourMenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txYourMenue.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txYourMenue.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txYourMenue.DetectUrls = false;
             this.txYourMenue.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txYourMenue.Location = new System.Drawing.Point(169, 157);

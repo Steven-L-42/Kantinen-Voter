@@ -96,7 +96,10 @@ namespace CanteenVoter
         private void RegisterMethod()
         {
             Datenbank db = new Datenbank();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `UserTable`(`Benutzername`, `Passwort`) VALUES (@Benutzername, @Passwort)", db.getConnection());
+            MySqlCommand command = new MySqlCommand(@"INSERT INTO UserTable SET Benutzername=@Benutzername,  Passwort=@Passwort;" +
+                                                     "INSERT INTO UserMenueTable SET Benutzername=@Benutzername", db.getConnection());
+
+
 
             command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
             command.Parameters.Add("@Passwort", MySqlDbType.VarChar).Value = Encryptor.MD5Hash(txPassword.Text.Trim());
@@ -125,7 +128,7 @@ namespace CanteenVoter
                         {
                             // Führt die Anweisung durch
                             //
-                            if (command.ExecuteNonQuery() == 1)
+                            if (command.ExecuteNonQuery() == 2)
                             {
                                 AlertClass.Show("Dein Account wurde erstellt.", Alert.enmType.Success);
                                 chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
@@ -151,6 +154,7 @@ namespace CanteenVoter
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
             }
             finally
@@ -243,6 +247,15 @@ namespace CanteenVoter
         {
             txUsername.Text = Properties.Settings.Default.txUsername;
             txPassword.Text = Properties.Settings.Default.txPassword;
+            EnableDoubleBuffering();
+        }
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
         }
     }
 }

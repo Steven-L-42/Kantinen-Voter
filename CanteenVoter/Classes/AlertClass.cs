@@ -15,4 +15,5 @@ namespace CanteenVoter
             frm.showAlert(msg, type);
         }
     }
+
 }

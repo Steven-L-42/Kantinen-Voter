@@ -68,7 +68,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 377);
+            this.dataMenu.Size = new System.Drawing.Size(972, 618);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -101,8 +101,8 @@
             this.AdminSplit.Panel2.Controls.Add(this.button3);
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
-            this.AdminSplit.Size = new System.Drawing.Size(972, 528);
-            this.AdminSplit.SplitterDistance = 377;
+            this.AdminSplit.Size = new System.Drawing.Size(972, 766);
+            this.AdminSplit.SplitterDistance = 618;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
@@ -301,7 +301,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 562);
+            this.ClientSize = new System.Drawing.Size(972, 800);
             this.Controls.Add(this.AdminSplit);
             this.Controls.Add(this.AdminPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F);

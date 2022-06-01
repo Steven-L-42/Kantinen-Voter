@@ -34,8 +34,16 @@ namespace CanteenVoter
             cmbMenue.Items.Add("Menü D \n" +
                                 "(Gluten-/Lak.- Frei)");
             cmbMenue.SelectedIndex = 0;
+            EnableDoubleBuffering();
         }
-
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
         private void InitializeEvents()
         {
             txMonday.GotFocus += TxMonday_GotFocus;

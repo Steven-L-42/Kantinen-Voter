@@ -30,8 +30,16 @@ namespace CanteenVoter
             // DateTimePicker mit den Daten aus der Datenbank füllt.
             //
             getData();
+            EnableDoubleBuffering();
         }
-
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
         private void UserAcp_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
