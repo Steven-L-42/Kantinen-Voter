@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.RegLoginHeader = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
             this.lbNoAccount = new System.Windows.Forms.Label();
             this.lbRegisterTab = new System.Windows.Forms.Label();
@@ -44,7 +45,8 @@
             this.txUsername = new System.Windows.Forms.TextBox();
             this.lbExistAccount = new System.Windows.Forms.Label();
             this.lbAccountExist = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbLoginArea = new System.Windows.Forms.Label();
+            this.lbRegisterArea = new System.Windows.Forms.Label();
             this.RegLoginHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.chBoxPasswordShowL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chBoxPasswordShowL.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
             this.chBoxPasswordShowL.ForeColor = System.Drawing.Color.Gainsboro;
-            this.chBoxPasswordShowL.Location = new System.Drawing.Point(117, 164);
+            this.chBoxPasswordShowL.Location = new System.Drawing.Point(117, 172);
             this.chBoxPasswordShowL.Name = "chBoxPasswordShowL";
             this.chBoxPasswordShowL.Size = new System.Drawing.Size(126, 19);
             this.chBoxPasswordShowL.TabIndex = 98;
@@ -69,7 +71,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(89, 120);
+            this.label2.Location = new System.Drawing.Point(89, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 17);
             this.label2.TabIndex = 6;
@@ -81,7 +83,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(89, 74);
+            this.label1.Location = new System.Drawing.Point(89, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 17);
             this.label1.TabIndex = 5;
@@ -95,7 +97,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Nirmala UI", 9F);
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Location = new System.Drawing.Point(98, 194);
+            this.btnLogin.Location = new System.Drawing.Point(99, 202);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(127, 30);
             this.btnLogin.TabIndex = 2;
@@ -115,6 +117,18 @@
             this.RegLoginHeader.Size = new System.Drawing.Size(325, 29);
             this.RegLoginHeader.TabIndex = 1;
             this.RegLoginHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegLoginHeader_MouseDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 20);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Kantinen-Voting";
             // 
             // lbClose
             // 
@@ -138,7 +152,7 @@
             this.lbNoAccount.BackColor = System.Drawing.Color.Transparent;
             this.lbNoAccount.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNoAccount.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbNoAccount.Location = new System.Drawing.Point(112, 228);
+            this.lbNoAccount.Location = new System.Drawing.Point(112, 236);
             this.lbNoAccount.Name = "lbNoAccount";
             this.lbNoAccount.Size = new System.Drawing.Size(105, 15);
             this.lbNoAccount.TabIndex = 22;
@@ -151,7 +165,7 @@
             this.lbRegisterTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbRegisterTab.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRegisterTab.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbRegisterTab.Location = new System.Drawing.Point(105, 248);
+            this.lbRegisterTab.Location = new System.Drawing.Point(106, 256);
             this.lbRegisterTab.Name = "lbRegisterTab";
             this.lbRegisterTab.Size = new System.Drawing.Size(124, 17);
             this.lbRegisterTab.TabIndex = 5;
@@ -163,7 +177,7 @@
             this.txPasswordCompare.BackColor = System.Drawing.Color.GhostWhite;
             this.txPasswordCompare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txPasswordCompare.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txPasswordCompare.Location = new System.Drawing.Point(83, 184);
+            this.txPasswordCompare.Location = new System.Drawing.Point(83, 192);
             this.txPasswordCompare.Name = "txPasswordCompare";
             this.txPasswordCompare.PasswordChar = '*';
             this.txPasswordCompare.Size = new System.Drawing.Size(163, 25);
@@ -177,7 +191,7 @@
             this.lbPasswordCompare.BackColor = System.Drawing.Color.Transparent;
             this.lbPasswordCompare.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPasswordCompare.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbPasswordCompare.Location = new System.Drawing.Point(88, 165);
+            this.lbPasswordCompare.Location = new System.Drawing.Point(88, 173);
             this.lbPasswordCompare.Name = "lbPasswordCompare";
             this.lbPasswordCompare.Size = new System.Drawing.Size(147, 17);
             this.lbPasswordCompare.TabIndex = 21;
@@ -191,7 +205,7 @@
             this.chBoxPasswordShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chBoxPasswordShow.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chBoxPasswordShow.ForeColor = System.Drawing.Color.Gainsboro;
-            this.chBoxPasswordShow.Location = new System.Drawing.Point(119, 209);
+            this.chBoxPasswordShow.Location = new System.Drawing.Point(119, 217);
             this.chBoxPasswordShow.Name = "chBoxPasswordShow";
             this.chBoxPasswordShow.Size = new System.Drawing.Size(126, 19);
             this.chBoxPasswordShow.TabIndex = 97;
@@ -208,7 +222,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Nirmala UI", 9F);
             this.btnRegister.ForeColor = System.Drawing.Color.Black;
-            this.btnRegister.Location = new System.Drawing.Point(99, 236);
+            this.btnRegister.Location = new System.Drawing.Point(100, 244);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(127, 30);
             this.btnRegister.TabIndex = 17;
@@ -222,7 +236,7 @@
             this.txPassword.BackColor = System.Drawing.Color.GhostWhite;
             this.txPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txPassword.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txPassword.Location = new System.Drawing.Point(83, 139);
+            this.txPassword.Location = new System.Drawing.Point(83, 147);
             this.txPassword.Name = "txPassword";
             this.txPassword.PasswordChar = '*';
             this.txPassword.Size = new System.Drawing.Size(163, 25);
@@ -234,7 +248,7 @@
             this.txUsername.BackColor = System.Drawing.Color.GhostWhite;
             this.txUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txUsername.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txUsername.Location = new System.Drawing.Point(83, 94);
+            this.txUsername.Location = new System.Drawing.Point(83, 102);
             this.txUsername.Name = "txUsername";
             this.txUsername.Size = new System.Drawing.Size(163, 25);
             this.txUsername.TabIndex = 0;
@@ -246,7 +260,7 @@
             this.lbExistAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbExistAccount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbExistAccount.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbExistAccount.Location = new System.Drawing.Point(86, 291);
+            this.lbExistAccount.Location = new System.Drawing.Point(87, 299);
             this.lbExistAccount.Name = "lbExistAccount";
             this.lbExistAccount.Size = new System.Drawing.Size(156, 17);
             this.lbExistAccount.TabIndex = 6;
@@ -260,24 +274,39 @@
             this.lbAccountExist.BackColor = System.Drawing.Color.Transparent;
             this.lbAccountExist.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAccountExist.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbAccountExist.Location = new System.Drawing.Point(89, 271);
+            this.lbAccountExist.Location = new System.Drawing.Point(90, 279);
             this.lbAccountExist.Name = "lbAccountExist";
             this.lbAccountExist.Size = new System.Drawing.Size(151, 15);
             this.lbAccountExist.TabIndex = 27;
             this.lbAccountExist.Text = "Konto bereits vorhanden?";
             this.lbAccountExist.Visible = false;
             // 
-            // label3
+            // lbLoginArea
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(3, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 20);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Kantinen-Voting";
+            this.lbLoginArea.AutoSize = true;
+            this.lbLoginArea.BackColor = System.Drawing.Color.Transparent;
+            this.lbLoginArea.Font = new System.Drawing.Font("Nirmala UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoginArea.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lbLoginArea.Location = new System.Drawing.Point(133, 45);
+            this.lbLoginArea.Name = "lbLoginArea";
+            this.lbLoginArea.Size = new System.Drawing.Size(70, 25);
+            this.lbLoginArea.TabIndex = 100;
+            this.lbLoginArea.Text = "LOGIN";
+            this.lbLoginArea.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbRegisterArea
+            // 
+            this.lbRegisterArea.AutoSize = true;
+            this.lbRegisterArea.BackColor = System.Drawing.Color.Transparent;
+            this.lbRegisterArea.Font = new System.Drawing.Font("Nirmala UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRegisterArea.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lbRegisterArea.Location = new System.Drawing.Point(85, 45);
+            this.lbRegisterArea.Name = "lbRegisterArea";
+            this.lbRegisterArea.Size = new System.Drawing.Size(159, 25);
+            this.lbRegisterArea.TabIndex = 101;
+            this.lbRegisterArea.Text = "REGISTRIERUNG";
+            this.lbRegisterArea.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbRegisterArea.Visible = false;
             // 
             // RegAndLogin
             // 
@@ -287,6 +316,8 @@
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(325, 385);
+            this.Controls.Add(this.lbRegisterArea);
+            this.Controls.Add(this.lbLoginArea);
             this.Controls.Add(this.lbAccountExist);
             this.Controls.Add(this.lbExistAccount);
             this.Controls.Add(this.txPassword);
@@ -334,5 +365,7 @@
         private System.Windows.Forms.TextBox txPassword;
         private System.Windows.Forms.TextBox txPasswordCompare;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbLoginArea;
+        private System.Windows.Forms.Label lbRegisterArea;
     }
 }

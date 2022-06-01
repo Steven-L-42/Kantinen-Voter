@@ -74,12 +74,12 @@ namespace CanteenVoter
                 sqlDa.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    lbMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
-                    lbTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
-                    lbWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
-                    lbThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
-                    lbFriday.Text = dt.Rows[0]["Freitag"].ToString();
-                    lbSaturday.Text = dt.Rows[0]["Samstag"].ToString();
+                    txMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
+                    txTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
+                    txWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
+                    txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
+                    txFriday.Text = dt.Rows[0]["Freitag"].ToString();
+                    txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
                 }
             }
             catch (MySqlException ex)
@@ -135,27 +135,27 @@ namespace CanteenVoter
                     switch (day)
                     {
                         case "Montag":
-                            lbMonday.Text = menu;
+                            txMonday.Text = menu;
                             break;
 
                         case "Dienstag":
-                            lbTuesday.Text = menu;
+                            txTuesday.Text = menu;
                             break;
 
                         case "Mittwoch":
-                            lbWednesday.Text = menu;
+                            txWednesday.Text = menu;
                             break;
 
                         case "Donnerstag":
-                            lbThursday.Text = menu;
+                            txThursday.Text = menu;
                             break;
 
                         case "Freitag":
-                            lbFriday.Text = menu;
+                            txFriday.Text = menu;
                             break;
 
                         case "Samstag":
-                            lbSaturday.Text = menu;
+                            txSaturday.Text = menu;
                             break;
                     }
                     dataMenu.ClearSelection();

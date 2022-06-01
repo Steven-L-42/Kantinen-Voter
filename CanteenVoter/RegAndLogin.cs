@@ -195,14 +195,14 @@ namespace CanteenVoter
 
         private void lbRegisterTab_Click(object sender, EventArgs e)
         {
-            chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
-            lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
+            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
+            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
         }
 
         private void lbExistAccount_Click(object sender, EventArgs e)
         {
-            chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
-            lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
+            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
+            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
         }
 
         private void txPassword_KeyDown(object sender, KeyEventArgs e)
