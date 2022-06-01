@@ -24,6 +24,27 @@ namespace CanteenVoter
             //
             getData();
             EnableDoubleBuffering();
+            txFirstName.GotFocus += TxFirstName_GotFocus;
+            txSurname.GotFocus += TxSurname_GotFocus;
+            txAllergic.GotFocus += TxAllergic_GotFocus;
+        }
+
+        private void TxAllergic_GotFocus(object sender, EventArgs e)
+        {
+            txAllergic.SelectionStart = txAllergic.Text.Length;
+            txAllergic.SelectionLength = 0;
+        }
+
+        private void TxSurname_GotFocus(object sender, EventArgs e)
+        {
+            txSurname.SelectionStart = txSurname.Text.Length;
+            txSurname.SelectionLength = 0;
+        }
+
+        private void TxFirstName_GotFocus(object sender, EventArgs e)
+        {
+            txFirstName.SelectionStart = txFirstName.Text.Length;
+            txFirstName.SelectionLength = 0;
         }
 
         public void EnableDoubleBuffering()

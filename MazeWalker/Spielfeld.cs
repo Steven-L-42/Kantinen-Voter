@@ -117,9 +117,18 @@ namespace MazeWalker
                 lbScore.Text = "Game Stopped! Your score is: " + score;
             }
         }
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
+          
             pickUpPower();
             pickUpFood();
             contactWithEnemy();
@@ -289,8 +298,13 @@ namespace MazeWalker
                     Enemy.Location = new Point(rnd.Next(20, playground.Right - 20), rnd.Next(20, playground.Bottom - 20));
                 }
 
-
                 Food.Location = new Point(rnd.Next(20, playground.Right - 20), rnd.Next(20, playground.Bottom - 20));
+                if (Food.Bounds.IntersectsWith(Enemy.Bounds)
+                   || Food.Bounds.IntersectsWith(groundTop.Bounds)
+                   || Food.Bounds.IntersectsWith(groundBottom.Bounds))
+                {
+                    Food.Location = new Point(rnd.Next(20, playground.Right - 20), rnd.Next(20, playground.Bottom - 20));
+                }
                 foreach (PictureBox p in enemyList)
                 {
                     if (Food.Bounds.IntersectsWith(groundBottom.Bounds)
@@ -311,13 +325,19 @@ namespace MazeWalker
         DateTime dt = new DateTime();
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (power == true)
+            EnableDoubleBuffering();
+            try
             {
-                sekunden--;
-                lbPowertime.Text = "Powertime: " + dt.AddSeconds(sekunden).ToString("ss");
+                if (power == true)
+                {
+                    sekunden--;
+                    lbPowertime.Text = "Powertime: " + dt.AddSeconds(sekunden).ToString("ss");
+                }
+                time += 1;
+                lbTime.Text = "Time: " + time.ToString();
             }
-            time += 1;
-            lbTime.Text = "Time: " + time.ToString();
+            catch (ArgumentOutOfRangeException){ }
+          
         }
 
         private async void pickUpPower()

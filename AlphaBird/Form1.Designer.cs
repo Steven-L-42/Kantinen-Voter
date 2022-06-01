@@ -92,7 +92,8 @@
             this.btnStart.Location = new System.Drawing.Point(12, 12);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(129, 25);
-            this.btnStart.TabIndex = 9;
+            this.btnStart.TabIndex = 99;
+            this.btnStart.TabStop = false;
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
@@ -102,7 +103,8 @@
             this.txSpielername.Location = new System.Drawing.Point(12, 43);
             this.txSpielername.Name = "txSpielername";
             this.txSpielername.Size = new System.Drawing.Size(129, 20);
-            this.txSpielername.TabIndex = 10;
+            this.txSpielername.TabIndex = 99;
+            this.txSpielername.TabStop = false;
             this.txSpielername.Text = "Spielername";
             this.txSpielername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -145,6 +147,7 @@
             this.Controls.Add(this.PipeDown);
             this.Controls.Add(this.pipeUp);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gameKeyIsDown);

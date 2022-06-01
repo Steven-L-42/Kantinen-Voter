@@ -31,7 +31,7 @@
             this.lbClose = new System.Windows.Forms.Label();
             this.panelIntro = new System.Windows.Forms.Panel();
             this.roundPicBoxIntro = new AbschlussProjekt.roundPicBox();
-            this.btn5 = new System.Windows.Forms.Button();
+            this.btnCanteenVoting = new System.Windows.Forms.Button();
             this.btnSnake = new System.Windows.Forms.Button();
             this.btnAlphaBird = new System.Windows.Forms.Button();
             this.btnChaosBot = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@
             // 
             this.panelIntro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panelIntro.Controls.Add(this.roundPicBoxIntro);
-            this.panelIntro.Controls.Add(this.btn5);
+            this.panelIntro.Controls.Add(this.btnCanteenVoting);
             this.panelIntro.Controls.Add(this.btnSnake);
             this.panelIntro.Controls.Add(this.btnAlphaBird);
             this.panelIntro.Controls.Add(this.btnChaosBot);
@@ -81,17 +81,19 @@
             this.roundPicBoxIntro.TabIndex = 6;
             this.roundPicBoxIntro.TabStop = false;
             // 
-            // btn5
+            // btnCanteenVoting
             // 
-            this.btn5.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
-            this.btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn5.ForeColor = System.Drawing.Color.Coral;
-            this.btn5.Location = new System.Drawing.Point(521, 320);
-            this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(103, 28);
-            this.btn5.TabIndex = 5;
-            this.btn5.Text = "button5";
-            this.btn5.UseVisualStyleBackColor = true;
+            this.btnCanteenVoting.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
+            this.btnCanteenVoting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCanteenVoting.ForeColor = System.Drawing.Color.Coral;
+            this.btnCanteenVoting.Location = new System.Drawing.Point(521, 320);
+            this.btnCanteenVoting.Name = "btnCanteenVoting";
+            this.btnCanteenVoting.Size = new System.Drawing.Size(106, 28);
+            this.btnCanteenVoting.TabIndex = 5;
+            this.btnCanteenVoting.Text = "Canteen Voter";
+            this.btnCanteenVoting.UseVisualStyleBackColor = true;
+            this.btnCanteenVoting.Click += new System.EventHandler(this.btnCanteenVoting_Click);
+            this.btnCanteenVoting.MouseHover += new System.EventHandler(this.btnCanteenVoting_MouseHover);
             // 
             // btnSnake
             // 
@@ -100,7 +102,7 @@
             this.btnSnake.ForeColor = System.Drawing.Color.Coral;
             this.btnSnake.Location = new System.Drawing.Point(412, 320);
             this.btnSnake.Name = "btnSnake";
-            this.btnSnake.Size = new System.Drawing.Size(103, 28);
+            this.btnSnake.Size = new System.Drawing.Size(106, 28);
             this.btnSnake.TabIndex = 4;
             this.btnSnake.Text = "Snake";
             this.btnSnake.UseVisualStyleBackColor = true;
@@ -114,7 +116,7 @@
             this.btnAlphaBird.ForeColor = System.Drawing.Color.Coral;
             this.btnAlphaBird.Location = new System.Drawing.Point(303, 320);
             this.btnAlphaBird.Name = "btnAlphaBird";
-            this.btnAlphaBird.Size = new System.Drawing.Size(103, 28);
+            this.btnAlphaBird.Size = new System.Drawing.Size(106, 28);
             this.btnAlphaBird.TabIndex = 3;
             this.btnAlphaBird.Text = "AlphaBird";
             this.btnAlphaBird.UseVisualStyleBackColor = true;
@@ -128,7 +130,7 @@
             this.btnChaosBot.ForeColor = System.Drawing.Color.Coral;
             this.btnChaosBot.Location = new System.Drawing.Point(194, 320);
             this.btnChaosBot.Name = "btnChaosBot";
-            this.btnChaosBot.Size = new System.Drawing.Size(103, 28);
+            this.btnChaosBot.Size = new System.Drawing.Size(106, 28);
             this.btnChaosBot.TabIndex = 2;
             this.btnChaosBot.Text = "Chaos-Bot";
             this.btnChaosBot.UseVisualStyleBackColor = true;
@@ -142,7 +144,7 @@
             this.btnPingNoPong.ForeColor = System.Drawing.Color.Coral;
             this.btnPingNoPong.Location = new System.Drawing.Point(85, 320);
             this.btnPingNoPong.Name = "btnPingNoPong";
-            this.btnPingNoPong.Size = new System.Drawing.Size(103, 28);
+            this.btnPingNoPong.Size = new System.Drawing.Size(106, 28);
             this.btnPingNoPong.TabIndex = 1;
             this.btnPingNoPong.Text = "Ping no Pong";
             this.btnPingNoPong.UseVisualStyleBackColor = true;
@@ -175,7 +177,7 @@
 
         private System.Windows.Forms.Label lbClose;
         private System.Windows.Forms.Panel panelIntro;
-        private System.Windows.Forms.Button btn5;
+        private System.Windows.Forms.Button btnCanteenVoting;
         private System.Windows.Forms.Button btnSnake;
         private System.Windows.Forms.Button btnAlphaBird;
         private System.Windows.Forms.Button btnChaosBot;

@@ -30,12 +30,12 @@ namespace AbschlussProjekt
 
         private void btnPingNoPong_MouseHover(object sender, EventArgs e)
         {
-            roundPicBoxIntro.Image = Image.FromFile(@"./pingping.png");
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/pingping.png");
         }
 
         private void btnPingNoPong_MouseLeave(object sender, EventArgs e)
         {
-            roundPicBoxIntro.Image = Image.FromFile(@"./pingping.png");
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/pingping.png");
         }
 
         private void btnPingNoPong_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace AbschlussProjekt
 
         private void btnChaosBot_MouseHover(object sender, EventArgs e)
         {
-            roundPicBoxIntro.Image = Image.FromFile(@"./highscale_logo.png");
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/highscale_logo.png");
         }
 
         private void btnChaosBot_Click(object sender, EventArgs e)
@@ -60,17 +60,27 @@ namespace AbschlussProjekt
 
         private void btnAlphaBird_MouseHover(object sender, EventArgs e)
         {
-            roundPicBoxIntro.Image = Image.FromFile(@"./alphabird.png");
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/alphabird.png");
         }
 
         private void btnSnake_MouseHover(object sender, EventArgs e)
         {
-            roundPicBoxIntro.Image = Image.FromFile(@"./Snake.png");
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/Snake.png");
         }
 
         private void btnAlphaBird_Click(object sender, EventArgs e)
         {
             Process.Start(@"C:\Projects VS\AbschlussProjekt\AlphaBird\bin\Debug\AlphaBird.exe");
+        }
+
+        private void btnCanteenVoting_MouseHover(object sender, EventArgs e)
+        {
+            roundPicBoxIntro.Image = Image.FromFile(@"./Resources/canteenvoter.png");
+        }
+
+        private void btnCanteenVoting_Click(object sender, EventArgs e)
+        {
+        Process.Start(@"C:\Projects VS\AbschlussProjekt\AlphaBird\bin\Debug\AlphaBird.exe");
         }
     }
 }

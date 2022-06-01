@@ -42,9 +42,15 @@ namespace AlphaBird
 
         private void gameKeyIsDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Space && !gameTimer.Enabled)
+            {
+                gameTimer.Enabled = true;
+                btnStart.Enabled = false;
+                txSpielername.Enabled = false;
+            }else
             if (e.KeyCode == Keys.Space)
             {
-                gravity = -5;
+                gravity = -10;
             }
         }
 
@@ -88,11 +94,9 @@ namespace AlphaBird
       
         private void btnStart_Click(object sender, EventArgs e)
         {
-            gameTimer.Enabled = true;
-            btnStart.Enabled = false;
-            txSpielername.Enabled = false;
-            var form = new Form1();
-            form.Focus();
+            this.Hide();
+            var frm = new Form1();
+            frm.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

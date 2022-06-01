@@ -234,7 +234,22 @@ namespace CanteenVoter
         {
             txUsername.Text = Properties.Settings.Default.txUsername;
             txPassword.Text = Properties.Settings.Default.txPassword;
+            txUsername.GotFocus += TxUsername_GotFocus;
+            txPassword.GotFocus += TxPassword_GotFocus;
+
             EnableDoubleBuffering();
+        }
+
+        private void TxPassword_GotFocus(object sender, EventArgs e)
+        {
+            txPassword.SelectionStart = txPassword.Text.Length;
+            txPassword.SelectionLength = 0;
+        }
+
+        private void TxUsername_GotFocus(object sender, EventArgs e)
+        {
+            txUsername.SelectionStart = txUsername.Text.Length;
+            txUsername.SelectionLength = 0;
         }
 
         public void EnableDoubleBuffering()
