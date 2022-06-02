@@ -113,40 +113,43 @@ namespace CanteenVoter
                 }
                 if (menuChange)
                 {
-                    day = dataMenu.Columns[e.ColumnIndex].HeaderText;
-                    gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
-                    menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
+                    
+                        day = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                        gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
+                        menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                    if (day == "Menues")
-                    {
-                        AlertClass.Show("Du kannst nicht die Kategorie\n" +
-                            "Menues als Menü speichern!", Alert.enmType.Warning);
-                        day = null;
-                        dataMenu.ClearSelection();
-                    }
-                    else
-                    {
-                        SelectMenu(menuesText);
-
-                        if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
+                        if (day == "Menues")
                         {
-                            return;
+                            AlertClass.Show("Du kannst nicht die Kategorie\n" +
+                                "Menues als Menü speichern!", Alert.enmType.Warning);
+                            day = null;
+                            dataMenu.ClearSelection();
                         }
-                        for (int i = 0; i < dataMenu.Rows.Count; i++)
+                        else
                         {
-                            var cell = dataMenu[e.ColumnIndex, i];
-                            if (cell.HasStyle)
+                            SelectMenu(menuesText);
+
+                            if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                             {
-                                cell.Style = null;
+                                return;
                             }
-                        }
-                        var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
-                        {
-                            BackColor = Color.CornflowerBlue
-                        };
-                        dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
+                            for (int i = 0; i < dataMenu.Rows.Count; i++)
+                            {
+                                var cell = dataMenu[e.ColumnIndex, i];
+                                if (cell.HasStyle)
+                                {
+                                    cell.Style = null;
+                                }
+                            }
+                            var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
+                            {
+                                BackColor = Color.CornflowerBlue
+                            };
+                            dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
 
-                    }
+                        }
+                    
+                   
                 }
 
             }
@@ -154,7 +157,11 @@ namespace CanteenVoter
             {
                 AlertClass.Show(ex.Message, Alert.enmType.Warning);
             }
-        }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                AlertClass.Show("Du kannst diese Spalte nicht auswählen!", Alert.enmType.Info);
+            }
+}
 
         private DataTable GetdataMenu()
         {
