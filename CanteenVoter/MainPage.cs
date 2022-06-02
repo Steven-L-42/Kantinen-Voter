@@ -115,7 +115,7 @@ namespace CanteenVoter
                 {
                     day = dataMenu.Columns[e.ColumnIndex].HeaderText;
                     gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
-                    menuesText = dataMenu.CurrentRow.Cells[0].Value.ToString();
+                    menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
 
                     if (day == "Menues")
                     {
@@ -127,6 +127,7 @@ namespace CanteenVoter
                     else
                     {
                         SelectMenu(menuesText);
+
                         if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                         {
                             return;
