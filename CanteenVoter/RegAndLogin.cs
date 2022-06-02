@@ -12,6 +12,7 @@ namespace CanteenVoter
             InitializeComponent();
         }
 
+
         public Boolean checkTextBoxesValues()
         {
             string username = txUsername.Text.Trim();
@@ -28,10 +29,13 @@ namespace CanteenVoter
             }
         }
 
+
         public Boolean checkUsername()
         {
+            // Es wird überprüft ob der gewünschte Benutzername bereits in der Datenbank hinterlegt ist.
+            // Wenn, dann wird dem entsprechend eine Meldung ausgegeben und die Registrierung gestoppt.
+            //
             Datenbank db = new Datenbank();
-
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             MySqlCommand command = new MySqlCommand("SELECT * FROM `UserTable` WHERE `Benutzername` = @Benutzername", db.getConnection());
@@ -40,7 +44,9 @@ namespace CanteenVoter
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            // Überprüft ob der Benutzername bereits existiert
+            // Prüft ob der Benutzername bereits existiert, in dem die gezählten bereits vorkommenden Einträge
+            // mit dem selben Benutzernamen genutzt werden.
+            //
             if (table.Rows.Count > 0)
             {
                 return true;
@@ -51,13 +57,23 @@ namespace CanteenVoter
             }
         }
 
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginMethod();
         }
 
+
         private void LoginMethod()
         {
+            // Eine sehr einfache Login Art, es wird hier ähnlich wie beim 'CheckUsername' überprüft
+            // ob bereits ein Benutzernamen mit dem selben Namen hinterlegt ist.
+            // Wenn ja dann wird das damit verbundene Passwort, das in der Datenbank als MD5 hinterlegt
+            // ist verglichen und anschließend bei erfolgreicher validierung fortgesetzt.
+            //
+            // Außerdem wird ein 'Property.Settings.Default.Save()' ausgeführt, das dann die eingetragenen
+            // Login Daten für den nächsten Programm Start direkt automatisch hinterlegt.
+            //
             Datenbank db = new Datenbank();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -83,13 +99,20 @@ namespace CanteenVoter
             }
         }
 
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RegisterMethod();
         }
 
+
         private void RegisterMethod()
         {
+            // Hier starten wir den Registrierungsprozess und lassen uns gleich
+            // jeweils einen Eintrag in zwei unterschiedliche Datenbank Tabellen erstellen.
+            // Bevor das aber geschieht wird zu erst das eingetragene Passwort in ein MD5 umgewandelt.
+            // Weiter im Text geht es unten bei den If Statements.
+            //
             Datenbank db = new Datenbank();
             MySqlCommand command = new MySqlCommand(@"INSERT INTO UserTable SET Benutzername=@Benutzername,  Passwort=@Passwort;" +
                                                      "INSERT INTO UserMenueTable SET Benutzername=@Benutzername", db.getConnection());
@@ -97,20 +120,20 @@ namespace CanteenVoter
             command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
             command.Parameters.Add("@Passwort", MySqlDbType.VarChar).Value = Encryptor.MD5Hash(txPassword.Text.Trim());
 
-            // Öffnet die DB Verbindung
+            // Öffnet die DB Verbindung.
             //
             db.openConnection();
             try
             {
-                // Überprüft ob die Textbox Eingaben den Standard entsprechen
+                // Überprüft ob die Textbox Eingaben nicht erlaubte Benutzerdaten enthält.
                 //
                 if (!checkTextBoxesValues())
                 {
-                    // Überprüft ob das eingegebene Passwort mit dem ComparePassword übereinstimmt
+                    // Überprüft ob das ComparePassword mit dem eingegebene Passwort übereinstimmt.
                     //
                     if (txPassword.Text.Equals(txPasswordCompare.Text))
                     {
-                        // Überprüft ob der Benutzername bereits existiert
+                        // Überprüft ob der Benutzername bereits existiert.
                         //
                         if (checkUsername())
                         {
@@ -118,17 +141,25 @@ namespace CanteenVoter
                         }
                         else
                         {
-                            // Führt die Anweisung durch
-                            //
+                            // Diese Anweisung wird nur dann durchgeführt wenn wir 'erfolgreich'
+                            // 2 Einträge in unserer Datenbank tätigen konnten.
+                            // 
                             if (command.ExecuteNonQuery() == 2)
                             {
                                 AlertClass.Show("Dein Account wurde erstellt.", Alert.enmType.Success);
                                 chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
-                                lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
+
+                                lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = 
+                                    lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
                             }
+                            // Andernfalls kann davon ausgegangen werden das mindestens eine Datenbank Tabelle nicht zugänglich war.
+                            // Wenn nur eine von 2 verfügbar waren, wurde der Eintrag dennoch in diese eine verfügbare getätigt.
+                            // 
                             else
                             {
-                                AlertClass.Show("ERROR", Alert.enmType.Warning);
+                                AlertClass.Show("Dein Account wurde erstellt\n" +
+                                                "aber es gab Datenbank Probleme.\n" +
+                                                "Bitte kontaktiere den Support!", Alert.enmType.Warning);
                             }
                         }
                     }
@@ -144,7 +175,6 @@ namespace CanteenVoter
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
             }
             finally
@@ -153,6 +183,117 @@ namespace CanteenVoter
             }
         }
 
+
+        private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MoveWindow.ReleaseCapture();
+                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
+            }
+        }
+
+
+        private void lbRegisterTab_Click(object sender, EventArgs e)
+        {
+            txUsername.Text = txPassword.Text = string.Empty;
+            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
+
+            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = 
+                btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
+        }
+
+
+        private void lbExistAccount_Click(object sender, EventArgs e)
+        {
+            txUsername.Text = Properties.Settings.Default.txUsername;
+            txPassword.Text = Properties.Settings.Default.txPassword;
+            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
+
+            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = 
+                btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
+        }
+
+
+        private void txPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && lbPasswordCompare.Visible)
+            {
+                txPasswordCompare.Focus();
+            }
+            if (e.KeyCode == Keys.Enter && !lbPasswordCompare.Visible)
+            {
+                LoginMethod();
+            }
+        }
+
+
+        private void txPasswordCompare_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                RegisterMethod();
+            }
+        }
+
+
+        private void RegAndLogin_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MoveWindow.ReleaseCapture();
+                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
+            }
+        }
+
+
+        private void RegAndLogin_Load(object sender, EventArgs e)
+        {
+            txUsername.Text = Properties.Settings.Default.txUsername;
+            txPassword.Text = Properties.Settings.Default.txPassword;
+            txUsername.GotFocus += TxUsername_GotFocus;
+            txPassword.GotFocus += TxPassword_GotFocus;
+
+            EnableDoubleBuffering();
+        }
+
+
+        private void TxPassword_GotFocus(object sender, EventArgs e)
+        {
+            txPassword.SelectionStart = txPassword.Text.Length;
+            txPassword.SelectionLength = 0;
+        }
+
+
+        private void TxUsername_GotFocus(object sender, EventArgs e)
+        {
+            txUsername.SelectionStart = txUsername.Text.Length;
+            txUsername.SelectionLength = 0;
+        }
+
+
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
+
+
+        private void txUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                txPassword.Focus();
+            }
+        }
+
+        #region Passwort in Klartext sichtbar machen
+        // Eine sehr einfache Möglichkeit Passwörter in TextBoxen wieder lesbar zu machen.
+        // (char)0 setzt den PasswordChar zu null und somit auch die Property auf false.
+        //
         private void chBoxPasswordShowL_CheckedChanged(object sender, EventArgs e)
         {
             if (txPassword.PasswordChar == (char)0)
@@ -162,7 +303,7 @@ namespace CanteenVoter
             else
             {
                 txPassword.PasswordChar = (char)0;
-                AlertClass.Show("Passwort ist nun in Klarttext lesbar!", Alert.enmType.Info);
+                AlertClass.Show("Passwort ist nun in Klartext lesbar!", Alert.enmType.Info);
             }
         }
 
@@ -175,90 +316,16 @@ namespace CanteenVoter
             else
             {
                 txPasswordCompare.PasswordChar = txPassword.PasswordChar = (char)0;
-                AlertClass.Show("Passwort ist nun in Klarttext lesbar!", Alert.enmType.Info);
+                AlertClass.Show("Passwort ist nun in Klartext lesbar!", Alert.enmType.Info);
             }
         }
+
+        #endregion
+
 
         private void lbClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                MoveWindow.ReleaseCapture();
-                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
-            }
-        }
-
-        private void lbRegisterTab_Click(object sender, EventArgs e)
-        {
-            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
-            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = true;
-        }
-
-        private void lbExistAccount_Click(object sender, EventArgs e)
-        {
-            lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
-            lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
-        }
-
-        private void txPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && !lbPasswordCompare.Visible)
-            {
-                LoginMethod();
-            }
-        }
-
-        private void txPasswordCompare_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                RegisterMethod();
-            }
-        }
-
-        private void RegAndLogin_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                MoveWindow.ReleaseCapture();
-                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
-            }
-        }
-
-        private void RegAndLogin_Load(object sender, EventArgs e)
-        {
-            txUsername.Text = Properties.Settings.Default.txUsername;
-            txPassword.Text = Properties.Settings.Default.txPassword;
-            txUsername.GotFocus += TxUsername_GotFocus;
-            txPassword.GotFocus += TxPassword_GotFocus;
-
-            EnableDoubleBuffering();
-        }
-
-        private void TxPassword_GotFocus(object sender, EventArgs e)
-        {
-            txPassword.SelectionStart = txPassword.Text.Length;
-            txPassword.SelectionLength = 0;
-        }
-
-        private void TxUsername_GotFocus(object sender, EventArgs e)
-        {
-            txUsername.SelectionStart = txUsername.Text.Length;
-            txUsername.SelectionLength = 0;
-        }
-
-        public void EnableDoubleBuffering()
-        {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
         }
     }
 }

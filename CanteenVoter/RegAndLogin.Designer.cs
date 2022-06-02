@@ -101,7 +101,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(127, 30);
             this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "EINLOGGEN";
+            this.btnLogin.Text = "&EINLOGGEN";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -226,7 +226,7 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(127, 30);
             this.btnRegister.TabIndex = 17;
-            this.btnRegister.Text = "REGISTRIEREN";
+            this.btnRegister.Text = "&REGISTRIEREN";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Visible = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -252,6 +252,7 @@
             this.txUsername.Name = "txUsername";
             this.txUsername.Size = new System.Drawing.Size(163, 25);
             this.txUsername.TabIndex = 0;
+            this.txUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txUsername_KeyDown);
             // 
             // lbExistAccount
             // 

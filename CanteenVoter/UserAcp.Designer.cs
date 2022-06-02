@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dateBorn = new System.Windows.Forms.DateTimePicker();
             this.lbClose = new System.Windows.Forms.Label();
+            this.btnYourPlan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDecline
@@ -176,6 +177,22 @@
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
             // 
+            // btnYourPlan
+            // 
+            this.btnYourPlan.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnYourPlan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnYourPlan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.btnYourPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYourPlan.ForeColor = System.Drawing.Color.Black;
+            this.btnYourPlan.Location = new System.Drawing.Point(169, 139);
+            this.btnYourPlan.Margin = new System.Windows.Forms.Padding(5);
+            this.btnYourPlan.Name = "btnYourPlan";
+            this.btnYourPlan.Size = new System.Drawing.Size(99, 56);
+            this.btnYourPlan.TabIndex = 19;
+            this.btnYourPlan.Text = "Persönlicher\r\nSpeiseplan";
+            this.btnYourPlan.UseVisualStyleBackColor = false;
+            this.btnYourPlan.Click += new System.EventHandler(this.btnYourPlan_Click);
+            // 
             // UserAcp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -184,6 +201,7 @@
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(325, 385);
+            this.Controls.Add(this.btnYourPlan);
             this.Controls.Add(this.lbClose);
             this.Controls.Add(this.dateBorn);
             this.Controls.Add(this.label4);
@@ -200,6 +218,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UserAcp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "UserAcp";
             this.Load += new System.EventHandler(this.UserAcp_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserAcp_MouseDown);
@@ -220,5 +239,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateBorn;
         private System.Windows.Forms.Label lbClose;
+        private System.Windows.Forms.Button btnYourPlan;
     }
 }

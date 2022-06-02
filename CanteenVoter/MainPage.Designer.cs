@@ -28,92 +28,148 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.RichTextBox txMonday;
-            System.Windows.Forms.RichTextBox txTuesday;
-            System.Windows.Forms.RichTextBox txWednesday;
-            System.Windows.Forms.RichTextBox txThursday;
-            System.Windows.Forms.RichTextBox txFriday;
-            System.Windows.Forms.RichTextBox txSaturday;
-            this.btnMenuA = new System.Windows.Forms.Button();
-            this.btnMenuB = new System.Windows.Forms.Button();
-            this.btnMenuC = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.txMonday = new System.Windows.Forms.RichTextBox();
+            this.txTuesday = new System.Windows.Forms.RichTextBox();
+            this.txWednesday = new System.Windows.Forms.RichTextBox();
+            this.txThursday = new System.Windows.Forms.RichTextBox();
+            this.txFriday = new System.Windows.Forms.RichTextBox();
+            this.txSaturday = new System.Windows.Forms.RichTextBox();
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.MainSplit = new System.Windows.Forms.SplitContainer();
+            this.ImagePanel = new System.Windows.Forms.Panel();
+            this.txTuesdayI = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txMondayI = new System.Windows.Forms.RichTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txWednesdayI = new System.Windows.Forms.RichTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txThursdayI = new System.Windows.Forms.RichTextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txFridayI = new System.Windows.Forms.RichTextBox();
+            this.txSaturdayI = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnMyAccount = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnMenuD = new System.Windows.Forms.Button();
             this.lbClose = new System.Windows.Forms.Label();
             this.MainPageHeader = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
-            txMonday = new System.Windows.Forms.RichTextBox();
-            txTuesday = new System.Windows.Forms.RichTextBox();
-            txWednesday = new System.Windows.Forms.RichTextBox();
-            txThursday = new System.Windows.Forms.RichTextBox();
-            txFriday = new System.Windows.Forms.RichTextBox();
-            txSaturday = new System.Windows.Forms.RichTextBox();
+            this.getTimer = new System.Windows.Forms.Timer(this.components);
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
             this.MainSplit.Panel2.SuspendLayout();
             this.MainSplit.SuspendLayout();
+            this.ImagePanel.SuspendLayout();
             this.MainPageHeader.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnMenuA
+            // txMonday
             // 
-            this.btnMenuA.BackColor = System.Drawing.Color.GhostWhite;
-            this.btnMenuA.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnMenuA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuA.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuA.ForeColor = System.Drawing.Color.Black;
-            this.btnMenuA.Location = new System.Drawing.Point(195, 63);
-            this.btnMenuA.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMenuA.Name = "btnMenuA";
-            this.btnMenuA.Size = new System.Drawing.Size(119, 44);
-            this.btnMenuA.TabIndex = 0;
-            this.btnMenuA.Text = "Menü A\r\n(Normal Kost)";
-            this.btnMenuA.UseVisualStyleBackColor = false;
-            this.btnMenuA.Click += new System.EventHandler(this.btnMenuA_Click);
+            this.txMonday.BackColor = System.Drawing.Color.Lavender;
+            this.txMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txMonday.DetectUrls = false;
+            this.txMonday.ForeColor = System.Drawing.Color.Black;
+            this.txMonday.Location = new System.Drawing.Point(165, 29);
+            this.txMonday.Margin = new System.Windows.Forms.Padding(0);
+            this.txMonday.Name = "txMonday";
+            this.txMonday.ReadOnly = true;
+            this.txMonday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txMonday.Size = new System.Drawing.Size(109, 40);
+            this.txMonday.TabIndex = 20;
+            this.txMonday.TabStop = false;
+            this.txMonday.Text = "Menü wurde noch\nnicht gewählt.";
             // 
-            // btnMenuB
+            // txTuesday
             // 
-            this.btnMenuB.BackColor = System.Drawing.Color.GhostWhite;
-            this.btnMenuB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnMenuB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuB.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuB.ForeColor = System.Drawing.Color.Black;
-            this.btnMenuB.Location = new System.Drawing.Point(346, 63);
-            this.btnMenuB.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMenuB.Name = "btnMenuB";
-            this.btnMenuB.Size = new System.Drawing.Size(119, 44);
-            this.btnMenuB.TabIndex = 1;
-            this.btnMenuB.Text = "Menü B\r\n(Vegan)";
-            this.btnMenuB.UseVisualStyleBackColor = false;
-            this.btnMenuB.Click += new System.EventHandler(this.btnMenuB_Click);
+            this.txTuesday.BackColor = System.Drawing.Color.Lavender;
+            this.txTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txTuesday.DetectUrls = false;
+            this.txTuesday.ForeColor = System.Drawing.Color.Black;
+            this.txTuesday.Location = new System.Drawing.Point(277, 29);
+            this.txTuesday.Margin = new System.Windows.Forms.Padding(0);
+            this.txTuesday.Name = "txTuesday";
+            this.txTuesday.ReadOnly = true;
+            this.txTuesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txTuesday.Size = new System.Drawing.Size(109, 40);
+            this.txTuesday.TabIndex = 21;
+            this.txTuesday.TabStop = false;
+            this.txTuesday.Text = "Menü wurde noch\nnicht gewählt.";
             // 
-            // btnMenuC
+            // txWednesday
             // 
-            this.btnMenuC.BackColor = System.Drawing.Color.GhostWhite;
-            this.btnMenuC.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnMenuC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuC.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuC.ForeColor = System.Drawing.Color.Black;
-            this.btnMenuC.Location = new System.Drawing.Point(498, 63);
-            this.btnMenuC.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMenuC.Name = "btnMenuC";
-            this.btnMenuC.Size = new System.Drawing.Size(119, 44);
-            this.btnMenuC.TabIndex = 2;
-            this.btnMenuC.Text = "Menü C\r\n(Vegetarisch)";
-            this.btnMenuC.UseVisualStyleBackColor = false;
-            this.btnMenuC.Click += new System.EventHandler(this.btnMenuC_Click);
+            this.txWednesday.BackColor = System.Drawing.Color.Lavender;
+            this.txWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txWednesday.DetectUrls = false;
+            this.txWednesday.ForeColor = System.Drawing.Color.Black;
+            this.txWednesday.Location = new System.Drawing.Point(389, 29);
+            this.txWednesday.Margin = new System.Windows.Forms.Padding(0);
+            this.txWednesday.Name = "txWednesday";
+            this.txWednesday.ReadOnly = true;
+            this.txWednesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txWednesday.Size = new System.Drawing.Size(109, 40);
+            this.txWednesday.TabIndex = 22;
+            this.txWednesday.TabStop = false;
+            this.txWednesday.Text = "Menü wurde noch\nnicht gewählt.";
+            // 
+            // txThursday
+            // 
+            this.txThursday.BackColor = System.Drawing.Color.Lavender;
+            this.txThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txThursday.DetectUrls = false;
+            this.txThursday.ForeColor = System.Drawing.Color.Black;
+            this.txThursday.Location = new System.Drawing.Point(501, 29);
+            this.txThursday.Margin = new System.Windows.Forms.Padding(0);
+            this.txThursday.Name = "txThursday";
+            this.txThursday.ReadOnly = true;
+            this.txThursday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txThursday.Size = new System.Drawing.Size(109, 40);
+            this.txThursday.TabIndex = 23;
+            this.txThursday.TabStop = false;
+            this.txThursday.Text = "Menü wurde noch\nnicht gewählt.";
+            // 
+            // txFriday
+            // 
+            this.txFriday.BackColor = System.Drawing.Color.Lavender;
+            this.txFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txFriday.DetectUrls = false;
+            this.txFriday.ForeColor = System.Drawing.Color.Black;
+            this.txFriday.Location = new System.Drawing.Point(613, 29);
+            this.txFriday.Margin = new System.Windows.Forms.Padding(0);
+            this.txFriday.Name = "txFriday";
+            this.txFriday.ReadOnly = true;
+            this.txFriday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txFriday.Size = new System.Drawing.Size(109, 40);
+            this.txFriday.TabIndex = 24;
+            this.txFriday.TabStop = false;
+            this.txFriday.Text = "Menü wurde noch\nnicht gewählt.";
+            // 
+            // txSaturday
+            // 
+            this.txSaturday.BackColor = System.Drawing.Color.Lavender;
+            this.txSaturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSaturday.DetectUrls = false;
+            this.txSaturday.ForeColor = System.Drawing.Color.Black;
+            this.txSaturday.Location = new System.Drawing.Point(725, 29);
+            this.txSaturday.Margin = new System.Windows.Forms.Padding(0);
+            this.txSaturday.Name = "txSaturday";
+            this.txSaturday.ReadOnly = true;
+            this.txSaturday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txSaturday.Size = new System.Drawing.Size(109, 40);
+            this.txSaturday.TabIndex = 25;
+            this.txSaturday.TabStop = false;
+            this.txSaturday.Text = "Menü wurde noch\nnicht gewählt.";
             // 
             // dataMenu
             // 
@@ -132,7 +188,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 607);
+            this.dataMenu.Size = new System.Drawing.Size(972, 603);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -150,17 +206,19 @@
             // 
             this.MainSplit.Panel1.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.MainSplit.Panel1.Controls.Add(this.dataMenu);
+            this.MainSplit.Panel1.Controls.Add(this.ImagePanel);
             // 
             // MainSplit.Panel2
             // 
             this.MainSplit.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.MainSplit.Panel2.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
-            this.MainSplit.Panel2.Controls.Add(txSaturday);
-            this.MainSplit.Panel2.Controls.Add(txFriday);
-            this.MainSplit.Panel2.Controls.Add(txThursday);
-            this.MainSplit.Panel2.Controls.Add(txWednesday);
-            this.MainSplit.Panel2.Controls.Add(txTuesday);
-            this.MainSplit.Panel2.Controls.Add(txMonday);
+            this.MainSplit.Panel2.Controls.Add(this.label16);
+            this.MainSplit.Panel2.Controls.Add(this.txSaturday);
+            this.MainSplit.Panel2.Controls.Add(this.txFriday);
+            this.MainSplit.Panel2.Controls.Add(this.txThursday);
+            this.MainSplit.Panel2.Controls.Add(this.txWednesday);
+            this.MainSplit.Panel2.Controls.Add(this.txTuesday);
+            this.MainSplit.Panel2.Controls.Add(this.txMonday);
             this.MainSplit.Panel2.Controls.Add(this.label5);
             this.MainSplit.Panel2.Controls.Add(this.label4);
             this.MainSplit.Panel2.Controls.Add(this.label8);
@@ -170,55 +228,196 @@
             this.MainSplit.Panel2.Controls.Add(this.btnUpdate);
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
-            this.MainSplit.Panel2.Controls.Add(this.btnMenuD);
-            this.MainSplit.Panel2.Controls.Add(this.btnMenuC);
-            this.MainSplit.Panel2.Controls.Add(this.btnMenuA);
-            this.MainSplit.Panel2.Controls.Add(this.btnMenuB);
             this.MainSplit.Size = new System.Drawing.Size(972, 726);
-            this.MainSplit.SplitterDistance = 607;
+            this.MainSplit.SplitterDistance = 603;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
             // 
-            // label8
+            // ImagePanel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label8.Location = new System.Drawing.Point(721, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 15);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Samstag";
+            this.ImagePanel.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
+            this.ImagePanel.Controls.Add(this.txTuesdayI);
+            this.ImagePanel.Controls.Add(this.label10);
+            this.ImagePanel.Controls.Add(this.label11);
+            this.ImagePanel.Controls.Add(this.label9);
+            this.ImagePanel.Controls.Add(this.label12);
+            this.ImagePanel.Controls.Add(this.txMondayI);
+            this.ImagePanel.Controls.Add(this.label13);
+            this.ImagePanel.Controls.Add(this.txWednesdayI);
+            this.ImagePanel.Controls.Add(this.label14);
+            this.ImagePanel.Controls.Add(this.txThursdayI);
+            this.ImagePanel.Controls.Add(this.label15);
+            this.ImagePanel.Controls.Add(this.txFridayI);
+            this.ImagePanel.Controls.Add(this.txSaturdayI);
+            this.ImagePanel.Location = new System.Drawing.Point(0, 0);
+            this.ImagePanel.Name = "ImagePanel";
+            this.ImagePanel.Size = new System.Drawing.Size(972, 285);
+            this.ImagePanel.TabIndex = 20;
+            this.ImagePanel.Visible = false;
             // 
-            // label7
+            // txTuesdayI
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label7.Location = new System.Drawing.Point(605, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 15);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Freitag";
+            this.txTuesdayI.BackColor = System.Drawing.Color.Lavender;
+            this.txTuesdayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txTuesdayI.Location = new System.Drawing.Point(170, 76);
+            this.txTuesdayI.Name = "txTuesdayI";
+            this.txTuesdayI.ReadOnly = true;
+            this.txTuesdayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txTuesdayI.Size = new System.Drawing.Size(155, 129);
+            this.txTuesdayI.TabIndex = 7;
+            this.txTuesdayI.Text = "";
             // 
-            // label6
+            // label10
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label6.Location = new System.Drawing.Point(492, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 15);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Donnerstag";
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label10.Location = new System.Drawing.Point(380, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 15);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Mittwoch";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label11.Location = new System.Drawing.Point(224, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 15);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Dienstag";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label9.Location = new System.Drawing.Point(371, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(232, 21);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Dein persönlicher Speiseplan";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label12.Location = new System.Drawing.Point(859, 58);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 15);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Samstag";
+            // 
+            // txMondayI
+            // 
+            this.txMondayI.BackColor = System.Drawing.Color.Lavender;
+            this.txMondayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txMondayI.Location = new System.Drawing.Point(10, 76);
+            this.txMondayI.Name = "txMondayI";
+            this.txMondayI.ReadOnly = true;
+            this.txMondayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txMondayI.Size = new System.Drawing.Size(155, 129);
+            this.txMondayI.TabIndex = 6;
+            this.txMondayI.Text = "";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label13.Location = new System.Drawing.Point(706, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 15);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Freitag";
+            // 
+            // txWednesdayI
+            // 
+            this.txWednesdayI.BackColor = System.Drawing.Color.Lavender;
+            this.txWednesdayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txWednesdayI.Location = new System.Drawing.Point(330, 76);
+            this.txWednesdayI.Name = "txWednesdayI";
+            this.txWednesdayI.ReadOnly = true;
+            this.txWednesdayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txWednesdayI.Size = new System.Drawing.Size(155, 129);
+            this.txWednesdayI.TabIndex = 8;
+            this.txWednesdayI.Text = "";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label14.Location = new System.Drawing.Point(532, 58);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 15);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Donnerstag";
+            // 
+            // txThursdayI
+            // 
+            this.txThursdayI.BackColor = System.Drawing.Color.Lavender;
+            this.txThursdayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txThursdayI.Location = new System.Drawing.Point(490, 76);
+            this.txThursdayI.Name = "txThursdayI";
+            this.txThursdayI.ReadOnly = true;
+            this.txThursdayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txThursdayI.Size = new System.Drawing.Size(155, 129);
+            this.txThursdayI.TabIndex = 9;
+            this.txThursdayI.Text = "";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label15.Location = new System.Drawing.Point(64, 58);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 15);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Montag";
+            // 
+            // txFridayI
+            // 
+            this.txFridayI.BackColor = System.Drawing.Color.Lavender;
+            this.txFridayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txFridayI.Location = new System.Drawing.Point(650, 76);
+            this.txFridayI.Name = "txFridayI";
+            this.txFridayI.ReadOnly = true;
+            this.txFridayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txFridayI.Size = new System.Drawing.Size(155, 129);
+            this.txFridayI.TabIndex = 10;
+            this.txFridayI.Text = "";
+            // 
+            // txSaturdayI
+            // 
+            this.txSaturdayI.BackColor = System.Drawing.Color.Lavender;
+            this.txSaturdayI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSaturdayI.Location = new System.Drawing.Point(810, 76);
+            this.txSaturdayI.Name = "txSaturdayI";
+            this.txSaturdayI.ReadOnly = true;
+            this.txSaturdayI.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txSaturdayI.Size = new System.Drawing.Size(155, 129);
+            this.txSaturdayI.TabIndex = 11;
+            this.txSaturdayI.Text = "";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label5.Location = new System.Drawing.Point(382, 6);
+            this.label5.Location = new System.Drawing.Point(386, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 15);
             this.label5.TabIndex = 10;
@@ -229,18 +428,51 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label4.Location = new System.Drawing.Point(269, 6);
+            this.label4.Location = new System.Drawing.Point(273, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 15);
             this.label4.TabIndex = 9;
             this.label4.Text = "Dienstag";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.PaleGoldenrod;
+            this.label8.Location = new System.Drawing.Point(725, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 15);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Samstag";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.PaleGoldenrod;
+            this.label7.Location = new System.Drawing.Point(609, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Freitag";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.PaleGoldenrod;
+            this.label6.Location = new System.Drawing.Point(496, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Donnerstag";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.label3.Location = new System.Drawing.Point(158, 6);
+            this.label3.Location = new System.Drawing.Point(162, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 8;
@@ -266,6 +498,7 @@
             // btnMyAccount
             // 
             this.btnMyAccount.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnMyAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMyAccount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.btnMyAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMyAccount.Font = new System.Drawing.Font("Nirmala UI", 9F);
@@ -282,29 +515,14 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(4, 23);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 85);
+            this.label1.Size = new System.Drawing.Size(146, 60);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Suche dir für jeden Tag \r\ndein gewünschtes Menü.\r\nWähle dazu mit der Maus\r\nein Ge" +
-    "richt und klicke dann \r\nauf den jeweiligen Button.\r\n";
-            // 
-            // btnMenuD
-            // 
-            this.btnMenuD.BackColor = System.Drawing.Color.GhostWhite;
-            this.btnMenuD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.btnMenuD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuD.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuD.ForeColor = System.Drawing.Color.Black;
-            this.btnMenuD.Location = new System.Drawing.Point(647, 63);
-            this.btnMenuD.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMenuD.Name = "btnMenuD";
-            this.btnMenuD.Size = new System.Drawing.Size(119, 44);
-            this.btnMenuD.TabIndex = 3;
-            this.btnMenuD.Text = "Menü D\r\n(Gluten-/Lak.- Frei)";
-            this.btnMenuD.UseVisualStyleBackColor = false;
-            this.btnMenuD.Click += new System.EventHandler(this.btnMenuD_Click);
+            this.label1.Text = "Suche dir für jeden Tag \r\ndein gewünschtes Menü.\r\nKlicke dazu mit der Maus\r\neinfa" +
+    "ch auf ein Gericht.";
             // 
             // lbClose
             // 
@@ -350,7 +568,6 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Kantinen-Voting";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Visible = false;
             // 
             // lbAdminPanel
             // 
@@ -370,101 +587,21 @@
             this.lbAdminPanel.Visible = false;
             this.lbAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
             // 
-            // txMonday
+            // getTimer
             // 
-            txMonday.BackColor = System.Drawing.Color.Lavender;
-            txMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txMonday.DetectUrls = false;
-            txMonday.ForeColor = System.Drawing.Color.Black;
-            txMonday.Location = new System.Drawing.Point(161, 21);
-            txMonday.Margin = new System.Windows.Forms.Padding(0);
-            txMonday.Name = "txMonday";
-            txMonday.ReadOnly = true;
-            txMonday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txMonday.Size = new System.Drawing.Size(109, 40);
-            txMonday.TabIndex = 20;
-            txMonday.TabStop = false;
-            txMonday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
+            this.getTimer.Interval = 500;
+            this.getTimer.Tick += new System.EventHandler(this.getTimer_Tick);
             // 
-            // txTuesday
+            // label16
             // 
-            txTuesday.BackColor = System.Drawing.Color.Lavender;
-            txTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txTuesday.DetectUrls = false;
-            txTuesday.ForeColor = System.Drawing.Color.Black;
-            txTuesday.Location = new System.Drawing.Point(273, 21);
-            txTuesday.Margin = new System.Windows.Forms.Padding(0);
-            txTuesday.Name = "txTuesday";
-            txTuesday.ReadOnly = true;
-            txTuesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txTuesday.Size = new System.Drawing.Size(109, 40);
-            txTuesday.TabIndex = 21;
-            txTuesday.TabStop = false;
-            txTuesday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
-            // 
-            // txWednesday
-            // 
-            txWednesday.BackColor = System.Drawing.Color.Lavender;
-            txWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txWednesday.DetectUrls = false;
-            txWednesday.ForeColor = System.Drawing.Color.Black;
-            txWednesday.Location = new System.Drawing.Point(385, 21);
-            txWednesday.Margin = new System.Windows.Forms.Padding(0);
-            txWednesday.Name = "txWednesday";
-            txWednesday.ReadOnly = true;
-            txWednesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txWednesday.Size = new System.Drawing.Size(109, 40);
-            txWednesday.TabIndex = 22;
-            txWednesday.TabStop = false;
-            txWednesday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
-            // 
-            // txThursday
-            // 
-            txThursday.BackColor = System.Drawing.Color.Lavender;
-            txThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txThursday.DetectUrls = false;
-            txThursday.ForeColor = System.Drawing.Color.Black;
-            txThursday.Location = new System.Drawing.Point(497, 21);
-            txThursday.Margin = new System.Windows.Forms.Padding(0);
-            txThursday.Name = "txThursday";
-            txThursday.ReadOnly = true;
-            txThursday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txThursday.Size = new System.Drawing.Size(109, 40);
-            txThursday.TabIndex = 23;
-            txThursday.TabStop = false;
-            txThursday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
-            // 
-            // txFriday
-            // 
-            txFriday.BackColor = System.Drawing.Color.Lavender;
-            txFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txFriday.DetectUrls = false;
-            txFriday.ForeColor = System.Drawing.Color.Black;
-            txFriday.Location = new System.Drawing.Point(609, 21);
-            txFriday.Margin = new System.Windows.Forms.Padding(0);
-            txFriday.Name = "txFriday";
-            txFriday.ReadOnly = true;
-            txFriday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txFriday.Size = new System.Drawing.Size(109, 40);
-            txFriday.TabIndex = 24;
-            txFriday.TabStop = false;
-            txFriday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
-            // 
-            // txSaturday
-            // 
-            txSaturday.BackColor = System.Drawing.Color.Lavender;
-            txSaturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txSaturday.DetectUrls = false;
-            txSaturday.ForeColor = System.Drawing.Color.Black;
-            txSaturday.Location = new System.Drawing.Point(721, 21);
-            txSaturday.Margin = new System.Windows.Forms.Padding(0);
-            txSaturday.Name = "txSaturday";
-            txSaturday.ReadOnly = true;
-            txSaturday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            txSaturday.Size = new System.Drawing.Size(109, 40);
-            txSaturday.TabIndex = 25;
-            txSaturday.TabStop = false;
-            txSaturday.Text = "Menü D\n(Gluten-/Lak.-Frei)";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label16.Location = new System.Drawing.Point(3, 69);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(140, 30);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Deine Auswahl wird\r\nautomatisch gespeichert!";
             // 
             // MainPage
             // 
@@ -489,6 +626,8 @@
             this.MainSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).EndInit();
             this.MainSplit.ResumeLayout(false);
+            this.ImagePanel.ResumeLayout(false);
+            this.ImagePanel.PerformLayout();
             this.MainPageHeader.ResumeLayout(false);
             this.MainPageHeader.PerformLayout();
             this.ResumeLayout(false);
@@ -496,13 +635,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnMenuA;
-        private System.Windows.Forms.Button btnMenuB;
-        private System.Windows.Forms.Button btnMenuC;
         private System.Windows.Forms.DataGridView dataMenu;
         private System.Windows.Forms.SplitContainer MainSplit;
-        private System.Windows.Forms.Button btnMenuD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMyAccount;
         private System.Windows.Forms.Label lbClose;
@@ -516,6 +650,28 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox txMonday;
+        private System.Windows.Forms.RichTextBox txTuesday;
+        private System.Windows.Forms.RichTextBox txWednesday;
+        private System.Windows.Forms.RichTextBox txThursday;
+        private System.Windows.Forms.RichTextBox txFriday;
+        private System.Windows.Forms.RichTextBox txSaturday;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RichTextBox txSaturdayI;
+        private System.Windows.Forms.RichTextBox txFridayI;
+        private System.Windows.Forms.RichTextBox txThursdayI;
+        private System.Windows.Forms.RichTextBox txWednesdayI;
+        private System.Windows.Forms.RichTextBox txTuesdayI;
+        private System.Windows.Forms.RichTextBox txMondayI;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Panel ImagePanel;
+        private System.Windows.Forms.Timer getTimer;
+        private System.Windows.Forms.Label label16;
     }
 }
 

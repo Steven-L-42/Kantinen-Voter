@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace CanteenVoter
 {
     public partial class MainPage : Form
-    {
+    { 
         // Ich vergebe ich die Rechte auf das setzen meines Benutzernames, den erhalten ich aus dem Login Bereich.
         // Anschließend beim Aufruf des UserACP's wird diese Information
         // weitergegeben um weitere Aktionen mit dem Benutzernamen auszuführen
@@ -15,18 +15,23 @@ namespace CanteenVoter
         // Außerdem schränke ich die Get Methode ein, sodass die Information hier privat bleibt.
         //
         public string getUsername { private get; set; }
-
+        public bool getImagePanel { get; set; }
         private string day;
+        private string gerichtText;
+        private string menuesText;
+
 
         public MainPage()
         {
             InitializeComponent();
         }
 
+
         private void MainPage_Load(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
             getDataSelectedMenue();
+            dataMenu.ClearSelection();
             this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             if (getUsername == "ShiiikK" || getUsername == "Mentalill")
             {
@@ -35,14 +40,6 @@ namespace CanteenVoter
             EnableDoubleBuffering();
         }
 
-        public void EnableDoubleBuffering()
-        {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
-        }
 
         private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
@@ -55,40 +52,61 @@ namespace CanteenVoter
             }
         }
 
-        private void getDataSelectedMenue()
-        {
-            Datenbank db = new Datenbank();
-            DataTable dt = new DataTable();
 
-            // Öffnet die DB Verbindung
-            //
-            db.openConnection();
+        public void EnableDoubleBuffering()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
+        }
+
+        private void btnMyAccount_Click(object sender, EventArgs e)
+        {
+            var userAcpO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "UserAcp").FirstOrDefault();
+            if (null != userAcpO)
+            {
+                userAcpO.Close();
+                userAcpO = null;
+            }
+            var userAcp = new UserAcp();
+            userAcp.getUsername = getUsername;
+            userAcp.Owner = this;
+            userAcp.Show();
+            getTimer.Start();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            dataMenu.DataSource = GetdataMenu();
+            dataMenu.ClearSelection();
+         
+        }
+
+        private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             try
             {
-                // Wähle 'Alle' Einträge von meiner UserMenueTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
-                //
-                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername = @Benutzername", db.getConnection());
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
+                day = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
+                menuesText = dataMenu.CurrentRow.Cells[0].Value.ToString();
 
-                sqlCmd.Parameters.AddWithValue("@Benutzername", this.getUsername);
-                sqlDa.Fill(dt);
-                if (dt.Rows.Count > 0)
+                if (day == "Menues")
                 {
-                    txMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
-                    txTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
-                    txWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
-                    txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
-                    txFriday.Text = dt.Rows[0]["Freitag"].ToString();
-                    txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
+                    AlertClass.Show("Du kannst nicht die Kategorie\n" +
+                        "Menues als Menü speichern!", Alert.enmType.Warning);
+                    day = null;
+                    dataMenu.ClearSelection();
+                }
+                else
+                {
+                    SelectMenu(menuesText);
                 }
             }
-            catch (MySqlException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
-                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
-            }
-            finally
-            {
-                db.closeConnection();
+                AlertClass.Show("Es können nur einzelne Menüs markiert werden!", Alert.enmType.Info);
             }
         }
 
@@ -110,64 +128,45 @@ namespace CanteenVoter
             return table;
         }
 
-        private void SelectMenu(string menu)
+
+        private void getDataSelectedMenue()
         {
+
             Datenbank db = new Datenbank();
-            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day + "='" + menu + "' " +
-                                                            "WHERE Benutzername='" + this.getUsername + "'",
-                                                            db.getConnection());
-            db.openConnection();
+            DataTable dt = new DataTable();
+
             // Öffnet die DB Verbindung
             //
             db.openConnection();
             try
             {
-                // Führt die Anweisung durch
+                // Wähle 'Alle' Einträge von meiner UserMenueTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
                 //
-                if (menu == "Menues")
+                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername = @Benutzername",db.getConnection());
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
+               
+                sqlCmd.Parameters.AddWithValue("@Benutzername", this.getUsername);
+                sqlDa.Fill(dt);
+                if (dt.Rows.Count > 0)
                 {
-                    AlertClass.Show("Du kannst nicht die Kategorie Menues als Menü speichern!", Alert.enmType.Warning);
-                }
-                else
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    AlertClass.Show("Dein Menü wurde erfolgreich gewählt!", Alert.enmType.Success);
-                    switch (day)
-                    {
-                        case "Montag":
-                            txMonday.Text = menu;
-                            break;
+                    txMondayI.Text = dt.Rows[0]["MontagGericht"].ToString(); // Zeigt mir die geforderte Spalte 'MontagGericht' in der in der Selected Menue Area an.
+                    txTuesdayI.Text = dt.Rows[0]["DienstagGericht"].ToString();
+                    txWednesdayI.Text = dt.Rows[0]["MittwochGericht"].ToString();
+                    txThursdayI.Text = dt.Rows[0]["DonnerstagGericht"].ToString();
+                    txFridayI.Text = dt.Rows[0]["FreitagGericht"].ToString();
+                    txSaturdayI.Text = dt.Rows[0]["SamstagGericht"].ToString();
 
-                        case "Dienstag":
-                            txTuesday.Text = menu;
-                            break;
-
-                        case "Mittwoch":
-                            txWednesday.Text = menu;
-                            break;
-
-                        case "Donnerstag":
-                            txThursday.Text = menu;
-                            break;
-
-                        case "Freitag":
-                            txFriday.Text = menu;
-                            break;
-
-                        case "Samstag":
-                            txSaturday.Text = menu;
-                            break;
-                    }
-                    dataMenu.ClearSelection();
-                }
-                else
-                {
-                    AlertClass.Show("Deine Menü Auswahl war nicht erfolgreich!", Alert.enmType.Warning);
+                    txMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
+                    txTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
+                    txWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
+                    txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
+                    txFriday.Text = dt.Rows[0]["Freitag"].ToString();
+                    txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
+                    SetEmptyTextBoxes();
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
             }
             finally
@@ -176,18 +175,19 @@ namespace CanteenVoter
             }
         }
 
-        private void btnMyAccount_Click(object sender, EventArgs e)
+
+        private void lbAdminPanel_Click(object sender, EventArgs e)
         {
-            var userAcpO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "UserAcp").FirstOrDefault();
-            if (null != userAcpO)
+            var adminPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "AdminPage").FirstOrDefault();
+            if (null != adminPageO)
             {
-                userAcpO.Close();
-                userAcpO = null;
+                adminPageO.Close();
+                adminPageO = null;
             }
-            var userAcp = new UserAcp();
-            userAcp.getUsername = getUsername;
-            userAcp.Show();
+            var admin = new AdminPage();
+            admin.Show();
         }
+
 
         private void lbClose_Click(object sender, EventArgs e)
         {
@@ -209,10 +209,119 @@ namespace CanteenVoter
             login.Show();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+
+ 
+
+
+        private void SelectMenu(string menu)
         {
-            dataMenu.DataSource = GetdataMenu();
+            Datenbank db = new Datenbank();
+            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day + "='" + menuesText + "'," + day +"Gericht='" + gerichtText + "' WHERE Benutzername='" + this.getUsername + "'",
+                                                            db.getConnection());
+            db.openConnection();
+            // Öffnet die DB Verbindung
+            //
+            db.openConnection();
+            try
+            {
+                // Führt die Anweisung durch
+                //
+                if (menu == "Menues")
+                {
+                    AlertClass.Show("Du kannst nicht die Kategorie Menues als Menü speichern!", Alert.enmType.Warning);
+                }
+                else
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    AlertClass.Show("Dein Menü wurde erfolgreich gewählt!", Alert.enmType.Success);
+
+                    switch (day)
+                    {
+                        case "Montag":
+                            txMonday.Text = menuesText;
+                            txMondayI.Text = gerichtText;
+                            break;
+
+                        case "Dienstag":
+                            txTuesday.Text = menuesText;
+                            txTuesdayI.Text = gerichtText;
+                            break;
+
+                        case "Mittwoch":
+                            txWednesday.Text = menuesText;
+                            txWednesdayI.Text = gerichtText;
+                            break;
+
+                        case "Donnerstag":
+                            txThursday.Text = menuesText;
+                            txThursdayI.Text = gerichtText;
+                            break;
+
+                        case "Freitag":
+                            txFriday.Text = menuesText;
+                            txFridayI.Text = gerichtText;
+                            break;
+
+                        case "Samstag":
+                            txSaturday.Text = menuesText;
+                            txSaturdayI.Text = gerichtText;
+                            break;
+                    }
+                 
+                    dataMenu.ClearSelection();
+                    day = null;
+                }
+                else
+                {
+                    AlertClass.Show("Deine Menü Auswahl war nicht erfolgreich!", Alert.enmType.Warning);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
+            }
+            finally
+            {
+                db.closeConnection();
+            }
         }
+
+        #region SetEmptyTextBoxes
+        private void SetEmptyTextBoxes()
+        {
+            if (txMonday.Text == string.Empty)
+            {
+                txMonday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+            if (txTuesday.Text == string.Empty)
+            {
+                txTuesday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+            if (txWednesday.Text == string.Empty)
+            {
+                txWednesday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+            if (txThursday.Text == string.Empty)
+            {
+                txThursday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+            if (txFriday.Text == string.Empty)
+            {
+                txFriday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+            if (txSaturday.Text == string.Empty)
+            {
+                txSaturday.Text = "Menü wurde noch\n" +
+                                "nicht gewählt.";
+            }
+        }
+        #endregion
 
         #region SelectMenueButton
 
@@ -262,34 +371,11 @@ namespace CanteenVoter
 
         #endregion SelectMenueButton
 
-        private void lbAdminPanel_Click(object sender, EventArgs e)
+        private void getTimer_Tick(object sender, EventArgs e)
         {
-            var adminPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "AdminPage").FirstOrDefault();
-            if (null != adminPageO)
+            if(getImagePanel)
             {
-                adminPageO.Close();
-                adminPageO = null;
-            }
-            var admin = new AdminPage();
-            admin.Show();
-        }
-
-        private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                day = dataMenu.Columns[e.ColumnIndex].HeaderText;
-                if (day == "Menues")
-                {
-                    AlertClass.Show("Du kannst nicht die Kategorie\n" +
-                        "Menues als Menü speichern!", Alert.enmType.Warning);
-                    day = null;
-                    dataMenu.ClearSelection();
-                }
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                AlertClass.Show("Es können nur einzelne Menüs markiert werden!", Alert.enmType.Info);
+                ImagePanel.Visible = true;
             }
         }
     }
