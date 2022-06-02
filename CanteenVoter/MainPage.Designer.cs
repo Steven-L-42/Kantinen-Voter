@@ -86,7 +86,7 @@
             this.txMonday.Name = "txMonday";
             this.txMonday.ReadOnly = true;
             this.txMonday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txMonday.Size = new System.Drawing.Size(109, 40);
+            this.txMonday.Size = new System.Drawing.Size(109, 42);
             this.txMonday.TabIndex = 20;
             this.txMonday.TabStop = false;
             this.txMonday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -102,7 +102,7 @@
             this.txTuesday.Name = "txTuesday";
             this.txTuesday.ReadOnly = true;
             this.txTuesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txTuesday.Size = new System.Drawing.Size(109, 40);
+            this.txTuesday.Size = new System.Drawing.Size(109, 42);
             this.txTuesday.TabIndex = 21;
             this.txTuesday.TabStop = false;
             this.txTuesday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -118,7 +118,7 @@
             this.txWednesday.Name = "txWednesday";
             this.txWednesday.ReadOnly = true;
             this.txWednesday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txWednesday.Size = new System.Drawing.Size(109, 40);
+            this.txWednesday.Size = new System.Drawing.Size(109, 42);
             this.txWednesday.TabIndex = 22;
             this.txWednesday.TabStop = false;
             this.txWednesday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -134,7 +134,7 @@
             this.txThursday.Name = "txThursday";
             this.txThursday.ReadOnly = true;
             this.txThursday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txThursday.Size = new System.Drawing.Size(109, 40);
+            this.txThursday.Size = new System.Drawing.Size(109, 42);
             this.txThursday.TabIndex = 23;
             this.txThursday.TabStop = false;
             this.txThursday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -150,7 +150,7 @@
             this.txFriday.Name = "txFriday";
             this.txFriday.ReadOnly = true;
             this.txFriday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txFriday.Size = new System.Drawing.Size(109, 40);
+            this.txFriday.Size = new System.Drawing.Size(109, 42);
             this.txFriday.TabIndex = 24;
             this.txFriday.TabStop = false;
             this.txFriday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -166,7 +166,7 @@
             this.txSaturday.Name = "txSaturday";
             this.txSaturday.ReadOnly = true;
             this.txSaturday.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txSaturday.Size = new System.Drawing.Size(109, 40);
+            this.txSaturday.Size = new System.Drawing.Size(109, 42);
             this.txSaturday.TabIndex = 25;
             this.txSaturday.TabStop = false;
             this.txSaturday.Text = "Menü wurde noch\nnicht gewählt.";
@@ -188,7 +188,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 603);
+            this.dataMenu.Size = new System.Drawing.Size(972, 604);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -228,8 +228,8 @@
             this.MainSplit.Panel2.Controls.Add(this.btnUpdate);
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
-            this.MainSplit.Size = new System.Drawing.Size(972, 726);
-            this.MainSplit.SplitterDistance = 603;
+            this.MainSplit.Size = new System.Drawing.Size(972, 711);
+            this.MainSplit.SplitterDistance = 604;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -609,7 +609,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 760);
+            this.ClientSize = new System.Drawing.Size(972, 745);
             this.Controls.Add(this.MainSplit);
             this.Controls.Add(this.MainPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

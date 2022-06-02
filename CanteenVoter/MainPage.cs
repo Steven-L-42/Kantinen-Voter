@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -38,6 +39,7 @@ namespace CanteenVoter
                 lbAdminPanel.Visible = true;
             }
             EnableDoubleBuffering();
+           
         }
 
 
@@ -83,26 +85,60 @@ namespace CanteenVoter
             dataMenu.ClearSelection();
          
         }
+        private bool menuChange = false;
 
+        DataGridViewCellStyle dataGridViewCellStyle = new DataGridViewCellStyle();
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+
+          
+
+
+
             try
             {
-                day = dataMenu.Columns[e.ColumnIndex].HeaderText;
-                gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
-                menuesText = dataMenu.CurrentRow.Cells[0].Value.ToString();
+                if (!menuChange)
+                {
+                    var confirmResult = MessageBox.Show("Willst du deine Menüs wirklich ändern?",
+                                                 "Menü Änderung!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-                if (day == "Menues")
-                {
-                    AlertClass.Show("Du kannst nicht die Kategorie\n" +
-                        "Menues als Menü speichern!", Alert.enmType.Warning);
-                    day = null;
-                    dataMenu.ClearSelection();
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        menuChange = true;
+                    }
+
+
                 }
-                else
+                if (menuChange)
                 {
-                    SelectMenu(menuesText);
+                    day = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                    gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
+                    menuesText = dataMenu.CurrentRow.Cells[0].Value.ToString();
+
+                    if (day == "Menues")
+                    {
+                        AlertClass.Show("Du kannst nicht die Kategorie\n" +
+                            "Menues als Menü speichern!", Alert.enmType.Warning);
+                        day = null;
+                        dataMenu.ClearSelection();
+                    }
+                    else
+                    {
+                        SelectMenu(menuesText);
+                        if (e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
+                        {
+                            return;
+                        }
+                        dataGridViewCellStyle = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
+                        {
+                            BackColor = Color.CornflowerBlue
+                        };
+                        dataMenu[e.ColumnIndex, e.RowIndex].Style = dataGridViewCellStyle;
+
+                    }
                 }
+
             }
             catch (ArgumentOutOfRangeException ex)
             {
