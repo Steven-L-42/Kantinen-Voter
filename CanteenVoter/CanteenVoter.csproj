@@ -120,9 +120,6 @@
     <Compile Include="AdminPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\AdminDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="AdminPage.Designer.cs">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
@@ -134,18 +131,8 @@
     </Compile>
     <Compile Include="Classes\AlertClass.cs" />
     <Compile Include="Classes\MD5-Encryption.cs" />
-    <Compile Include="Classes\MoveWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\UserAcpDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\MainDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\RegLogDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Classes\MoveWindow.cs" />
+    <Compile Include="Classes\DatabaseCon.cs" />
     <Compile Include="MainPage.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -136,10 +136,10 @@ namespace CanteenVoter
         {
             if (e.Button == MouseButtons.Left)
             {
-                RegAndLogin.MoveWindow.ReleaseCapture();
-                RegAndLogin.MoveWindow.SendMessage(Handle,
-                RegAndLogin.MoveWindow.WM_NCLBUTTONDOWN,
-                RegAndLogin.MoveWindow.HT_CAPTION, 0);
+                MoveWindow.ReleaseCapture();
+                MoveWindow.SendMessage(Handle,
+                MoveWindow.WM_NCLBUTTONDOWN,
+                MoveWindow.HT_CAPTION, 0);
             }
         }
 
