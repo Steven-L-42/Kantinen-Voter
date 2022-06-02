@@ -118,10 +118,13 @@ namespace CanteenVoter
                         gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
                         menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                        if (day == "Menues")
+                        if (day == "Menues" || day == "Montag" 
+                        || day == "Dienstag" || day == "Mittwoch"
+                        || day == "Donnerstag" || day == "Freitag"
+                        || day == "Samstag")
                         {
-                            AlertClass.Show("Du kannst nicht die Kategorie\n" +
-                                "Menues als Menü speichern!", Alert.enmType.Warning);
+                            AlertClass.Show("Du kannst eine Kategorie\n" +
+                                "nicht als Menü speichern!", Alert.enmType.Warning);
                             day = null;
                             dataMenu.ClearSelection();
                         }
@@ -159,7 +162,8 @@ namespace CanteenVoter
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                AlertClass.Show("Du kannst diese Spalte nicht auswählen!", Alert.enmType.Info);
+                AlertClass.Show("Du kannst diese Spalte\n" +
+                                "nicht auswählen!", Alert.enmType.Info);
             }
 }
 
