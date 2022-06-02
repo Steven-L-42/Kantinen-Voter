@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.txMonday = new System.Windows.Forms.RichTextBox();
             this.txTuesday = new System.Windows.Forms.RichTextBox();
             this.txWednesday = new System.Windows.Forms.RichTextBox();
@@ -51,6 +50,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txFridayI = new System.Windows.Forms.RichTextBox();
             this.txSaturdayI = new System.Windows.Forms.RichTextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,8 +64,6 @@
             this.MainPageHeader = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
-            this.getTimer = new System.Windows.Forms.Timer(this.components);
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
@@ -188,7 +186,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 604);
+            this.dataMenu.Size = new System.Drawing.Size(972, 603);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -229,7 +227,7 @@
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
             this.MainSplit.Size = new System.Drawing.Size(972, 711);
-            this.MainSplit.SplitterDistance = 604;
+            this.MainSplit.SplitterDistance = 603;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -412,6 +410,17 @@
             this.txSaturdayI.TabIndex = 11;
             this.txSaturdayI.Text = "";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label16.Location = new System.Drawing.Point(3, 69);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(140, 30);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Deine Auswahl wird\r\nautomatisch gespeichert!";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -587,22 +596,6 @@
             this.lbAdminPanel.Visible = false;
             this.lbAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
             // 
-            // getTimer
-            // 
-            this.getTimer.Interval = 500;
-            this.getTimer.Tick += new System.EventHandler(this.getTimer_Tick);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label16.Location = new System.Drawing.Point(3, 69);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(140, 30);
-            this.label16.TabIndex = 26;
-            this.label16.Text = "Deine Auswahl wird\r\nautomatisch gespeichert!";
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -670,7 +663,6 @@
         private System.Windows.Forms.RichTextBox txMondayI;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Panel ImagePanel;
-        private System.Windows.Forms.Timer getTimer;
         private System.Windows.Forms.Label label16;
     }
 }

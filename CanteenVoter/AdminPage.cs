@@ -195,7 +195,12 @@ namespace CanteenVoter
             txSuturday.GotFocus += TxSuturday_GotFocus;
             txSuturday.LostFocus += TxSuturday_LostFocus;
         }
-
+        // Got Focus soll die RichTextBox Clearen wenn sie den Focus hat
+        // und exakt den Text enthält der im If Statement gefordert wird
+        //
+        // Lost Focus macht exakt das Gegenteil, wenn Sie den Focus verliert
+        // und die RichTextBox leer ist, wird sie mit ihren vorbestimmten Text befüllt.
+        //
         private void TxFriday_GotFocus(object sender, EventArgs e)
         {
             if (txFriday.Text == "FREITAG")
@@ -226,12 +231,6 @@ namespace CanteenVoter
                 txSuturday.Text = String.Empty;
         }
 
-        // Got Focus soll die RichTextBox Clearen wenn sie den Focus hat
-        // und exakt den Text enthält der im If Statement gefordert wird
-        //
-        // Lost Focus macht exakt das Gegenteil, wenn Sie den Focus verliert
-        // und die RichTextBox leer ist, wird sie mit ihren vorbestimmten Text befüllt.
-        //
         private void TxSuturday_LostFocus(object sender, EventArgs e)
         {
             if (txSuturday.Text == String.Empty)

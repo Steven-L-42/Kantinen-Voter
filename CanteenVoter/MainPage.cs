@@ -20,6 +20,7 @@ namespace CanteenVoter
         private string day;
         private string gerichtText;
         private string menuesText;
+        private bool menuChange = false;
 
 
         public MainPage()
@@ -76,7 +77,7 @@ namespace CanteenVoter
             userAcp.getUsername = getUsername;
             userAcp.Owner = this;
             userAcp.Show();
-            getTimer.Start();
+        
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -85,17 +86,11 @@ namespace CanteenVoter
             dataMenu.ClearSelection();
          
         }
-        private bool menuChange = false;
+      
 
-        DataGridViewCellStyle dataGridViewCellStyle = new DataGridViewCellStyle();
+     
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-          
-
-
-
             try
             {
                 if (!menuChange)
@@ -130,7 +125,7 @@ namespace CanteenVoter
                         {
                             return;
                         }
-                        dataGridViewCellStyle = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
+                        var dataGridViewCellStyle = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
                         {
                             BackColor = Color.CornflowerBlue
                         };
@@ -140,9 +135,9 @@ namespace CanteenVoter
                 }
 
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentNullException ex)
             {
-                AlertClass.Show("Es können nur einzelne Menüs markiert werden!", Alert.enmType.Info);
+                AlertClass.Show(ex.Message, Alert.enmType.Warning);
             }
         }
 
@@ -244,9 +239,6 @@ namespace CanteenVoter
             Form login = Application.OpenForms["RegAndLogin"];
             login.Show();
         }
-
-
- 
 
 
         private void SelectMenu(string menu)
@@ -407,12 +399,6 @@ namespace CanteenVoter
 
         #endregion SelectMenueButton
 
-        private void getTimer_Tick(object sender, EventArgs e)
-        {
-            if(getImagePanel)
-            {
-                ImagePanel.Visible = true;
-            }
-        }
+      
     }
 }
