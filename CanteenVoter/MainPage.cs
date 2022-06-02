@@ -33,7 +33,9 @@ namespace CanteenVoter
         {
             dataMenu.DataSource = GetdataMenu();
             getDataSelectedMenue();
+            dataMenu.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
             dataMenu.ClearSelection();
+           
             this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             if (getUsername == "ShiiikK" || getUsername == "Mentalill")
             {
@@ -86,11 +88,15 @@ namespace CanteenVoter
             dataMenu.ClearSelection();
          
         }
-      
 
-     
+    
+
+
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+
+
             try
             {
                 if (!menuChange)
@@ -121,15 +127,23 @@ namespace CanteenVoter
                     else
                     {
                         SelectMenu(menuesText);
-                        if (e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
+                        if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                         {
                             return;
                         }
-                        var dataGridViewCellStyle = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
+                        for (int i = 0; i < dataMenu.Rows.Count; i++)
+                        {
+                            var cell = dataMenu[e.ColumnIndex, i];
+                            if (cell.HasStyle)
+                            {
+                                cell.Style = null;
+                            }
+                        }
+                        var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
                         {
                             BackColor = Color.CornflowerBlue
                         };
-                        dataMenu[e.ColumnIndex, e.RowIndex].Style = dataGridViewCellStyle;
+                        dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
 
                     }
                 }
