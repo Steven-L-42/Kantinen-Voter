@@ -43,7 +43,7 @@
             this.lblMsg.AutoSize = true;
             this.lblMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblMsg.ForeColor = System.Drawing.Color.White;
-            this.lblMsg.Location = new System.Drawing.Point(60, 18);
+            this.lblMsg.Location = new System.Drawing.Point(57, 14);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(96, 17);
             this.lblMsg.TabIndex = 1;

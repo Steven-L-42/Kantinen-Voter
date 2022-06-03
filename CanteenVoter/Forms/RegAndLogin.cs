@@ -17,9 +17,7 @@ namespace CanteenVoter
         {
             string username = txUsername.Text.Trim();
             string password = txPassword.Text.Trim();
-
-            if (username.Equals("Benutzername")
-                || password.Equals("Passwort"))
+            if(username.Length < 5 || password.Length < 8)
             {
                 return true;
             }
@@ -125,7 +123,7 @@ namespace CanteenVoter
             db.openConnection();
             try
             {
-                // Überprüft ob die Textbox Eingaben nicht erlaubte Benutzerdaten enthält.
+                // Überprüft ob die mindest Anforderung an Zeichen erreicht wurde.
                 //
                 if (!checkTextBoxesValues())
                 {
@@ -170,7 +168,16 @@ namespace CanteenVoter
                 }
                 else
                 {
-                    AlertClass.Show("Bitte fülle alle Felder aus!", Alert.enmType.Info);
+                    if(txUsername.Text.Length <5)
+                    {
+                        AlertClass.Show("Dein Benutzername muss\n" +
+                                        "mindestens 5 Zeichen enthalten!", Alert.enmType.Info);
+                    }else if(txPassword.Text.Length <8)
+                    {
+                        AlertClass.Show("Dein Passwort muss\n" +
+                                        "mindestens 8 Zeichen enthalten!", Alert.enmType.Info);
+                    }
+                 
                 }
             }
             catch (MySqlException ex)

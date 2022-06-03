@@ -79,6 +79,7 @@
             // 
             this.txFirstName.BackColor = System.Drawing.Color.GhostWhite;
             this.txFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txFirstName.ForeColor = System.Drawing.Color.Black;
             this.txFirstName.Location = new System.Drawing.Point(61, 54);
             this.txFirstName.Name = "txFirstName";
             this.txFirstName.Size = new System.Drawing.Size(207, 23);
@@ -88,6 +89,7 @@
             // 
             this.txSurname.BackColor = System.Drawing.Color.GhostWhite;
             this.txSurname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txSurname.ForeColor = System.Drawing.Color.Black;
             this.txSurname.Location = new System.Drawing.Point(61, 104);
             this.txSurname.Name = "txSurname";
             this.txSurname.Size = new System.Drawing.Size(207, 23);
@@ -97,6 +99,7 @@
             // 
             this.txAllergic.BackColor = System.Drawing.Color.GhostWhite;
             this.txAllergic.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txAllergic.ForeColor = System.Drawing.Color.Black;
             this.txAllergic.Location = new System.Drawing.Point(61, 212);
             this.txAllergic.Name = "txAllergic";
             this.txAllergic.Size = new System.Drawing.Size(207, 63);

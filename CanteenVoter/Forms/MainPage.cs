@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CanteenVoter
@@ -16,6 +17,7 @@ namespace CanteenVoter
         // Außerdem schränke ich die Get Methode ein, sodass die Information hier privat bleibt.
         //
         public string getUsername { private get; set; }
+
         public bool getImagePanel { get; set; }
         private string day;
         private string gerichtText;
@@ -60,12 +62,12 @@ namespace CanteenVoter
             }
 
             EnableDoubleBuffering();
-           
         }
 
 
         private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
+
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -97,6 +99,7 @@ namespace CanteenVoter
             userAcp.getUsername = getUsername;
             userAcp.Owner = this;
             userAcp.Show();
+            userAcp.Location = new Point(this.Bounds.Right,this.Bounds.Top);
         
         }
 
@@ -226,7 +229,7 @@ namespace CanteenVoter
         }
 
 
-        private void getDataSelectedMenue()
+    private void getDataSelectedMenue()
         {
 
             Datenbank db = new Datenbank();

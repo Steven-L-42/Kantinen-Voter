@@ -38,6 +38,9 @@
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.MainSplit = new System.Windows.Forms.SplitContainer();
             this.ImagePanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.spaceSeparatorVertical1 = new ReaLTaiizor.Controls.SpaceSeparatorVertical();
+            this.lbNameI = new System.Windows.Forms.Label();
             this.txTuesdayI = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -63,6 +66,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
             this.MainPageHeader = new System.Windows.Forms.Panel();
+            this.btnAdminPanel = new System.Windows.Forms.Button();
             this.lbMenu = new System.Windows.Forms.Label();
             this.lbWed = new System.Windows.Forms.Label();
             this.lbTue = new System.Windows.Forms.Label();
@@ -71,7 +75,6 @@
             this.lbThu = new System.Windows.Forms.Label();
             this.lbMo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAdminPanel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
@@ -86,6 +89,7 @@
             this.txMonday.BackColor = System.Drawing.Color.Lavender;
             this.txMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txMonday.DetectUrls = false;
+            this.txMonday.Enabled = false;
             this.txMonday.ForeColor = System.Drawing.Color.Black;
             this.txMonday.Location = new System.Drawing.Point(165, 29);
             this.txMonday.Margin = new System.Windows.Forms.Padding(0);
@@ -102,6 +106,7 @@
             this.txTuesday.BackColor = System.Drawing.Color.Lavender;
             this.txTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txTuesday.DetectUrls = false;
+            this.txTuesday.Enabled = false;
             this.txTuesday.ForeColor = System.Drawing.Color.Black;
             this.txTuesday.Location = new System.Drawing.Point(277, 29);
             this.txTuesday.Margin = new System.Windows.Forms.Padding(0);
@@ -118,6 +123,7 @@
             this.txWednesday.BackColor = System.Drawing.Color.Lavender;
             this.txWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txWednesday.DetectUrls = false;
+            this.txWednesday.Enabled = false;
             this.txWednesday.ForeColor = System.Drawing.Color.Black;
             this.txWednesday.Location = new System.Drawing.Point(389, 29);
             this.txWednesday.Margin = new System.Windows.Forms.Padding(0);
@@ -134,6 +140,7 @@
             this.txThursday.BackColor = System.Drawing.Color.Lavender;
             this.txThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txThursday.DetectUrls = false;
+            this.txThursday.Enabled = false;
             this.txThursday.ForeColor = System.Drawing.Color.Black;
             this.txThursday.Location = new System.Drawing.Point(501, 29);
             this.txThursday.Margin = new System.Windows.Forms.Padding(0);
@@ -150,6 +157,7 @@
             this.txFriday.BackColor = System.Drawing.Color.Lavender;
             this.txFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txFriday.DetectUrls = false;
+            this.txFriday.Enabled = false;
             this.txFriday.ForeColor = System.Drawing.Color.Black;
             this.txFriday.Location = new System.Drawing.Point(613, 29);
             this.txFriday.Margin = new System.Windows.Forms.Padding(0);
@@ -166,6 +174,7 @@
             this.txSaturday.BackColor = System.Drawing.Color.Lavender;
             this.txSaturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txSaturday.DetectUrls = false;
+            this.txSaturday.Enabled = false;
             this.txSaturday.ForeColor = System.Drawing.Color.Black;
             this.txSaturday.Location = new System.Drawing.Point(725, 29);
             this.txSaturday.Margin = new System.Windows.Forms.Padding(0);
@@ -203,7 +212,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 616);
+            this.dataMenu.Size = new System.Drawing.Size(972, 614);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -245,7 +254,7 @@
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
             this.MainSplit.Size = new System.Drawing.Size(972, 727);
-            this.MainSplit.SplitterDistance = 616;
+            this.MainSplit.SplitterDistance = 614;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -253,6 +262,9 @@
             // ImagePanel
             // 
             this.ImagePanel.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
+            this.ImagePanel.Controls.Add(this.label17);
+            this.ImagePanel.Controls.Add(this.spaceSeparatorVertical1);
+            this.ImagePanel.Controls.Add(this.lbNameI);
             this.ImagePanel.Controls.Add(this.txTuesdayI);
             this.ImagePanel.Controls.Add(this.label10);
             this.ImagePanel.Controls.Add(this.label11);
@@ -271,6 +283,45 @@
             this.ImagePanel.Size = new System.Drawing.Size(972, 285);
             this.ImagePanel.TabIndex = 20;
             this.ImagePanel.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label17.Location = new System.Drawing.Point(834, 257);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(135, 21);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "#Katinen-Voting";
+            // 
+            // spaceSeparatorVertical1
+            // 
+            this.spaceSeparatorVertical1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.spaceSeparatorVertical1.Customization = "/////////////////////w==";
+            this.spaceSeparatorVertical1.Font = new System.Drawing.Font("Verdana", 8F);
+            this.spaceSeparatorVertical1.Image = null;
+            this.spaceSeparatorVertical1.Location = new System.Drawing.Point(12, 6);
+            this.spaceSeparatorVertical1.Name = "spaceSeparatorVertical1";
+            this.spaceSeparatorVertical1.NoRounding = false;
+            this.spaceSeparatorVertical1.Size = new System.Drawing.Size(4, 30);
+            this.spaceSeparatorVertical1.TabIndex = 22;
+            this.spaceSeparatorVertical1.Text = "spaceSeparatorVertical1";
+            this.spaceSeparatorVertical1.Transparent = false;
+            // 
+            // lbNameI
+            // 
+            this.lbNameI.AutoSize = true;
+            this.lbNameI.BackColor = System.Drawing.Color.Transparent;
+            this.lbNameI.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameI.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbNameI.Location = new System.Drawing.Point(24, 12);
+            this.lbNameI.Name = "lbNameI";
+            this.lbNameI.Size = new System.Drawing.Size(145, 17);
+            this.lbNameI.TabIndex = 20;
+            this.lbNameI.Text = "Vorname + Nachname";
+            this.lbNameI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txTuesdayI
             // 
@@ -314,7 +365,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label9.Location = new System.Drawing.Point(371, 32);
+            this.label9.Location = new System.Drawing.Point(371, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(232, 21);
             this.label9.TabIndex = 5;
@@ -587,6 +638,28 @@
             this.MainPageHeader.TabIndex = 20;
             this.MainPageHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
+            // btnAdminPanel
+            // 
+            this.btnAdminPanel.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdminPanel.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.FlatAppearance.BorderSize = 0;
+            this.btnAdminPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
+            this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAdminPanel.Name = "btnAdminPanel";
+            this.btnAdminPanel.Size = new System.Drawing.Size(85, 29);
+            this.btnAdminPanel.TabIndex = 27;
+            this.btnAdminPanel.Text = "> ADMI&N";
+            this.btnAdminPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdminPanel.UseVisualStyleBackColor = false;
+            this.btnAdminPanel.Visible = false;
+            this.btnAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
+            // 
             // lbMenu
             // 
             this.lbMenu.AutoSize = true;
@@ -681,28 +754,6 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
-            // btnAdminPanel
-            // 
-            this.btnAdminPanel.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdminPanel.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.btnAdminPanel.FlatAppearance.BorderSize = 0;
-            this.btnAdminPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
-            this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdminPanel.Name = "btnAdminPanel";
-            this.btnAdminPanel.Size = new System.Drawing.Size(85, 29);
-            this.btnAdminPanel.TabIndex = 27;
-            this.btnAdminPanel.Text = "> ADMI&N";
-            this.btnAdminPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdminPanel.UseVisualStyleBackColor = false;
-            this.btnAdminPanel.Visible = false;
-            this.btnAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -762,12 +813,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.RichTextBox txSaturdayI;
-        private System.Windows.Forms.RichTextBox txFridayI;
-        private System.Windows.Forms.RichTextBox txThursdayI;
-        private System.Windows.Forms.RichTextBox txWednesdayI;
-        private System.Windows.Forms.RichTextBox txTuesdayI;
-        private System.Windows.Forms.RichTextBox txMondayI;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Panel ImagePanel;
         private System.Windows.Forms.Label label16;
@@ -779,6 +824,15 @@
         private System.Windows.Forms.Label lbMo;
         private System.Windows.Forms.Label lbMenu;
         private System.Windows.Forms.Button btnAdminPanel;
+        internal System.Windows.Forms.RichTextBox txSaturdayI;
+        internal System.Windows.Forms.RichTextBox txFridayI;
+        internal System.Windows.Forms.RichTextBox txThursdayI;
+        internal System.Windows.Forms.RichTextBox txWednesdayI;
+        internal System.Windows.Forms.RichTextBox txTuesdayI;
+        internal System.Windows.Forms.RichTextBox txMondayI;
+        internal System.Windows.Forms.Label lbNameI;
+        private ReaLTaiizor.Controls.SpaceSeparatorVertical spaceSeparatorVertical1;
+        private System.Windows.Forms.Label label17;
     }
 }
 
