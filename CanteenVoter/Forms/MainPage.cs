@@ -118,10 +118,10 @@ namespace CanteenVoter
                         gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
                         menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                        if (day == "Menues" || day == "Montag" 
+                        if (day == "Menues"/* || day == "Montag" 
                         || day == "Dienstag" || day == "Mittwoch"
                         || day == "Donnerstag" || day == "Freitag"
-                        || day == "Samstag")
+                        || day == "Samstag"*/)
                         {
                             AlertClass.Show("Du kannst eine Kategorie\n" +
                                 "nicht als Menü speichern!", Alert.enmType.Warning);
@@ -146,7 +146,8 @@ namespace CanteenVoter
                             }
                             var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
                             {
-                                BackColor = Color.CornflowerBlue
+                                BackColor = Color.CornflowerBlue,
+                                ForeColor = Color.GhostWhite
                             };
                             dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
 

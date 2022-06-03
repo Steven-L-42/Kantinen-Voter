@@ -65,6 +65,13 @@
             this.MainPageHeader = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
@@ -174,10 +181,14 @@
             // 
             this.dataMenu.AllowUserToAddRows = false;
             this.dataMenu.AllowUserToDeleteRows = false;
+            this.dataMenu.AllowUserToResizeColumns = false;
+            this.dataMenu.AllowUserToResizeRows = false;
             this.dataMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataMenu.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dataMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataMenu.ColumnHeadersHeight = 25;
+            this.dataMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataMenu.ColumnHeadersVisible = false;
             this.dataMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataMenu.Location = new System.Drawing.Point(0, 0);
             this.dataMenu.Margin = new System.Windows.Forms.Padding(4);
@@ -187,7 +198,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 602);
+            this.dataMenu.Size = new System.Drawing.Size(972, 577);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -196,7 +207,7 @@
             this.MainSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.MainSplit.IsSplitterFixed = true;
-            this.MainSplit.Location = new System.Drawing.Point(0, 34);
+            this.MainSplit.Location = new System.Drawing.Point(0, 63);
             this.MainSplit.Margin = new System.Windows.Forms.Padding(0);
             this.MainSplit.Name = "MainSplit";
             this.MainSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -227,8 +238,8 @@
             this.MainSplit.Panel2.Controls.Add(this.btnUpdate);
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
-            this.MainSplit.Size = new System.Drawing.Size(972, 711);
-            this.MainSplit.SplitterDistance = 602;
+            this.MainSplit.Size = new System.Drawing.Size(972, 687);
+            this.MainSplit.SplitterDistance = 577;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -553,13 +564,20 @@
             // MainPageHeader
             // 
             this.MainPageHeader.BackColor = System.Drawing.Color.Transparent;
+            this.MainPageHeader.Controls.Add(this.label23);
+            this.MainPageHeader.Controls.Add(this.label17);
+            this.MainPageHeader.Controls.Add(this.label18);
+            this.MainPageHeader.Controls.Add(this.label19);
+            this.MainPageHeader.Controls.Add(this.label20);
+            this.MainPageHeader.Controls.Add(this.label21);
+            this.MainPageHeader.Controls.Add(this.label22);
             this.MainPageHeader.Controls.Add(this.label2);
             this.MainPageHeader.Controls.Add(this.lbAdminPanel);
             this.MainPageHeader.Controls.Add(this.lbClose);
             this.MainPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPageHeader.Location = new System.Drawing.Point(0, 0);
             this.MainPageHeader.Name = "MainPageHeader";
-            this.MainPageHeader.Size = new System.Drawing.Size(972, 34);
+            this.MainPageHeader.Size = new System.Drawing.Size(972, 63);
             this.MainPageHeader.TabIndex = 20;
             this.MainPageHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
@@ -597,13 +615,90 @@
             this.lbAdminPanel.Visible = false;
             this.lbAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label17.Location = new System.Drawing.Point(473, 39);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(66, 17);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "Mittwoch";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label18.Location = new System.Drawing.Point(341, 39);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 17);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Dienstag";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label19.Location = new System.Drawing.Point(871, 39);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(60, 17);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Samstag";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label20.Location = new System.Drawing.Point(746, 39);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 17);
+            this.label20.TabIndex = 26;
+            this.label20.Text = "Freitag";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label21.Location = new System.Drawing.Point(598, 39);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 17);
+            this.label21.TabIndex = 25;
+            this.label21.Text = "Donnerstag";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label22.Location = new System.Drawing.Point(214, 39);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 17);
+            this.label22.TabIndex = 22;
+            this.label22.Text = "Montag";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label23.Location = new System.Drawing.Point(81, 39);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(49, 17);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "Menüs";
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 745);
+            this.ClientSize = new System.Drawing.Size(972, 750);
             this.Controls.Add(this.MainSplit);
             this.Controls.Add(this.MainPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -666,6 +761,13 @@
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Panel ImagePanel;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
     }
 }
 

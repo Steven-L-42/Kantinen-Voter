@@ -120,50 +120,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminPage.cs">
+    <Compile Include="Forms\AdminPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminPage.Designer.cs">
+    <Compile Include="Forms\AdminPage.Designer.cs">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Alert.cs">
+    <Compile Include="Forms\Alert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Alert.Designer.cs">
+    <Compile Include="Forms\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\AlertClass.cs" />
     <Compile Include="Classes\MD5-Encryption.cs" />
     <Compile Include="Classes\MoveWindow.cs" />
     <Compile Include="Classes\DatabaseCon.cs" />
-    <Compile Include="MainPage.cs">
+    <Compile Include="Forms\MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainPage.Designer.cs">
+    <Compile Include="Forms\MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegAndLogin.cs">
+    <Compile Include="Forms\RegAndLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegAndLogin.Designer.cs">
+    <Compile Include="Forms\RegAndLogin.Designer.cs">
       <DependentUpon>RegAndLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserAcp.cs">
+    <Compile Include="Forms\UserAcp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserAcp.Designer.cs">
+    <Compile Include="Forms\UserAcp.Designer.cs">
       <DependentUpon>UserAcp.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminPage.resx">
+    <EmbeddedResource Include="Forms\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Alert.resx">
+    <EmbeddedResource Include="Forms\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainPage.resx">
+    <EmbeddedResource Include="Forms\MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -176,10 +176,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegAndLogin.resx">
+    <EmbeddedResource Include="Forms\RegAndLogin.resx">
       <DependentUpon>RegAndLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserAcp.resx">
+    <EmbeddedResource Include="Forms\UserAcp.resx">
       <DependentUpon>UserAcp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

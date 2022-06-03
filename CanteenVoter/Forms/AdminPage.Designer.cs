@@ -45,6 +45,13 @@
             this.AdminPageHeader = new System.Windows.Forms.Panel();
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
             this.AdminSplit.Panel1.SuspendLayout();
@@ -57,10 +64,13 @@
             // 
             this.dataMenu.AllowUserToAddRows = false;
             this.dataMenu.AllowUserToDeleteRows = false;
+            this.dataMenu.AllowUserToResizeColumns = false;
+            this.dataMenu.AllowUserToResizeRows = false;
             this.dataMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataMenu.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dataMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataMenu.ColumnHeadersVisible = false;
             this.dataMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataMenu.Location = new System.Drawing.Point(0, 0);
             this.dataMenu.Margin = new System.Windows.Forms.Padding(5);
@@ -69,7 +79,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 615);
+            this.dataMenu.Size = new System.Drawing.Size(972, 583);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -78,7 +88,7 @@
             this.AdminSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AdminSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.AdminSplit.IsSplitterFixed = true;
-            this.AdminSplit.Location = new System.Drawing.Point(0, 34);
+            this.AdminSplit.Location = new System.Drawing.Point(0, 63);
             this.AdminSplit.Margin = new System.Windows.Forms.Padding(5);
             this.AdminSplit.Name = "AdminSplit";
             this.AdminSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -102,8 +112,8 @@
             this.AdminSplit.Panel2.Controls.Add(this.button3);
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
-            this.AdminSplit.Size = new System.Drawing.Size(972, 766);
-            this.AdminSplit.SplitterDistance = 615;
+            this.AdminSplit.Size = new System.Drawing.Size(972, 737);
+            this.AdminSplit.SplitterDistance = 583;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
@@ -126,8 +136,8 @@
             // txSuturday
             // 
             this.txSuturday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txSuturday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txSuturday.Location = new System.Drawing.Point(496, 73);
+            this.txSuturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSuturday.Location = new System.Drawing.Point(496, 74);
             this.txSuturday.Name = "txSuturday";
             this.txSuturday.Size = new System.Drawing.Size(181, 63);
             this.txSuturday.TabIndex = 10;
@@ -136,8 +146,8 @@
             // txFriday
             // 
             this.txFriday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txFriday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txFriday.Location = new System.Drawing.Point(310, 73);
+            this.txFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txFriday.Location = new System.Drawing.Point(310, 74);
             this.txFriday.Name = "txFriday";
             this.txFriday.Size = new System.Drawing.Size(181, 63);
             this.txFriday.TabIndex = 9;
@@ -146,8 +156,8 @@
             // txThursday
             // 
             this.txThursday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txThursday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txThursday.Location = new System.Drawing.Point(124, 73);
+            this.txThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txThursday.Location = new System.Drawing.Point(124, 74);
             this.txThursday.Name = "txThursday";
             this.txThursday.Size = new System.Drawing.Size(181, 63);
             this.txThursday.TabIndex = 8;
@@ -156,8 +166,8 @@
             // txWednesday
             // 
             this.txWednesday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txWednesday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txWednesday.Location = new System.Drawing.Point(496, 4);
+            this.txWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txWednesday.Location = new System.Drawing.Point(496, 5);
             this.txWednesday.Name = "txWednesday";
             this.txWednesday.Size = new System.Drawing.Size(181, 63);
             this.txWednesday.TabIndex = 7;
@@ -166,8 +176,8 @@
             // txTuesday
             // 
             this.txTuesday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txTuesday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txTuesday.Location = new System.Drawing.Point(310, 4);
+            this.txTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txTuesday.Location = new System.Drawing.Point(310, 5);
             this.txTuesday.Name = "txTuesday";
             this.txTuesday.Size = new System.Drawing.Size(181, 63);
             this.txTuesday.TabIndex = 6;
@@ -176,8 +186,8 @@
             // txMonday
             // 
             this.txMonday.BackColor = System.Drawing.Color.GhostWhite;
-            this.txMonday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txMonday.Location = new System.Drawing.Point(124, 4);
+            this.txMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txMonday.Location = new System.Drawing.Point(124, 5);
             this.txMonday.Name = "txMonday";
             this.txMonday.Size = new System.Drawing.Size(181, 63);
             this.txMonday.TabIndex = 5;
@@ -253,13 +263,20 @@
             // AdminPageHeader
             // 
             this.AdminPageHeader.BackColor = System.Drawing.Color.Transparent;
+            this.AdminPageHeader.Controls.Add(this.label23);
+            this.AdminPageHeader.Controls.Add(this.label17);
+            this.AdminPageHeader.Controls.Add(this.label18);
+            this.AdminPageHeader.Controls.Add(this.label19);
+            this.AdminPageHeader.Controls.Add(this.label20);
+            this.AdminPageHeader.Controls.Add(this.label21);
+            this.AdminPageHeader.Controls.Add(this.label22);
             this.AdminPageHeader.Controls.Add(this.lbAdminPanel);
             this.AdminPageHeader.Controls.Add(this.lbClose);
             this.AdminPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.AdminPageHeader.ForeColor = System.Drawing.Color.Black;
             this.AdminPageHeader.Location = new System.Drawing.Point(0, 0);
             this.AdminPageHeader.Name = "AdminPageHeader";
-            this.AdminPageHeader.Size = new System.Drawing.Size(972, 34);
+            this.AdminPageHeader.Size = new System.Drawing.Size(972, 63);
             this.AdminPageHeader.TabIndex = 21;
             this.AdminPageHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
@@ -268,13 +285,13 @@
             this.lbAdminPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAdminPanel.AutoSize = true;
             this.lbAdminPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbAdminPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lbAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lbAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lbAdminPanel.Location = new System.Drawing.Point(3, 8);
+            this.lbAdminPanel.Location = new System.Drawing.Point(411, 5);
             this.lbAdminPanel.Name = "lbAdminPanel";
-            this.lbAdminPanel.Size = new System.Drawing.Size(100, 20);
+            this.lbAdminPanel.Size = new System.Drawing.Size(127, 25);
             this.lbAdminPanel.TabIndex = 21;
             this.lbAdminPanel.Text = "Admin-Panel";
             this.lbAdminPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,6 +311,83 @@
             this.lbClose.Text = "X";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label23.Location = new System.Drawing.Point(81, 39);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(49, 17);
+            this.label23.TabIndex = 35;
+            this.label23.Text = "Menüs";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label17.Location = new System.Drawing.Point(473, 39);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(66, 17);
+            this.label17.TabIndex = 31;
+            this.label17.Text = "Mittwoch";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label18.Location = new System.Drawing.Point(341, 39);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 17);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "Dienstag";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label19.Location = new System.Drawing.Point(871, 39);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(60, 17);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Samstag";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label20.Location = new System.Drawing.Point(746, 39);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 17);
+            this.label20.TabIndex = 33;
+            this.label20.Text = "Freitag";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label21.Location = new System.Drawing.Point(598, 39);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 17);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Donnerstag";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.GhostWhite;
+            this.label22.Location = new System.Drawing.Point(214, 39);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 17);
+            this.label22.TabIndex = 29;
+            this.label22.Text = "Montag";
             // 
             // AdminPage
             // 
@@ -342,5 +436,12 @@
         private System.Windows.Forms.Label lbClose;
         private System.Windows.Forms.ComboBox cmbMenue;
         private System.Windows.Forms.Label lbAdminPanel;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }
