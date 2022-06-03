@@ -7,100 +7,41 @@ namespace CanteenVoter
 {
     public partial class RegAndLogin : Form
     {
+
         public RegAndLogin()
         {
             InitializeComponent();
         }
 
 
-        public Boolean checkTextBoxesValues()
+        private void RegAndLogin_Load(object sender, EventArgs e)
         {
-            string username = txUsername.Text.Trim();
-            string password = txPassword.Text.Trim();
-            if(username.Length < 5 || password.Length < 8)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            txUsername.Text = Properties.Settings.Default.txUsername;
+            txPassword.Text = Properties.Settings.Default.txPassword;
+            txUsername.GotFocus += TxUsername_GotFocus;
+            txPassword.GotFocus += TxPassword_GotFocus;
+
+            EnableDoubleBuffering();
         }
 
 
-        public Boolean checkUsername()
+        public void EnableDoubleBuffering()
         {
-            // Es wird überprüft ob der gewünschte Benutzername bereits in der Datenbank hinterlegt ist.
-            // Wenn, dann wird dem entsprechend eine Meldung ausgegeben und die Registrierung gestoppt.
-            //
-            Datenbank db = new Datenbank();
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `UserTable` WHERE `Benutzername` = @Benutzername", db.getConnection());
-
-            command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            // Prüft ob der Benutzername bereits existiert, in dem die gezählten bereits vorkommenden Einträge
-            // mit dem selben Benutzernamen genutzt werden.
-            //
-            if (table.Rows.Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            this.SetStyle(ControlStyles.DoubleBuffer |
+               ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint,
+               true);
+            this.UpdateStyles();
         }
 
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
         {
-            LoginMethod();
-        }
-
-
-        private void LoginMethod()
-        {
-            // Eine sehr einfache Login Art, es wird hier ähnlich wie beim 'CheckUsername' überprüft
-            // ob bereits ein Benutzernamen mit dem selben Namen hinterlegt ist.
-            // Wenn ja dann wird das damit verbundene Passwort, das in der Datenbank als MD5 hinterlegt
-            // ist verglichen und anschließend bei erfolgreicher validierung fortgesetzt.
-            //
-            // Außerdem wird ein 'Property.Settings.Default.Save()' ausgeführt, das dann die eingetragenen
-            // Login Daten für den nächsten Programm Start direkt automatisch hinterlegt.
-            //
-            Datenbank db = new Datenbank();
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = '" + txUsername.Text.Trim() + "' AND Passwort = '" + Encryptor.MD5Hash(txPassword.Text.Trim()) + "'", db.getConnection());
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            if (table.Rows.Count == 1)
+            if (e.Button == MouseButtons.Left)
             {
-                Properties.Settings.Default.txUsername = txUsername.Text.Trim();
-                Properties.Settings.Default.txPassword = txPassword.Text.Trim();
-                Properties.Settings.Default.Save();
-                string getUsernameL = txUsername.Text.Trim();
-                var mainPage = new MainPage();
-                mainPage.getUsername = getUsernameL;
-                mainPage.Show();
-                this.Hide();
+                MoveWindow.ReleaseCapture();
+                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
             }
-            else
-            {
-                AlertClass.Show("Bitte überprüfe deine Login Daten!", Alert.enmType.Warning);
-            }
-        }
-
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            RegisterMethod();
         }
 
 
@@ -191,12 +132,81 @@ namespace CanteenVoter
         }
 
 
-        private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
+        public Boolean checkTextBoxesValues()
         {
-            if (e.Button == MouseButtons.Left)
+            string username = txUsername.Text.Trim();
+            string password = txPassword.Text.Trim();
+            if (username.Length < 5 || password.Length < 8)
             {
-                MoveWindow.ReleaseCapture();
-                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public Boolean checkUsername()
+        {
+            // Es wird überprüft ob der gewünschte Benutzername bereits in der Datenbank hinterlegt ist.
+            // Wenn, dann wird dem entsprechend eine Meldung ausgegeben und die Registrierung gestoppt.
+            //
+            Datenbank db = new Datenbank();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `UserTable` WHERE `Benutzername` = @Benutzername", db.getConnection());
+
+            command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            // Prüft ob der Benutzername bereits existiert, in dem die gezählten bereits vorkommenden Einträge
+            // mit dem selben Benutzernamen genutzt werden.
+            //
+            if (table.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        private void LoginMethod()
+        {
+            // Eine sehr einfache Login Art, es wird hier ähnlich wie beim 'CheckUsername' überprüft
+            // ob bereits ein Benutzernamen mit dem selben Namen hinterlegt ist.
+            // Wenn ja dann wird das damit verbundene Passwort, das in der Datenbank als MD5 hinterlegt
+            // ist verglichen und anschließend bei erfolgreicher validierung fortgesetzt.
+            //
+            // Außerdem wird ein 'Property.Settings.Default.Save()' ausgeführt, das dann die eingetragenen
+            // Login Daten für den nächsten Programm Start direkt automatisch hinterlegt.
+            //
+            Datenbank db = new Datenbank();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = '" + txUsername.Text.Trim() + "' AND Passwort = '" + Encryptor.MD5Hash(txPassword.Text.Trim()) + "'", db.getConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count == 1)
+            {
+                Properties.Settings.Default.txUsername = txUsername.Text.Trim();
+                Properties.Settings.Default.txPassword = txPassword.Text.Trim();
+                Properties.Settings.Default.Save();
+                string getUsernameL = txUsername.Text.Trim();
+                var mainPage = new MainPage();
+                mainPage.getUsername = getUsernameL;
+                mainPage.Show();
+                this.Hide();
+            }
+            else
+            {
+                AlertClass.Show("Bitte überprüfe deine Login Daten!", Alert.enmType.Warning);
             }
         }
 
@@ -249,53 +259,12 @@ namespace CanteenVoter
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
-                MoveWindow.SendMessage(Handle, MoveWindow.WM_NCLBUTTONDOWN, MoveWindow.HT_CAPTION, 0);
+                MoveWindow.SendMessage(Handle, 
+                MoveWindow.WM_NCLBUTTONDOWN, 
+                MoveWindow.HT_CAPTION, 0);
             }
         }
 
-
-        private void RegAndLogin_Load(object sender, EventArgs e)
-        {
-            txUsername.Text = Properties.Settings.Default.txUsername;
-            txPassword.Text = Properties.Settings.Default.txPassword;
-            txUsername.GotFocus += TxUsername_GotFocus;
-            txPassword.GotFocus += TxPassword_GotFocus;
-
-            EnableDoubleBuffering();
-        }
-
-
-        private void TxPassword_GotFocus(object sender, EventArgs e)
-        {
-            txPassword.SelectionStart = txPassword.Text.Length;
-            txPassword.SelectionLength = 0;
-        }
-
-
-        private void TxUsername_GotFocus(object sender, EventArgs e)
-        {
-            txUsername.SelectionStart = txUsername.Text.Length;
-            txUsername.SelectionLength = 0;
-        }
-
-
-        public void EnableDoubleBuffering()
-        {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
-        }
-
-
-        private void txUsername_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txPassword.Focus();
-            }
-        }
 
         #region Passwort in Klartext sichtbar machen
         // Eine sehr einfache Möglichkeit Passwörter in TextBoxen wieder lesbar zu machen.
@@ -330,6 +299,34 @@ namespace CanteenVoter
         #endregion
 
 
+        private void TxPassword_GotFocus(object sender, EventArgs e)
+        {
+            txPassword.SelectionStart = txPassword.Text.Length;
+            txPassword.SelectionLength = 0;
+        }
+
+        private void TxUsername_GotFocus(object sender, EventArgs e)
+        {
+            txUsername.SelectionStart = txUsername.Text.Length;
+            txUsername.SelectionLength = 0;
+        }
+
+        private void txUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                txPassword.Focus();
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoginMethod();
+        }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegisterMethod();
+        }
         private void lbClose_Click(object sender, EventArgs e)
         {
             this.Close();

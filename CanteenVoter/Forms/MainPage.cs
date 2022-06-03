@@ -29,8 +29,6 @@ namespace CanteenVoter
         public MainPage()
         {
             InitializeComponent();
-           
-
         }
 
 
@@ -65,15 +63,68 @@ namespace CanteenVoter
         }
 
 
-        private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
+        private DataTable GetdataMenu()
+        {
+            Datenbank db = new Datenbank();
+            DataTable table = new DataTable();
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+            {
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM CanteenTable", db.getConnection()))
+                {
+                    db.openConnection();
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    table.Load(reader);
+                    db.closeConnection();
+                }
+            }
+            return table;
+        }
+
+
+        private void getDataSelectedMenue()
         {
 
-            if (e.Button == MouseButtons.Left)
+            Datenbank db = new Datenbank();
+            DataTable dt = new DataTable();
+
+            // Öffnet die DB Verbindung
+            //
+            db.openConnection();
+            try
             {
-                MoveWindow.ReleaseCapture();
-                MoveWindow.SendMessage(Handle,
-                MoveWindow.WM_NCLBUTTONDOWN,
-                MoveWindow.HT_CAPTION, 0);
+                // Wähle 'Alle' Einträge von meiner UserMenueTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
+                //
+                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername = @Benutzername", db.getConnection());
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
+
+                sqlCmd.Parameters.AddWithValue("@Benutzername", this.getUsername);
+                sqlDa.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    txMondayI.Text = dt.Rows[0]["MontagGericht"].ToString(); // Zeigt mir die geforderte Spalte 'MontagGericht' in der in der Selected Menue Area an.
+                    txTuesdayI.Text = dt.Rows[0]["DienstagGericht"].ToString();
+                    txWednesdayI.Text = dt.Rows[0]["MittwochGericht"].ToString();
+                    txThursdayI.Text = dt.Rows[0]["DonnerstagGericht"].ToString();
+                    txFridayI.Text = dt.Rows[0]["FreitagGericht"].ToString();
+                    txSaturdayI.Text = dt.Rows[0]["SamstagGericht"].ToString();
+
+                    txMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
+                    txTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
+                    txWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
+                    txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
+                    txFriday.Text = dt.Rows[0]["Freitag"].ToString();
+                    txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
+                    SetEmptyTextBoxes();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
+            }
+            finally
+            {
+                db.closeConnection();
             }
         }
 
@@ -86,6 +137,20 @@ namespace CanteenVoter
                true);
             this.UpdateStyles();
         }
+
+
+        private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Left)
+            {
+                MoveWindow.ReleaseCapture();
+                MoveWindow.SendMessage(Handle,
+                MoveWindow.WM_NCLBUTTONDOWN,
+                MoveWindow.HT_CAPTION, 0);
+            }
+        }
+
 
         private void btnMyAccount_Click(object sender, EventArgs e)
         {
@@ -102,6 +167,7 @@ namespace CanteenVoter
             userAcp.Location = new Point(this.Bounds.Right,this.Bounds.Top);
         
         }
+
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -134,9 +200,7 @@ namespace CanteenVoter
          
         }
 
-    
-
-
+   
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
            
@@ -209,71 +273,6 @@ namespace CanteenVoter
                                 "nicht auswählen!", Alert.enmType.Info);
             }
 }
-
-        private DataTable GetdataMenu()
-        {
-            Datenbank db = new Datenbank();
-            DataTable table = new DataTable();
-            using (MySqlDataAdapter adapter = new MySqlDataAdapter())
-            {
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM CanteenTable", db.getConnection()))
-                {
-                    db.openConnection();
-                    MySqlDataReader reader = command.ExecuteReader();
-
-                    table.Load(reader);
-                    db.closeConnection();
-                }
-            }
-            return table;
-        }
-
-
-    private void getDataSelectedMenue()
-        {
-
-            Datenbank db = new Datenbank();
-            DataTable dt = new DataTable();
-
-            // Öffnet die DB Verbindung
-            //
-            db.openConnection();
-            try
-            {
-                // Wähle 'Alle' Einträge von meiner UserMenueTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
-                //
-                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername = @Benutzername",db.getConnection());
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
-               
-                sqlCmd.Parameters.AddWithValue("@Benutzername", this.getUsername);
-                sqlDa.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    txMondayI.Text = dt.Rows[0]["MontagGericht"].ToString(); // Zeigt mir die geforderte Spalte 'MontagGericht' in der in der Selected Menue Area an.
-                    txTuesdayI.Text = dt.Rows[0]["DienstagGericht"].ToString();
-                    txWednesdayI.Text = dt.Rows[0]["MittwochGericht"].ToString();
-                    txThursdayI.Text = dt.Rows[0]["DonnerstagGericht"].ToString();
-                    txFridayI.Text = dt.Rows[0]["FreitagGericht"].ToString();
-                    txSaturdayI.Text = dt.Rows[0]["SamstagGericht"].ToString();
-
-                    txMonday.Text = dt.Rows[0]["Montag"].ToString(); // Zeigt mir die geforderte Spalte 'Montag' in der in der Selected Menue Area an.
-                    txTuesday.Text = dt.Rows[0]["Dienstag"].ToString();
-                    txWednesday.Text = dt.Rows[0]["Mittwoch"].ToString();
-                    txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
-                    txFriday.Text = dt.Rows[0]["Freitag"].ToString();
-                    txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
-                    SetEmptyTextBoxes();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
-            }
-            finally
-            {
-                db.closeConnection();
-            }
-        }
 
 
         private void lbAdminPanel_Click(object sender, EventArgs e)

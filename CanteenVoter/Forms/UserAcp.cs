@@ -13,12 +13,13 @@ namespace CanteenVoter
         // Außerdem schränke ich die Get Methode ein, sodass die Information hier privat bleibt.
         //
         public string getUsername { private get; set; }
-        public bool getImagePanel { get; set; }
        
+
         public UserAcp()
         {
             InitializeComponent();
         }
+
 
         private void UserAcp_Load(object sender, EventArgs e)
         {
@@ -38,6 +39,43 @@ namespace CanteenVoter
             //
             EnableDoubleBuffering();
         }
+
+
+        private void getData()
+        {
+            Datenbank db = new Datenbank();
+            DataTable dt = new DataTable();
+
+            // Öffnet die DB Verbindung
+            //
+            db.openConnection();
+            try
+            {
+                // Wähle 'Alle' Einträge von meiner UserTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
+                //
+                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = @Benutzername", db.getConnection());
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
+
+                sqlCmd.Parameters.AddWithValue("@Benutzername", getUsername);
+                sqlDa.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    txFirstName.Text = dt.Rows[0]["Vorname"].ToString(); // Zeigt mir die geforderte Spalte 'Vorname' in der TextBox an
+                    txSurname.Text = dt.Rows[0]["Nachname"].ToString();
+                    dateBorn.Text = dt.Rows[0]["Geburtsdatum"].ToString();
+                    txAllergic.Text = dt.Rows[0]["Allergene"].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+        }
+
 
         private void checkIfDataExist()
         {
@@ -62,6 +100,7 @@ namespace CanteenVoter
             }
         }
 
+
         private void InitializeEvents()
         {
             txFirstName.GotFocus += TxFirstName_GotFocus;
@@ -69,23 +108,6 @@ namespace CanteenVoter
             txAllergic.GotFocus += TxAllergic_GotFocus;
         }
 
-        private void TxAllergic_GotFocus(object sender, EventArgs e)
-        {
-            txAllergic.SelectionStart = txAllergic.Text.Length;
-            txAllergic.SelectionLength = 0;
-        }
-
-        private void TxSurname_GotFocus(object sender, EventArgs e)
-        {
-            txSurname.SelectionStart = txSurname.Text.Length;
-            txSurname.SelectionLength = 0;
-        }
-
-        private void TxFirstName_GotFocus(object sender, EventArgs e)
-        {
-            txFirstName.SelectionStart = txFirstName.Text.Length;
-            txFirstName.SelectionLength = 0;
-        }
 
         public void EnableDoubleBuffering()
         {
@@ -95,6 +117,7 @@ namespace CanteenVoter
            true);
             UpdateStyles();
         }
+
 
         private void UserAcp_MouseDown(object sender, MouseEventArgs e)
         {
@@ -109,6 +132,7 @@ namespace CanteenVoter
                 MoveWindow.HT_CAPTION, 0);
             }
         }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -182,51 +206,7 @@ namespace CanteenVoter
            
         }
 
-        private void getData()
-        {
-            Datenbank db = new Datenbank();
-            DataTable dt = new DataTable();
-
-            // Öffnet die DB Verbindung
-            //
-            db.openConnection();
-            try
-            {
-                // Wähle 'Alle' Einträge von meiner UserTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
-                //
-                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = @Benutzername", db.getConnection());
-                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
-
-                sqlCmd.Parameters.AddWithValue("@Benutzername", getUsername);
-                sqlDa.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    txFirstName.Text = dt.Rows[0]["Vorname"].ToString(); // Zeigt mir die geforderte Spalte 'Vorname' in der TextBox an
-                    txSurname.Text = dt.Rows[0]["Nachname"].ToString();
-                    dateBorn.Text = dt.Rows[0]["Geburtsdatum"].ToString();
-                    txAllergic.Text = dt.Rows[0]["Allergene"].ToString();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
-            }
-            finally
-            {
-                db.closeConnection();
-            }
-        }
-
-        private void lbClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void btnDecline_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+ 
         private void btnYourPlan_Click(object sender, EventArgs e)
         {
             if ((Owner as MainPage).txMondayI.Text == string.Empty ||
@@ -235,7 +215,7 @@ namespace CanteenVoter
                 (Owner as MainPage).txThursdayI.Text == string.Empty ||
                 (Owner as MainPage).txFridayI.Text == string.Empty ||
                 (Owner as MainPage).txSaturdayI.Text == string.Empty ||
-                  !txFirstName.ReadOnly || !txSurname.ReadOnly)
+                  txFirstName.Enabled || txSurname.Enabled)
             {
                 AlertClass.Show("Bevor wir dir deinen Persönlichen\n" +
                                 "Plan ausgeben können benötigen wir\n" +
@@ -270,6 +250,32 @@ namespace CanteenVoter
             
         }
 
-      
+
+        private void TxAllergic_GotFocus(object sender, EventArgs e)
+        {
+            txAllergic.SelectionStart = txAllergic.Text.Length;
+            txAllergic.SelectionLength = 0;
+        }
+        private void TxSurname_GotFocus(object sender, EventArgs e)
+        {
+            txSurname.SelectionStart = txSurname.Text.Length;
+            txSurname.SelectionLength = 0;
+        }
+        private void TxFirstName_GotFocus(object sender, EventArgs e)
+        {
+            txFirstName.SelectionStart = txFirstName.Text.Length;
+            txFirstName.SelectionLength = 0;
+        }
+
+        private void lbClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void btnDecline_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+
     }
 }
