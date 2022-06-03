@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
             this.cmbMenue = new System.Windows.Forms.ComboBox();
@@ -68,7 +69,7 @@
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 618);
+            this.dataMenu.Size = new System.Drawing.Size(972, 615);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
@@ -102,7 +103,7 @@
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
             this.AdminSplit.Size = new System.Drawing.Size(972, 766);
-            this.AdminSplit.SplitterDistance = 618;
+            this.AdminSplit.SplitterDistance = 615;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
@@ -306,6 +307,7 @@
             this.Controls.Add(this.AdminPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
