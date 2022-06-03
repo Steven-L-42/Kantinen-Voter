@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CanteenVoter
@@ -8,7 +10,7 @@ namespace CanteenVoter
     public partial class AdminPage : Form
     {
         private string id;
-
+        private bool changeMenuLbLocation = false;
         public AdminPage()
         {
             InitializeComponent();
@@ -33,6 +35,19 @@ namespace CanteenVoter
             if (confirmResult == DialogResult.Yes)
             {
                 SqlDelete(id);
+
+                if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && changeMenuLbLocation)
+                {
+                    changeMenuLbLocation = false;
+
+                     lbMenu.Left += 5;
+                     lbMo.Left += 5;
+                     lbTue.Left += 5;
+                     lbWed.Left += 6;
+                     lbThu.Left += 8;
+                     lbFri.Left += 11;
+                     lbSat.Left += 10;
+                }
             }
         }
 
@@ -61,10 +76,23 @@ namespace CanteenVoter
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Warning);
             }
         }
-
+       
         private void btnInsert_Click(object sender, EventArgs e)
         {
             SqlInsert();
+
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            {
+                changeMenuLbLocation = true;
+
+                lbMenu.Left -= 5;
+                lbMo.Left -= 5;
+                lbTue.Left -= 5;
+                lbWed.Left -= 6;
+                lbThu.Left -= 8;
+                lbFri.Left -= 11;
+                lbSat.Left -= 10;   
+            }
         }
 
         public void SqlInsert()
@@ -113,7 +141,8 @@ namespace CanteenVoter
         {
             dataMenu.DataSource = GetdataMenu();
             dataMenu.ClearSelection();
-            this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataMenu.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
+            dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             cmbMenue.Items.Add("Menü wählen...");
 
@@ -129,6 +158,20 @@ namespace CanteenVoter
             cmbMenue.Items.Add("Menü D \n" +
                                 "(Gluten-/Lak.- Frei)");
             cmbMenue.SelectedIndex = 0;
+
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            {
+                changeMenuLbLocation = true;
+
+                lbMenu.Left -= 5;
+                lbMo.Left -= 5;
+                lbTue.Left -= 5;
+                lbWed.Left -= 6;
+                lbThu.Left -= 8;
+                lbFri.Left -= 11;
+                lbSat.Left -= 10;
+            }
+
             EnableDoubleBuffering();
         }
 
@@ -143,11 +186,7 @@ namespace CanteenVoter
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            dataMenu.DataSource = GetdataMenu();
-        }
-
+      
         private DataTable GetdataMenu()
         {
             Datenbank db = new Datenbank();
@@ -168,6 +207,8 @@ namespace CanteenVoter
 
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+
             try
             {
                 id = dataMenu.Rows[e.RowIndex].Cells["Menues"].Value as string;
@@ -276,5 +317,6 @@ namespace CanteenVoter
         {
             this.Close();
         }
+
     }
 }

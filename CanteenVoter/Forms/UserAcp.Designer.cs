@@ -54,7 +54,7 @@
             this.btnDecline.Margin = new System.Windows.Forms.Padding(5);
             this.btnDecline.Name = "btnDecline";
             this.btnDecline.Size = new System.Drawing.Size(99, 31);
-            this.btnDecline.TabIndex = 6;
+            this.btnDecline.TabIndex = 7;
             this.btnDecline.Text = "Abbrechen";
             this.btnDecline.UseVisualStyleBackColor = false;
             this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
@@ -70,7 +70,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 31);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -82,7 +82,7 @@
             this.txFirstName.Location = new System.Drawing.Point(61, 54);
             this.txFirstName.Name = "txFirstName";
             this.txFirstName.Size = new System.Drawing.Size(207, 23);
-            this.txFirstName.TabIndex = 8;
+            this.txFirstName.TabIndex = 1;
             // 
             // txSurname
             // 
@@ -91,7 +91,7 @@
             this.txSurname.Location = new System.Drawing.Point(61, 104);
             this.txSurname.Name = "txSurname";
             this.txSurname.Size = new System.Drawing.Size(207, 23);
-            this.txSurname.TabIndex = 9;
+            this.txSurname.TabIndex = 2;
             // 
             // txAllergic
             // 
@@ -100,7 +100,7 @@
             this.txAllergic.Location = new System.Drawing.Point(61, 212);
             this.txAllergic.Name = "txAllergic";
             this.txAllergic.Size = new System.Drawing.Size(207, 63);
-            this.txAllergic.TabIndex = 12;
+            this.txAllergic.TabIndex = 4;
             this.txAllergic.Text = "";
             // 
             // label1
@@ -159,7 +159,7 @@
             this.dateBorn.Location = new System.Drawing.Point(61, 157);
             this.dateBorn.Name = "dateBorn";
             this.dateBorn.Size = new System.Drawing.Size(99, 23);
-            this.dateBorn.TabIndex = 17;
+            this.dateBorn.TabIndex = 3;
             this.dateBorn.Value = new System.DateTime(2022, 5, 31, 0, 0, 0, 0);
             // 
             // lbClose
@@ -173,7 +173,7 @@
             this.lbClose.Location = new System.Drawing.Point(298, 3);
             this.lbClose.Name = "lbClose";
             this.lbClose.Size = new System.Drawing.Size(24, 25);
-            this.lbClose.TabIndex = 18;
+            this.lbClose.TabIndex = 99;
             this.lbClose.Text = "X";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
@@ -189,7 +189,7 @@
             this.btnYourPlan.Margin = new System.Windows.Forms.Padding(5);
             this.btnYourPlan.Name = "btnYourPlan";
             this.btnYourPlan.Size = new System.Drawing.Size(99, 56);
-            this.btnYourPlan.TabIndex = 19;
+            this.btnYourPlan.TabIndex = 6;
             this.btnYourPlan.Text = "Persönlicher\r\nSpeiseplan";
             this.btnYourPlan.UseVisualStyleBackColor = false;
             this.btnYourPlan.Click += new System.EventHandler(this.btnYourPlan_Click);

@@ -63,15 +63,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
             this.MainPageHeader = new System.Windows.Forms.Panel();
+            this.lbMenu = new System.Windows.Forms.Label();
+            this.lbWed = new System.Windows.Forms.Label();
+            this.lbTue = new System.Windows.Forms.Label();
+            this.lbSat = new System.Windows.Forms.Label();
+            this.lbFri = new System.Windows.Forms.Label();
+            this.lbThu = new System.Windows.Forms.Label();
+            this.lbMo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lbAdminPanel = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.btnAdminPanel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
@@ -185,21 +185,27 @@
             this.dataMenu.AllowUserToResizeRows = false;
             this.dataMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataMenu.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dataMenu.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataMenu.ColumnHeadersHeight = 25;
             this.dataMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataMenu.ColumnHeadersVisible = false;
             this.dataMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataMenu.Location = new System.Drawing.Point(0, 0);
-            this.dataMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.dataMenu.Margin = new System.Windows.Forms.Padding(0);
             this.dataMenu.MultiSelect = false;
             this.dataMenu.Name = "dataMenu";
             this.dataMenu.ReadOnly = true;
+            this.dataMenu.RowHeadersVisible = false;
             this.dataMenu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataMenu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataMenu.Size = new System.Drawing.Size(972, 577);
+            this.dataMenu.ShowCellErrors = false;
+            this.dataMenu.ShowEditingIcon = false;
+            this.dataMenu.ShowRowErrors = false;
+            this.dataMenu.Size = new System.Drawing.Size(972, 616);
             this.dataMenu.TabIndex = 3;
+            this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
             // 
             // MainSplit
@@ -238,8 +244,8 @@
             this.MainSplit.Panel2.Controls.Add(this.btnUpdate);
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
-            this.MainSplit.Size = new System.Drawing.Size(972, 687);
-            this.MainSplit.SplitterDistance = 577;
+            this.MainSplit.Size = new System.Drawing.Size(972, 727);
+            this.MainSplit.SplitterDistance = 616;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -511,8 +517,8 @@
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(117, 28);
-            this.btnUpdate.TabIndex = 7;
-            this.btnUpdate.Text = "Aktualisieren";
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "&Aktualisieren";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -528,8 +534,8 @@
             this.btnMyAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnMyAccount.Name = "btnMyAccount";
             this.btnMyAccount.Size = new System.Drawing.Size(117, 39);
-            this.btnMyAccount.TabIndex = 6;
-            this.btnMyAccount.Text = "Mein Konto";
+            this.btnMyAccount.TabIndex = 2;
+            this.btnMyAccount.Text = "&Mein Konto";
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
@@ -556,7 +562,7 @@
             this.lbClose.Location = new System.Drawing.Point(896, 5);
             this.lbClose.Name = "lbClose";
             this.lbClose.Size = new System.Drawing.Size(73, 21);
-            this.lbClose.TabIndex = 19;
+            this.lbClose.TabIndex = 99;
             this.lbClose.Text = "LOGOUT";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
@@ -564,15 +570,15 @@
             // MainPageHeader
             // 
             this.MainPageHeader.BackColor = System.Drawing.Color.Transparent;
-            this.MainPageHeader.Controls.Add(this.label23);
-            this.MainPageHeader.Controls.Add(this.label17);
-            this.MainPageHeader.Controls.Add(this.label18);
-            this.MainPageHeader.Controls.Add(this.label19);
-            this.MainPageHeader.Controls.Add(this.label20);
-            this.MainPageHeader.Controls.Add(this.label21);
-            this.MainPageHeader.Controls.Add(this.label22);
+            this.MainPageHeader.Controls.Add(this.btnAdminPanel);
+            this.MainPageHeader.Controls.Add(this.lbMenu);
+            this.MainPageHeader.Controls.Add(this.lbWed);
+            this.MainPageHeader.Controls.Add(this.lbTue);
+            this.MainPageHeader.Controls.Add(this.lbSat);
+            this.MainPageHeader.Controls.Add(this.lbFri);
+            this.MainPageHeader.Controls.Add(this.lbThu);
+            this.MainPageHeader.Controls.Add(this.lbMo);
             this.MainPageHeader.Controls.Add(this.label2);
-            this.MainPageHeader.Controls.Add(this.lbAdminPanel);
             this.MainPageHeader.Controls.Add(this.lbClose);
             this.MainPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainPageHeader.Location = new System.Drawing.Point(0, 0);
@@ -580,6 +586,83 @@
             this.MainPageHeader.Size = new System.Drawing.Size(972, 63);
             this.MainPageHeader.TabIndex = 20;
             this.MainPageHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
+            // 
+            // lbMenu
+            // 
+            this.lbMenu.AutoSize = true;
+            this.lbMenu.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMenu.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbMenu.Location = new System.Drawing.Point(48, 39);
+            this.lbMenu.Name = "lbMenu";
+            this.lbMenu.Size = new System.Drawing.Size(49, 17);
+            this.lbMenu.TabIndex = 28;
+            this.lbMenu.Text = "Menüs";
+            // 
+            // lbWed
+            // 
+            this.lbWed.AutoSize = true;
+            this.lbWed.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWed.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbWed.Location = new System.Drawing.Point(457, 39);
+            this.lbWed.Name = "lbWed";
+            this.lbWed.Size = new System.Drawing.Size(66, 17);
+            this.lbWed.TabIndex = 24;
+            this.lbWed.Text = "Mittwoch";
+            // 
+            // lbTue
+            // 
+            this.lbTue.AutoSize = true;
+            this.lbTue.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTue.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbTue.Location = new System.Drawing.Point(319, 39);
+            this.lbTue.Name = "lbTue";
+            this.lbTue.Size = new System.Drawing.Size(63, 17);
+            this.lbTue.TabIndex = 23;
+            this.lbTue.Text = "Dienstag";
+            // 
+            // lbSat
+            // 
+            this.lbSat.AutoSize = true;
+            this.lbSat.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSat.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbSat.Location = new System.Drawing.Point(871, 39);
+            this.lbSat.Name = "lbSat";
+            this.lbSat.Size = new System.Drawing.Size(60, 17);
+            this.lbSat.TabIndex = 27;
+            this.lbSat.Text = "Samstag";
+            // 
+            // lbFri
+            // 
+            this.lbFri.AutoSize = true;
+            this.lbFri.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFri.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbFri.Location = new System.Drawing.Point(738, 39);
+            this.lbFri.Name = "lbFri";
+            this.lbFri.Size = new System.Drawing.Size(51, 17);
+            this.lbFri.TabIndex = 26;
+            this.lbFri.Text = "Freitag";
+            // 
+            // lbThu
+            // 
+            this.lbThu.AutoSize = true;
+            this.lbThu.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThu.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbThu.Location = new System.Drawing.Point(585, 39);
+            this.lbThu.Name = "lbThu";
+            this.lbThu.Size = new System.Drawing.Size(80, 17);
+            this.lbThu.TabIndex = 25;
+            this.lbThu.Text = "Donnerstag";
+            // 
+            // lbMo
+            // 
+            this.lbMo.AutoSize = true;
+            this.lbMo.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMo.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lbMo.Location = new System.Drawing.Point(184, 39);
+            this.lbMo.Name = "lbMo";
+            this.lbMo.Size = new System.Drawing.Size(56, 17);
+            this.lbMo.TabIndex = 22;
+            this.lbMo.Text = "Montag";
             // 
             // label2
             // 
@@ -596,101 +679,29 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Kantinen-Voting";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
-            // lbAdminPanel
+            // btnAdminPanel
             // 
-            this.lbAdminPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbAdminPanel.AutoSize = true;
-            this.lbAdminPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lbAdminPanel.Location = new System.Drawing.Point(5, 6);
-            this.lbAdminPanel.Name = "lbAdminPanel";
-            this.lbAdminPanel.Size = new System.Drawing.Size(77, 20);
-            this.lbAdminPanel.TabIndex = 20;
-            this.lbAdminPanel.Text = "> ADMIN";
-            this.lbAdminPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbAdminPanel.Visible = false;
-            this.lbAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label17.Location = new System.Drawing.Point(473, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 17);
-            this.label17.TabIndex = 24;
-            this.label17.Text = "Mittwoch";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label18.Location = new System.Drawing.Point(341, 39);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 17);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Dienstag";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label19.Location = new System.Drawing.Point(871, 39);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(60, 17);
-            this.label19.TabIndex = 27;
-            this.label19.Text = "Samstag";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label20.Location = new System.Drawing.Point(746, 39);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 17);
-            this.label20.TabIndex = 26;
-            this.label20.Text = "Freitag";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label21.Location = new System.Drawing.Point(598, 39);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(80, 17);
-            this.label21.TabIndex = 25;
-            this.label21.Text = "Donnerstag";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label22.Location = new System.Drawing.Point(214, 39);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 17);
-            this.label22.TabIndex = 22;
-            this.label22.Text = "Montag";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label23.Location = new System.Drawing.Point(81, 39);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(49, 17);
-            this.label23.TabIndex = 28;
-            this.label23.Text = "Menüs";
+            this.btnAdminPanel.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdminPanel.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.FlatAppearance.BorderSize = 0;
+            this.btnAdminPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
+            this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAdminPanel.Name = "btnAdminPanel";
+            this.btnAdminPanel.Size = new System.Drawing.Size(85, 29);
+            this.btnAdminPanel.TabIndex = 27;
+            this.btnAdminPanel.Text = "> ADMI&N";
+            this.btnAdminPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdminPanel.UseVisualStyleBackColor = false;
+            this.btnAdminPanel.Visible = false;
+            this.btnAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
             // 
             // MainPage
             // 
@@ -698,7 +709,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 750);
+            this.ClientSize = new System.Drawing.Size(972, 790);
             this.Controls.Add(this.MainSplit);
             this.Controls.Add(this.MainPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -732,7 +743,6 @@
         private System.Windows.Forms.Label lbClose;
         private System.Windows.Forms.Panel MainPageHeader;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label lbAdminPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -761,13 +771,14 @@
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Panel ImagePanel;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lbWed;
+        private System.Windows.Forms.Label lbTue;
+        private System.Windows.Forms.Label lbSat;
+        private System.Windows.Forms.Label lbFri;
+        private System.Windows.Forms.Label lbThu;
+        private System.Windows.Forms.Label lbMo;
+        private System.Windows.Forms.Label lbMenu;
+        private System.Windows.Forms.Button btnAdminPanel;
     }
 }
 

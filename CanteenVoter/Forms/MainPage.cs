@@ -21,11 +21,14 @@ namespace CanteenVoter
         private string gerichtText;
         private string menuesText;
         private bool menuChange = false;
+        private bool changeMenuLbLocation = false;
 
 
         public MainPage()
         {
             InitializeComponent();
+           
+
         }
 
 
@@ -33,14 +36,29 @@ namespace CanteenVoter
         {
             dataMenu.DataSource = GetdataMenu();
             getDataSelectedMenue();
+            dataMenu.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             dataMenu.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
+            dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataMenu.ClearSelection();
-           
-            this.dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
             if (getUsername == "ShiiikK" || getUsername == "Mentalill")
             {
-                lbAdminPanel.Visible = true;
+                btnAdminPanel.Visible = true;
             }
+
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            {
+                changeMenuLbLocation = true;
+
+                lbMenu.Left -= 5;
+                lbMo.Left -= 5;
+                lbTue.Left -= 5;
+                lbWed.Left -= 6;
+                lbThu.Left -= 8;
+                lbFri.Left -= 11;
+                lbSat.Left -= 10;
+            }
+
             EnableDoubleBuffering();
            
         }
@@ -85,6 +103,30 @@ namespace CanteenVoter
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
+            if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && changeMenuLbLocation)
+            {
+                changeMenuLbLocation = false;
+
+                lbMenu.Left += 5;
+                lbMo.Left += 5;
+                lbTue.Left += 5;
+                lbWed.Left += 6;
+                lbThu.Left += 8;
+                lbFri.Left += 11;
+                lbSat.Left += 10;
+            }
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            {
+                changeMenuLbLocation = true;
+
+                lbMenu.Left -= 5;
+                lbMo.Left -= 5;
+                lbTue.Left -= 5;
+                lbWed.Left -= 6;
+                lbThu.Left -= 8;
+                lbFri.Left -= 11;
+                lbSat.Left -= 10;
+            }
             dataMenu.ClearSelection();
          
         }
@@ -118,10 +160,7 @@ namespace CanteenVoter
                         gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
                         menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                        if (day == "Menues"/* || day == "Montag" 
-                        || day == "Dienstag" || day == "Mittwoch"
-                        || day == "Donnerstag" || day == "Freitag"
-                        || day == "Samstag"*/)
+                        if (day == "Menues")
                         {
                             AlertClass.Show("Du kannst eine Kategorie\n" +
                                 "nicht als Menü speichern!", Alert.enmType.Warning);
