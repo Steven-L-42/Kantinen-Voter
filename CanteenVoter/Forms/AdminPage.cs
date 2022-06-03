@@ -142,6 +142,7 @@ namespace CanteenVoter
             dataMenu.DataSource = GetdataMenu();
             dataMenu.ClearSelection();
             dataMenu.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
+            dataMenu.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
             dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             cmbMenue.Items.Add("Menü wählen...");
