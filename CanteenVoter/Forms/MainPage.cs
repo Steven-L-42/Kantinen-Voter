@@ -226,9 +226,12 @@ namespace CanteenVoter
    
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
 
 
+            // Bei Programmstart ist '!menuChange_OnClick' gesetzt das bewirkt
+            // das beim ersten Versuch das Menü auszuwählen
+            // ein Dialog Fenster geöffnet wird.
+            //
             try
             {
                 if (!menuChange_OnClick)
@@ -261,6 +264,14 @@ namespace CanteenVoter
                         {
                             SelectMenu(menues_Selected);
 
+
+                            // Habe diesbezüglich bei StackOverFlow eine Frage gestellt und diesen Code als Antwort erhalten.
+                            //
+                            // Ich möchte das wenn ich auf eine einzelne Zelle auswähle,
+                            // diese farbig markiert wird und das selbe dann auch mit den nächsten Zellen (bei auswahl) passiert.
+                            // Auch soll immer nur eine Zelle innerhalb einer Column markiert sein können, so wurde der Code
+                            // dann um die Eigenschaft 'HasStyle' Erweitert und 'Style' auf 'null' gesetzt wenn bereits eine markiert war.
+                            // 
                             if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                             {
                                 return;
@@ -334,8 +345,12 @@ namespace CanteenVoter
 
         private void SelectMenu(string menu)
         {
+            // Eine Tabelle wird aktualisiert, dabei wird der Eintrag bei dem eingeloggten Benutzernamen getätigt.
+            // Der Benutzer wählt per Zellen klick sein Gericht und dieser Eintrag wieder sofort hinterlegt.
+            //
             Datenbank db = new Datenbank();
-            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day_Selected + "='" + menues_Selected + "'," + day_Selected +"Gericht='" + gericht_Selected + "' WHERE Benutzername='" + this.getUsername + "'",
+            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day_Selected + "='" + menues_Selected + "'," 
+                                                    + day_Selected +"Gericht='" + gericht_Selected + "' WHERE Benutzername='" + this.getUsername + "'",
                                                             db.getConnection());
             db.openConnection();
             // Öffnet die DB Verbindung
@@ -354,6 +369,9 @@ namespace CanteenVoter
                 {
                     AlertClass.Show("Dein Menü wurde erfolgreich gewählt!", Alert.enmType.Success);
 
+                    // Gibt das Menü in die TextBox im unteren Panel und
+                    // das Gericht in die TextBox für den Persönlichen Speiseplan aus.
+                    //
                     switch (day_Selected)
                     {
                         case "Montag":
@@ -409,6 +427,10 @@ namespace CanteenVoter
         #region SetEmptyTextBoxes
         private void SetEmptyTextBoxes()
         {
+            // Wenn ein Menü noch nicht gewählt wurde,
+            // das wird das im unteren Panel in den TextBoxen ausgegeben.
+            // Zu sehen ist das bei einem frisch erstellten Account.
+            //
             if (txMonday.Text == string.Empty)
             {
                 txMonday.Text = "Menü wurde noch\n" +
