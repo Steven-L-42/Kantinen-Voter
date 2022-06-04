@@ -138,6 +138,10 @@ namespace CanteenVoter
                                 "(Gluten-/Lak.- Frei)");
             cmbMenue.SelectedIndex = 0;
 
+            // Sollte ScrollBar erscheinen werden die label diese die Tage anzeigen,
+            // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
+            // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
+            //
             if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
                 dayLabel_ChangeLoc = true;
@@ -224,8 +228,8 @@ namespace CanteenVoter
             {
                 SqlDelete(cellID);
 
-                // Ich möchte das wenn eine ScrollBar verschwindet das die label diese die Tage anzeigen,
-                // ebenso verrückt werden, damit eine sauber zentrierte UI hinterlassen wird.
+                // Sollte die ScrollBar verschwinden werden die label diese die Tage anzeigen,
+                // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
                 // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
                 //
                 if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && dayLabel_ChangeLoc)
@@ -291,8 +295,8 @@ namespace CanteenVoter
         {
             SqlInsert();
 
-            // Ich möchte das wenn eine ScrollBar auftaucht das die label diese die Tage anzeigen,
-            // ebenso verrückt werden, damit eine sauber zentrierte UI hinterlassen wird.
+            // Sollte die ScrollBar erscheinen werden die label diese die Tage anzeigen,
+            // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
             // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
             //
             if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)

@@ -23,10 +23,6 @@ namespace CanteenVoter
 
         private void UserAcp_Load(object sender, EventArgs e)
         {
-            
-            // Hier wird eine Methode aufgerufen die alle TextBoxen und den
-            // DateTimePicker mit den Daten aus der Datenbank füllt.
-            //
             getData();
 
             checkIfDataExist();
@@ -38,7 +34,10 @@ namespace CanteenVoter
 
 
         private void getData()
-        {
+        { 
+            // Hier werden alle TextBoxen und der
+            // DateTimePicker mit den Daten aus der Datenbank befüllt.
+            //
             Datenbank db = new Datenbank();
             DataTable dt = new DataTable();
 

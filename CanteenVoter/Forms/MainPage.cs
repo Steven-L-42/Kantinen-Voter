@@ -36,11 +36,19 @@ namespace CanteenVoter
             dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataMenu.ClearSelection();
 
-            if (getUsername == "ShiiikK" || getUsername == "Mentalill")
+            // Eine Art und Weise wie man 'hardcoded' festlegen kann
+            // welcher Benutzername als Admin in Frage kommt.
+            // Mit Sicherheit, nicht die sicherste.
+            //
+            if (getUsername == "ShiiikK" || getUsername == "AndreasK")
             {
                 btnAdminPanel.Visible = true;
             }
 
+            // Sollte die ScrollBar erscheinen werden die label diese die Tage anzeigen,
+            // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
+            // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
+            //
             if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
                 dayLabel_ChangeLoc = true;
@@ -183,6 +191,10 @@ namespace CanteenVoter
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
+            // Sollte die ScrollBar erscheinen oder verschwinden werden die label diese die Tage anzeigen,
+            // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
+            // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
+            //
             if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && dayLabel_ChangeLoc)
             {
                 dayLabel_ChangeLoc = false;
