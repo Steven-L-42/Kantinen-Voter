@@ -109,16 +109,16 @@ namespace CanteenVoter
 
 
         private void EnableDoubleBuffering()
-        { 
+        {
             // --- CODE IST NICHT VON MIR ---
             // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
-            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelt gepuffert, das führt zu einer kurzen Verzögerung bei der Anzeige,
             // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
             //
             SetStyle(ControlStyles.DoubleBuffer |
-           ControlStyles.UserPaint |
-           ControlStyles.AllPaintingInWmPaint,
-           true);
+            ControlStyles.UserPaint |
+            ControlStyles.AllPaintingInWmPaint,
+            true);
             UpdateStyles();
         }
 

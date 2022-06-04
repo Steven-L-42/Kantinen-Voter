@@ -60,6 +60,10 @@ namespace CanteenVoter
 
         private DataTable GetdataMenu()
         {
+            // Ruft die gewünschte Tabelle in der hinterlegten Datenbank auf
+            // und füllt mein DataGridView mit dessen Inhalt
+            // Wir erhalten hier das verfügbare Menü.
+            //
             Datenbank db = new Datenbank();
             DataTable table = new DataTable();
             using (MySqlDataAdapter adapter = new MySqlDataAdapter())
@@ -79,7 +83,9 @@ namespace CanteenVoter
 
         private void getDataSelectedMenue()
         {
-
+            // Lädt zu beginn die hinterlegten bereits ausgewählten Gerichte und
+            // macht sie auf TextBoxen sichtbar und auch für den Persönlichen Speiseplan Abruf bereit.
+            //
             Datenbank db = new Datenbank();
             DataTable dt = new DataTable();
 
@@ -128,13 +134,13 @@ namespace CanteenVoter
         {
             // --- CODE IST NICHT VON MIR ---
             // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
-            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelt gepuffert, das führt zu einer kurzen Verzögerung bei der Anzeige,
             // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
             //
             SetStyle(ControlStyles.DoubleBuffer |
-                ControlStyles.UserPaint |
-                ControlStyles.AllPaintingInWmPaint,
-                true);
+            ControlStyles.UserPaint |
+            ControlStyles.AllPaintingInWmPaint,
+            true);
             UpdateStyles();
         }
 

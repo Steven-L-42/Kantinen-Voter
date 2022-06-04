@@ -100,6 +100,7 @@
             this.txMonday.TabIndex = 20;
             this.txMonday.TabStop = false;
             this.txMonday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txMonday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // txTuesday
             // 
@@ -117,6 +118,7 @@
             this.txTuesday.TabIndex = 21;
             this.txTuesday.TabStop = false;
             this.txTuesday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txTuesday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // txWednesday
             // 
@@ -134,6 +136,7 @@
             this.txWednesday.TabIndex = 22;
             this.txWednesday.TabStop = false;
             this.txWednesday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txWednesday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // txThursday
             // 
@@ -151,6 +154,7 @@
             this.txThursday.TabIndex = 23;
             this.txThursday.TabStop = false;
             this.txThursday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txThursday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // txFriday
             // 
@@ -168,6 +172,7 @@
             this.txFriday.TabIndex = 24;
             this.txFriday.TabStop = false;
             this.txFriday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txFriday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // txSaturday
             // 
@@ -185,6 +190,7 @@
             this.txSaturday.TabIndex = 25;
             this.txSaturday.TabStop = false;
             this.txSaturday.Text = "Menü wurde noch\nnicht gewählt.";
+            this.txSaturday.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // dataMenu
             // 
@@ -212,7 +218,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 614);
+            this.dataMenu.Size = new System.Drawing.Size(972, 613);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -253,8 +259,9 @@
             this.MainSplit.Panel2.Controls.Add(this.btnUpdate);
             this.MainSplit.Panel2.Controls.Add(this.btnMyAccount);
             this.MainSplit.Panel2.Controls.Add(this.label1);
+            this.MainSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             this.MainSplit.Size = new System.Drawing.Size(972, 727);
-            this.MainSplit.SplitterDistance = 614;
+            this.MainSplit.SplitterDistance = 613;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -489,6 +496,7 @@
             this.label16.Size = new System.Drawing.Size(140, 30);
             this.label16.TabIndex = 26;
             this.label16.Text = "Deine Auswahl wird\r\nautomatisch gespeichert!";
+            this.label16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label5
             // 
@@ -500,6 +508,7 @@
             this.label5.Size = new System.Drawing.Size(61, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Mittwoch";
+            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label4
             // 
@@ -511,6 +520,7 @@
             this.label4.Size = new System.Drawing.Size(56, 15);
             this.label4.TabIndex = 9;
             this.label4.Text = "Dienstag";
+            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label8
             // 
@@ -522,6 +532,7 @@
             this.label8.Size = new System.Drawing.Size(54, 15);
             this.label8.TabIndex = 13;
             this.label8.Text = "Samstag";
+            this.label8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label7
             // 
@@ -533,6 +544,7 @@
             this.label7.Size = new System.Drawing.Size(46, 15);
             this.label7.TabIndex = 12;
             this.label7.Text = "Freitag";
+            this.label7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label6
             // 
@@ -544,6 +556,7 @@
             this.label6.Size = new System.Drawing.Size(72, 15);
             this.label6.TabIndex = 11;
             this.label6.Text = "Donnerstag";
+            this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label3
             // 
@@ -555,6 +568,7 @@
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "Montag";
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // btnUpdate
             // 
@@ -601,6 +615,7 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Suche dir für jeden Tag \r\ndein gewünschtes Menü.\r\nKlicke dazu mit der Maus\r\neinfa" +
     "ch auf ein Gericht.";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbClose
             // 
@@ -670,6 +685,7 @@
             this.lbMenu.Size = new System.Drawing.Size(49, 17);
             this.lbMenu.TabIndex = 28;
             this.lbMenu.Text = "Menüs";
+            this.lbMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbWed
             // 
@@ -681,6 +697,7 @@
             this.lbWed.Size = new System.Drawing.Size(66, 17);
             this.lbWed.TabIndex = 24;
             this.lbWed.Text = "Mittwoch";
+            this.lbWed.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbTue
             // 
@@ -692,6 +709,7 @@
             this.lbTue.Size = new System.Drawing.Size(63, 17);
             this.lbTue.TabIndex = 23;
             this.lbTue.Text = "Dienstag";
+            this.lbTue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbSat
             // 
@@ -703,6 +721,7 @@
             this.lbSat.Size = new System.Drawing.Size(60, 17);
             this.lbSat.TabIndex = 27;
             this.lbSat.Text = "Samstag";
+            this.lbSat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbFri
             // 
@@ -714,6 +733,7 @@
             this.lbFri.Size = new System.Drawing.Size(51, 17);
             this.lbFri.TabIndex = 26;
             this.lbFri.Text = "Freitag";
+            this.lbFri.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbThu
             // 
@@ -725,6 +745,7 @@
             this.lbThu.Size = new System.Drawing.Size(80, 17);
             this.lbThu.TabIndex = 25;
             this.lbThu.Text = "Donnerstag";
+            this.lbThu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // lbMo
             // 
@@ -736,6 +757,7 @@
             this.lbMo.Size = new System.Drawing.Size(56, 17);
             this.lbMo.TabIndex = 22;
             this.lbMo.Text = "Montag";
+            this.lbMo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
             // label2
             // 

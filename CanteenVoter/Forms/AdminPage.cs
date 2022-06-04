@@ -22,6 +22,7 @@ namespace CanteenVoter
         #region InitializeEvents
         private void InitializeEvents()
         {
+        
             txMonday.GotFocus += TxMonday_GotFocus;
             txMonday.LostFocus += TxMonday_LostFocus;
             txTuesday.GotFocus += TxTuesday_GotFocus;
@@ -35,6 +36,7 @@ namespace CanteenVoter
             txSuturday.GotFocus += TxSuturday_GotFocus;
             txSuturday.LostFocus += TxSuturday_LostFocus;
         }
+
         // Got Focus soll die RichTextBox Clearen wenn sie den Focus hat
         // und exakt den Text enthält der im If Statement gefordert wird
         //
@@ -176,13 +178,13 @@ namespace CanteenVoter
         {
             // --- CODE IST NICHT VON MIR ---
             // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
-            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelt gepuffert, das führt zu einer kurzen Verzögerung bei der Anzeige,
             // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
             //
             SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
+            ControlStyles.UserPaint |
+            ControlStyles.AllPaintingInWmPaint,
+            true);
             UpdateStyles();
         }
 
@@ -222,6 +224,10 @@ namespace CanteenVoter
             {
                 SqlDelete(cellID);
 
+                // Ich möchte das wenn eine ScrollBar verschwindet das die label diese die Tage anzeigen,
+                // ebenso verrückt werden, damit eine sauber zentrierte UI hinterlassen wird.
+                // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
+                //
                 if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && dayLabel_ChangeLoc)
                 {
                     dayLabel_ChangeLoc = false;
@@ -285,6 +291,10 @@ namespace CanteenVoter
         {
             SqlInsert();
 
+            // Ich möchte das wenn eine ScrollBar auftaucht das die label diese die Tage anzeigen,
+            // ebenso verrückt werden, damit eine sauber zentrierte UI hinterlassen wird.
+            // Außerdem setze ich einen bool, so das es insgesamt auch nur 1x möglich ist die label zu versetzen.
+            //
             if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
                 dayLabel_ChangeLoc = true;
@@ -336,6 +346,5 @@ namespace CanteenVoter
         {
             this.Close();
         }
-
     }
 }

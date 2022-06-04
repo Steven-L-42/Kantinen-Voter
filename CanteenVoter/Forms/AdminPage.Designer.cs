@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cmbMenue = new System.Windows.Forms.ComboBox();
             this.txSuturday = new System.Windows.Forms.RichTextBox();
             this.txFriday = new System.Windows.Forms.RichTextBox();
@@ -82,7 +83,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 612);
+            this.dataMenu.Size = new System.Drawing.Size(972, 606);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -105,6 +106,7 @@
             // 
             this.AdminSplit.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.AdminSplit.Panel2.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
+            this.AdminSplit.Panel2.Controls.Add(this.comboBox1);
             this.AdminSplit.Panel2.Controls.Add(this.cmbMenue);
             this.AdminSplit.Panel2.Controls.Add(this.txSuturday);
             this.AdminSplit.Panel2.Controls.Add(this.txFriday);
@@ -114,17 +116,31 @@
             this.AdminSplit.Panel2.Controls.Add(this.txMonday);
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
+            this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 767);
-            this.AdminSplit.SplitterDistance = 612;
+            this.AdminSplit.SplitterDistance = 606;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.GhostWhite;
+            this.comboBox1.DropDownHeight = 150;
+            this.comboBox1.DropDownWidth = 170;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.IntegralHeight = false;
+            this.comboBox1.Location = new System.Drawing.Point(4, 49);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(146, 25);
+            this.comboBox1.TabIndex = 10;
             // 
             // cmbMenue
             // 
             this.cmbMenue.BackColor = System.Drawing.Color.GhostWhite;
             this.cmbMenue.DropDownHeight = 150;
-            this.cmbMenue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMenue.DropDownWidth = 170;
             this.cmbMenue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbMenue.ForeColor = System.Drawing.Color.Black;
@@ -134,6 +150,7 @@
             this.cmbMenue.Name = "cmbMenue";
             this.cmbMenue.Size = new System.Drawing.Size(146, 25);
             this.cmbMenue.TabIndex = 1;
+
             // 
             // txSuturday
             // 
@@ -418,5 +435,6 @@
         private System.Windows.Forms.Label lbFri;
         private System.Windows.Forms.Label lbThu;
         private System.Windows.Forms.Label lbMo;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
