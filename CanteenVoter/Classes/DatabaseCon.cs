@@ -3,7 +3,7 @@
 namespace CanteenVoter
 {
 
-    public class Datenbank
+    class Datenbank
     {
 
         private MySqlConnection connection = new MySqlConnection("Server=sql4.freemysqlhosting.net;Database=sql4496417;user=sql4496417;Pwd=3ci2PdzRDR;SslMode=none;port=3306");

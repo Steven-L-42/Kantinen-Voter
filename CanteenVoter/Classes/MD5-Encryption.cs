@@ -3,9 +3,9 @@ using System.Text;
 
 namespace CanteenVoter
 {
-    public static class Encryptor
+    internal class Encryptor
     {
-        public static string MD5Hash(string text)
+        internal string MD5Hash(string text)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
 

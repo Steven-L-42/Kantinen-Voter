@@ -9,8 +9,8 @@ namespace CanteenVoter
 {
     public partial class AdminPage : Form
     {
-        private string id;
-        private bool changeMenuLbLocation = false;
+        private string cellID;
+        private bool dayLabel_ChangeLoc = false;
 
         public AdminPage()
         {
@@ -136,9 +136,9 @@ namespace CanteenVoter
                                 "(Gluten-/Lak.- Frei)");
             cmbMenue.SelectedIndex = 0;
 
-            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
-                changeMenuLbLocation = true;
+                dayLabel_ChangeLoc = true;
 
                 lbMenu.Left -= 5;
                 lbMo.Left -= 5;
@@ -172,13 +172,18 @@ namespace CanteenVoter
         }
 
 
-        public void EnableDoubleBuffering()
+        private void EnableDoubleBuffering()
         {
-            this.SetStyle(ControlStyles.DoubleBuffer |
+            // --- CODE IST NICHT VON MIR ---
+            // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
+            //
+            SetStyle(ControlStyles.DoubleBuffer |
                ControlStyles.UserPaint |
                ControlStyles.AllPaintingInWmPaint,
                true);
-            this.UpdateStyles();
+            UpdateStyles();
         }
 
 
@@ -215,11 +220,11 @@ namespace CanteenVoter
 
             if (confirmResult == DialogResult.Yes)
             {
-                SqlDelete(id);
+                SqlDelete(cellID);
 
-                if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && changeMenuLbLocation)
+                if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && dayLabel_ChangeLoc)
                 {
-                    changeMenuLbLocation = false;
+                    dayLabel_ChangeLoc = false;
 
                      lbMenu.Left += 5;
                      lbMo.Left += 5;
@@ -280,9 +285,9 @@ namespace CanteenVoter
         {
             SqlInsert();
 
-            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
-                changeMenuLbLocation = true;
+                dayLabel_ChangeLoc = true;
 
                 lbMenu.Left -= 5;
                 lbMo.Left -= 5;
@@ -297,6 +302,12 @@ namespace CanteenVoter
       
         private void AdminPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
+            // --- CODE IST NICHT VON MIR ---
+            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich
+            // die Form dennoch verschieben zu können, dabei habe ich das MouseDown
+            // meines AdminPageHeader genommen. Zusätzlich habe ich noch einige andere
+            // Steuerelemente auf das selbe Event verlinkt.
+            // 
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -311,7 +322,7 @@ namespace CanteenVoter
         {
             try
             {
-                id = dataMenu.Rows[e.RowIndex].Cells["Menues"].Value as string;
+                cellID = dataMenu.Rows[e.RowIndex].Cells["Menues"].Value as string;
             }
             catch (ArgumentOutOfRangeException ex)
             {

@@ -7,6 +7,7 @@ namespace CanteenVoter
 {
     public partial class RegAndLogin : Form
     {
+        private string username, password;
 
         public RegAndLogin()
         {
@@ -16,6 +17,9 @@ namespace CanteenVoter
 
         private void RegAndLogin_Load(object sender, EventArgs e)
         {
+            // Direkt beim laden der Form übergebe ich noch von der letzten 'erfolgreich'
+            // eingeloggten Sitzung die Login Daten aus den Properties.Settings.
+            //
             txUsername.Text = Properties.Settings.Default.txUsername;
             txPassword.Text = Properties.Settings.Default.txPassword;
             txUsername.GotFocus += TxUsername_GotFocus;
@@ -24,19 +28,29 @@ namespace CanteenVoter
             EnableDoubleBuffering();
         }
 
-
-        public void EnableDoubleBuffering()
+        private void EnableDoubleBuffering()
         {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
+            // --- CODE IST NICHT VON MIR ---
+            // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
+            //
+            SetStyle(ControlStyles.DoubleBuffer |
+
+                         ControlStyles.UserPaint |
+
+                         ControlStyles.AllPaintingInWmPaint,
+                         true);
+            UpdateStyles();
+
         }
-
-
         private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
         {
+            // --- CODE IST NICHT VON MIR ---
+            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich
+            // die Form dennoch verschieben zu können, dabei habe ich das MouseDown Event
+            // für 'RegLoginHeader' genommen. Und habe da dann noch meine Form verlinkt.
+            // 
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -52,22 +66,25 @@ namespace CanteenVoter
             // Bevor das aber geschieht wird zu erst das eingetragene Passwort in ein MD5 umgewandelt.
             // Weiter im Text geht es unten bei den If Statements.
             //
+
             Datenbank db = new Datenbank();
+            Encryptor cryp = new Encryptor();
             MySqlCommand command = new MySqlCommand(@"INSERT INTO UserTable SET Benutzername=@Benutzername,  Passwort=@Passwort;" +
                                                      "INSERT INTO UserMenueTable SET Benutzername=@Benutzername", db.getConnection());
 
-            command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = txUsername.Text.Trim();
-            command.Parameters.Add("@Passwort", MySqlDbType.VarChar).Value = Encryptor.MD5Hash(txPassword.Text.Trim());
-
-            // Öffnet die DB Verbindung.
+            // Überprüft ob die mindest Anforderung an Zeichen erreicht wurde.
             //
-            db.openConnection();
-            try
+            if (!checkTextBoxesValues())
             {
-                // Überprüft ob die mindest Anforderung an Zeichen erreicht wurde.
+                command.Parameters.Add("@Benutzername", MySqlDbType.VarChar).Value = username;
+                command.Parameters.Add("@Passwort", MySqlDbType.VarChar).Value = cryp.MD5Hash(password);
+
+                // Öffnet die DB Verbindung.
                 //
-                if (!checkTextBoxesValues())
+                db.openConnection();
+                try
                 {
+
                     // Überprüft ob das ComparePassword mit dem eingegebene Passwort übereinstimmt.
                     //
                     if (txPassword.Text.Equals(txPasswordCompare.Text))
@@ -88,7 +105,7 @@ namespace CanteenVoter
                                 AlertClass.Show("Dein Account wurde erstellt.", Alert.enmType.Success);
                                 chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
 
-                                lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible = 
+                                lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible =
                                     lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
                             }
                             // Andernfalls kann davon ausgegangen werden das mindestens eine Datenbank Tabelle nicht zugänglich war.
@@ -106,36 +123,43 @@ namespace CanteenVoter
                     {
                         AlertClass.Show("Passwörter stimmen nicht überein!", Alert.enmType.Warning);
                     }
+
                 }
-                else
+                catch (MySqlException ex)
                 {
-                    if(txUsername.Text.Length <5)
-                    {
-                        AlertClass.Show("Dein Benutzername muss\n" +
-                                        "mindestens 5 Zeichen enthalten!", Alert.enmType.Info);
-                    }else if(txPassword.Text.Length <8)
-                    {
-                        AlertClass.Show("Dein Passwort muss\n" +
-                                        "mindestens 8 Zeichen enthalten!", Alert.enmType.Info);
-                    }
-                 
+                    AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
+                }
+                finally
+                {
+                    db.closeConnection();
                 }
             }
-            catch (MySqlException ex)
+            else
             {
-                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
-            }
-            finally
-            {
-                db.closeConnection();
+                if (username.Length < 5)
+                {
+                    AlertClass.Show("Dein Benutzername muss\n" +
+                                    "mindestens 5 Zeichen enthalten!", Alert.enmType.Info);
+                }
+                else if (password.Length < 8)
+                {
+                    AlertClass.Show("Dein Passwort muss\n" +
+                                    "mindestens 8 Zeichen enthalten!", Alert.enmType.Info);
+                }
+
             }
         }
 
 
         public Boolean checkTextBoxesValues()
         {
-            string username = txUsername.Text.Trim();
-            string password = txPassword.Text.Trim();
+            // Hier lege ich fest das der Benutzername mindestens 5 und
+            // das Passwort mindestens 8 Zeichen beinhalten muss.
+            // Außerdem werden die TextBoxen getrimmt um eventuelle
+            // fehlerhafte Leerzeichen zu entfernen.
+            //
+            username = txUsername.Text.Trim();
+            password = txPassword.Text.Trim();
             if (username.Length < 5 || password.Length < 8)
             {
                 return true;
@@ -161,16 +185,17 @@ namespace CanteenVoter
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            // Prüft ob der Benutzername bereits existiert, in dem die gezählten bereits vorkommenden Einträge
-            // mit dem selben Benutzernamen genutzt werden.
+            // Die prüfung auf einen bereits vorhandenen Benutzernamen, funktioniert hier mittels einem Return Wert.
+            // Wenn 'return true' ausgegeben wird, bedeutet es das mindestens 1 Eintrag mit dem selben Benutzernamen
+            // vorliegt. Bei 'return false' war die überprüfung in Ordnung und noch kein Eintrag vorhanden.
             //
             if (table.Rows.Count > 0)
             {
-                return true;
+                return true; // Bei Ausgabe: Registrierung wird abgebrochen.
             }
             else
             {
-                return false;
+                return false; // Bei Ausgabe: Registrierung wird fortgestzt.
             }
         }
 
@@ -185,34 +210,45 @@ namespace CanteenVoter
             // Außerdem wird ein 'Property.Settings.Default.Save()' ausgeführt, das dann die eingetragenen
             // Login Daten für den nächsten Programm Start direkt automatisch hinterlegt.
             //
+
             Datenbank db = new Datenbank();
+            Encryptor cryp = new Encryptor();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = '" + txUsername.Text.Trim() + "' AND Passwort = '" + Encryptor.MD5Hash(txPassword.Text.Trim()) + "'", db.getConnection());
 
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
+            if (!checkTextBoxesValues())
+            {
+                MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = '" + username + "' " +
+                                                        "AND Passwort = '" + cryp.MD5Hash(password) + "'", db.getConnection());
 
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+            }
             if (table.Rows.Count == 1)
             {
-                Properties.Settings.Default.txUsername = txUsername.Text.Trim();
-                Properties.Settings.Default.txPassword = txPassword.Text.Trim();
+                Properties.Settings.Default.txUsername = username;
+                Properties.Settings.Default.txPassword = password;
                 Properties.Settings.Default.Save();
                 string getUsernameL = txUsername.Text.Trim();
                 var mainPage = new MainPage();
                 mainPage.getUsername = getUsernameL;
                 mainPage.Show();
-                this.Hide();
+                Hide();
             }
             else
             {
                 AlertClass.Show("Bitte überprüfe deine Login Daten!", Alert.enmType.Warning);
             }
+
         }
 
 
         private void lbRegisterTab_Click(object sender, EventArgs e)
         {
+            // Beim Klick auf diesen Label wird von Login zu Register geswitcht
+            // dabei habe ich mich nach der Implementierung von einem TabControl,
+            // aus Optik Gründen wieder dagegen entschieden und es so lösen wollen.
+            //
             txUsername.Text = txPassword.Text = string.Empty;
             lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = false;
 
@@ -223,6 +259,12 @@ namespace CanteenVoter
 
         private void lbExistAccount_Click(object sender, EventArgs e)
         {
+            // Beim Klick auf diesen Label wird von Register zu Login geswitcht.
+            // Die besonderheit hier ist, das die TextBoxen automatisch mit von der zuvor
+            // gespeicherten Sitzung Login Daten befüllt wird.
+            //
+            // Hier werden auch einzelne Controls auf false und true gesetzt.
+            //
             txUsername.Text = Properties.Settings.Default.txUsername;
             txPassword.Text = Properties.Settings.Default.txPassword;
             lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
@@ -234,11 +276,14 @@ namespace CanteenVoter
 
         private void txPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && lbPasswordCompare.Visible)
+            // Hiermit wandert der Focus beim KeyDown'Enter' von der TextBox Passwort zu
+            // PasswortCompare und auch nur wenn die TextBox PasswortCompare sichtbar ist
+            //
+            if (e.KeyCode == Keys.Enter && txPasswordCompare.Visible)
             {
                 txPasswordCompare.Focus();
             }
-            if (e.KeyCode == Keys.Enter && !lbPasswordCompare.Visible)
+            if (e.KeyCode == Keys.Enter && !txPasswordCompare.Visible)
             {
                 LoginMethod();
             }
@@ -247,6 +292,9 @@ namespace CanteenVoter
 
         private void txPasswordCompare_KeyDown(object sender, KeyEventArgs e)
         {
+            // Hiermit kann ich beim betätigen der Taste 'Enter'
+            // direkt den Registrierungsvorgang starten
+            //
             if (e.KeyCode == Keys.Enter)
             {
                 RegisterMethod();
@@ -254,8 +302,23 @@ namespace CanteenVoter
         }
 
 
+        private void txUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Hiermit kann ich beim betätigen der Taste 'Enter'
+            // direkt den Loginvorgang starten
+            //
+            if (e.KeyCode == Keys.Enter)
+            {
+                txPassword.Focus();
+            }
+        }
         private void RegAndLogin_MouseDown(object sender, MouseEventArgs e)
         {
+            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich
+            // die Form dennoch verschieben zu können, dabei habe ich das MouseDown
+            // meiner Form genommen. Alternativ kann man das auch auf andere
+            // Steuerelemente beschränken oder auch erweitern.
+            // 
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -301,6 +364,10 @@ namespace CanteenVoter
 
         private void TxPassword_GotFocus(object sender, EventArgs e)
         {
+            // Beim betreten der Textbox wird das GotFocus Event aufgerufen,
+            // dabei wir dafür gesorgt das der Cursor 'nicht' den ganzen Text markiert,
+            // sondern direkt an das Ende eines Textes springt und da dann auch den Cursor abstellt.
+            //
             txPassword.SelectionStart = txPassword.Text.Length;
             txPassword.SelectionLength = 0;
         }
@@ -311,14 +378,7 @@ namespace CanteenVoter
             txUsername.SelectionLength = 0;
         }
 
-        private void txUsername_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txPassword.Focus();
-            }
-        }
-
+      
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginMethod();
@@ -329,7 +389,7 @@ namespace CanteenVoter
         }
         private void lbClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

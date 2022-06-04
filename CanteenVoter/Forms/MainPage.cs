@@ -18,13 +18,8 @@ namespace CanteenVoter
         //
         public string getUsername { private get; set; }
 
-        public bool getImagePanel { get; set; }
-        private string day;
-        private string gerichtText;
-        private string menuesText;
-        private bool menuChange = false;
-        private bool changeMenuLbLocation = false;
-
+        private string day_Selected, gericht_Selected, menues_Selected;
+        private bool menuChange_OnClick, dayLabel_ChangeLoc = false;
 
         public MainPage()
         {
@@ -46,9 +41,9 @@ namespace CanteenVoter
                 btnAdminPanel.Visible = true;
             }
 
-            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
-                changeMenuLbLocation = true;
+                dayLabel_ChangeLoc = true;
 
                 lbMenu.Left -= 5;
                 lbMo.Left -= 5;
@@ -129,19 +124,29 @@ namespace CanteenVoter
         }
 
 
-        public void EnableDoubleBuffering()
+        private void EnableDoubleBuffering()
         {
-            this.SetStyle(ControlStyles.DoubleBuffer |
-               ControlStyles.UserPaint |
-               ControlStyles.AllPaintingInWmPaint,
-               true);
-            this.UpdateStyles();
+            // --- CODE IST NICHT VON MIR ---
+            // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
+            //
+            SetStyle(ControlStyles.DoubleBuffer |
+                ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint,
+                true);
+            UpdateStyles();
         }
 
 
         private void MainPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
-
+            // --- CODE IST NICHT VON MIR ---
+            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich
+            // die Form dennoch verschieben zu können, dabei habe ich das MouseDown
+            // meiner Form genommen. Alternativ kann man das auch auf andere
+            // Steuerelemente beschränken oder auch erweitern.
+            // 
             if (e.Button == MouseButtons.Left)
             {
                 MoveWindow.ReleaseCapture();
@@ -172,9 +177,9 @@ namespace CanteenVoter
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
-            if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && changeMenuLbLocation)
+            if (!dataMenu.Controls.OfType<VScrollBar>().First().Visible && dayLabel_ChangeLoc)
             {
-                changeMenuLbLocation = false;
+                dayLabel_ChangeLoc = false;
 
                 lbMenu.Left += 5;
                 lbMo.Left += 5;
@@ -184,9 +189,9 @@ namespace CanteenVoter
                 lbFri.Left += 11;
                 lbSat.Left += 10;
             }
-            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !changeMenuLbLocation)
+            if (dataMenu.Controls.OfType<VScrollBar>().First().Visible && !dayLabel_ChangeLoc)
             {
-                changeMenuLbLocation = true;
+                dayLabel_ChangeLoc = true;
 
                 lbMenu.Left -= 5;
                 lbMo.Left -= 5;
@@ -208,35 +213,35 @@ namespace CanteenVoter
 
             try
             {
-                if (!menuChange)
+                if (!menuChange_OnClick)
                 {
                     var confirmResult = MessageBox.Show("Willst du deine Menüs wirklich ändern?",
                                                  "Menü Änderung!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                     if (confirmResult == DialogResult.Yes)
                     {
-                        menuChange = true;
+                        menuChange_OnClick = true;
                     }
 
 
                 }
-                if (menuChange)
+                if (menuChange_OnClick)
                 {
                     
-                        day = dataMenu.Columns[e.ColumnIndex].HeaderText;
-                        gerichtText = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
-                        menuesText = dataMenu.CurrentRow.Cells[0].Value as string;
+                        day_Selected = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                        gericht_Selected = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
+                        menues_Selected = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                        if (day == "Menues")
+                        if (day_Selected == "Menues")
                         {
                             AlertClass.Show("Du kannst eine Kategorie\n" +
                                 "nicht als Menü speichern!", Alert.enmType.Warning);
-                            day = null;
+                            day_Selected = null;
                             dataMenu.ClearSelection();
                         }
                         else
                         {
-                            SelectMenu(menuesText);
+                            SelectMenu(menues_Selected);
 
                             if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                             {
@@ -312,7 +317,7 @@ namespace CanteenVoter
         private void SelectMenu(string menu)
         {
             Datenbank db = new Datenbank();
-            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day + "='" + menuesText + "'," + day +"Gericht='" + gerichtText + "' WHERE Benutzername='" + this.getUsername + "'",
+            MySqlCommand command = new MySqlCommand(@"UPDATE UserMenueTable SET " + day_Selected + "='" + menues_Selected + "'," + day_Selected +"Gericht='" + gericht_Selected + "' WHERE Benutzername='" + this.getUsername + "'",
                                                             db.getConnection());
             db.openConnection();
             // Öffnet die DB Verbindung
@@ -331,41 +336,41 @@ namespace CanteenVoter
                 {
                     AlertClass.Show("Dein Menü wurde erfolgreich gewählt!", Alert.enmType.Success);
 
-                    switch (day)
+                    switch (day_Selected)
                     {
                         case "Montag":
-                            txMonday.Text = menuesText;
-                            txMondayI.Text = gerichtText;
+                            txMonday.Text = menues_Selected;
+                            txMondayI.Text = gericht_Selected;
                             break;
 
                         case "Dienstag":
-                            txTuesday.Text = menuesText;
-                            txTuesdayI.Text = gerichtText;
+                            txTuesday.Text = menues_Selected;
+                            txTuesdayI.Text = gericht_Selected;
                             break;
 
                         case "Mittwoch":
-                            txWednesday.Text = menuesText;
-                            txWednesdayI.Text = gerichtText;
+                            txWednesday.Text = menues_Selected;
+                            txWednesdayI.Text = gericht_Selected;
                             break;
 
                         case "Donnerstag":
-                            txThursday.Text = menuesText;
-                            txThursdayI.Text = gerichtText;
+                            txThursday.Text = menues_Selected;
+                            txThursdayI.Text = gericht_Selected;
                             break;
 
                         case "Freitag":
-                            txFriday.Text = menuesText;
-                            txFridayI.Text = gerichtText;
+                            txFriday.Text = menues_Selected;
+                            txFridayI.Text = gericht_Selected;
                             break;
 
                         case "Samstag":
-                            txSaturday.Text = menuesText;
-                            txSaturdayI.Text = gerichtText;
+                            txSaturday.Text = menues_Selected;
+                            txSaturdayI.Text = gericht_Selected;
                             break;
                     }
                  
                     dataMenu.ClearSelection();
-                    day = null;
+                    day_Selected = null;
                 }
                 else
                 {
@@ -423,7 +428,7 @@ namespace CanteenVoter
 
         private void btnMenuA_Click(object sender, EventArgs e)
         {
-            if (day != null)
+            if (day_Selected != null)
                 SelectMenu("Menü A \n" +
                        "(Normal Kost)");
             else
@@ -434,7 +439,7 @@ namespace CanteenVoter
 
         private void btnMenuB_Click(object sender, EventArgs e)
         {
-            if (day != null)
+            if (day_Selected != null)
                 SelectMenu("Menü B \n" +
                        "(Vegan)");
             else
@@ -445,7 +450,7 @@ namespace CanteenVoter
 
         private void btnMenuC_Click(object sender, EventArgs e)
         {
-            if (day != null)
+            if (day_Selected != null)
                 SelectMenu("Menü C \n" +
                        "(Vegetarisch)");
             else
@@ -456,7 +461,7 @@ namespace CanteenVoter
 
         private void btnMenuD_Click(object sender, EventArgs e)
         {
-            if (day != null)
+            if (day_Selected != null)
                 SelectMenu("Menü D \n" +
                        "(Gluten-/Lak.- Frei)");
             else

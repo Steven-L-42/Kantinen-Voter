@@ -33,10 +33,6 @@ namespace CanteenVoter
 
             InitializeEvents();
 
-            // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
-            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
-            // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
-            //
             EnableDoubleBuffering();
         }
 
@@ -78,7 +74,10 @@ namespace CanteenVoter
 
 
         private void checkIfDataExist()
-        {
+        {   
+            // Ich nutze 'Owner as' um direkten Zugriff auf die Controls zu erhalten.
+            // So kann ich überprüfen ob die TextBoxen bereits befüllt sind oder nicht.
+            //
             if ((Owner as MainPage).txMondayI.Text == string.Empty ||
                 (Owner as MainPage).txTuesdayI.Text == string.Empty ||
                 (Owner as MainPage).txWednesdayI.Text == string.Empty ||
@@ -109,8 +108,13 @@ namespace CanteenVoter
         }
 
 
-        public void EnableDoubleBuffering()
-        {
+        private void EnableDoubleBuffering()
+        { 
+            // --- CODE IST NICHT VON MIR ---
+            // Hier wird das DoubleBuffering aktiviert, einige WinForms Steuerelemente oder auch Formen flackern hin und wieder.
+            // Durch das aktivieren von DoubleBuffering werden diese Objekte doppelte geladen, das führt zu einer kurzen Verzögerung bei der Anzeige,
+            // verhindert aber das sie bei der Laufzeit des Programms, bei interaktion oder bewegungungen flackern.
+            //
             SetStyle(ControlStyles.DoubleBuffer |
            ControlStyles.UserPaint |
            ControlStyles.AllPaintingInWmPaint,
@@ -121,8 +125,11 @@ namespace CanteenVoter
 
         private void UserAcp_MouseDown(object sender, MouseEventArgs e)
         {
-            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich die Form dennoch verschieben zu können,
-            // dabei habe ich das MouseDown meiner Form genommen. Alternativ kann man das auch auf andere Steuerelemente beschränken.
+            // --- CODE IST NICHT VON MIR ---
+            // Ich nutze den FormBorderStyle "none" und mache mir mit dieser Klasse möglich
+            // die Form dennoch verschieben zu können, dabei habe ich das MouseDown
+            // meiner Form genommen. Alternativ kann man das auch auf andere
+            // Steuerelemente beschränken oder auch erweitern.
             // 
             if (e.Button == MouseButtons.Left)
             {
@@ -170,7 +177,7 @@ namespace CanteenVoter
                     db.openConnection();
                     try
                     {
-                        // Führt die Anweisung durch
+                        // Führt die Anweisung durch. Bei Erfolg und genau einem Eintrag, wird die fortgesetzt.
                         //
                         if (command.ExecuteNonQuery() == 1)
                         {
@@ -209,6 +216,9 @@ namespace CanteenVoter
  
         private void btnYourPlan_Click(object sender, EventArgs e)
         {
+            // Es wird vorher überprüft ob denn bereits alle Menüs ausgewählt wurden
+            // und ob die 2 wichtigsten Felder, Vorname und Nachname ausgefüllt wurden.
+            //
             if ((Owner as MainPage).txMondayI.Text == string.Empty ||
                 (Owner as MainPage).txTuesdayI.Text == string.Empty ||
                 (Owner as MainPage).txWednesdayI.Text == string.Empty ||
@@ -232,7 +242,10 @@ namespace CanteenVoter
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    
+                    // Mit 'Owner as' übegebe ich die Berechtigung als Owner auf diese Controls
+                    // zuzugreifen und übergebe hier den Vor- und Nachnamen auf den angeforderten Plan.
+                    // Das hätte man auch wieder mit MySQL lösen können, aber ich wollte diesen Weg mal ausprobieren.
+                    //
                     (Owner as MainPage).lbNameI.Text = txFirstName.Text + ", "+ txSurname.Text;
                     (Owner as MainPage).ImagePanel.Visible = true;
 
@@ -253,6 +266,10 @@ namespace CanteenVoter
 
         private void TxAllergic_GotFocus(object sender, EventArgs e)
         {
+            // Beim betreten der Textbox wird das GotFocus Event aufgerufen,
+            // dabei wir dafür gesorgt das der Cursor 'nicht' den ganzen Text markiert,
+            // sondern direkt an das Ende eines Textes springt und da dann auch den Cursor abstellt.
+            //
             txAllergic.SelectionStart = txAllergic.Text.Length;
             txAllergic.SelectionLength = 0;
         }

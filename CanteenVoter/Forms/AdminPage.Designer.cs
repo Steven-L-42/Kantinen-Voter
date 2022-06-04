@@ -82,7 +82,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 615);
+            this.dataMenu.Size = new System.Drawing.Size(972, 612);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -115,7 +115,7 @@
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
             this.AdminSplit.Size = new System.Drawing.Size(972, 767);
-            this.AdminSplit.SplitterDistance = 615;
+            this.AdminSplit.SplitterDistance = 612;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
@@ -259,6 +259,7 @@
             this.lbMenu.Size = new System.Drawing.Size(49, 17);
             this.lbMenu.TabIndex = 35;
             this.lbMenu.Text = "Menüs";
+            this.lbMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbWed
             // 
@@ -270,6 +271,7 @@
             this.lbWed.Size = new System.Drawing.Size(66, 17);
             this.lbWed.TabIndex = 31;
             this.lbWed.Text = "Mittwoch";
+            this.lbWed.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbTue
             // 
@@ -281,6 +283,7 @@
             this.lbTue.Size = new System.Drawing.Size(63, 17);
             this.lbTue.TabIndex = 30;
             this.lbTue.Text = "Dienstag";
+            this.lbTue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbSat
             // 
@@ -292,6 +295,7 @@
             this.lbSat.Size = new System.Drawing.Size(60, 17);
             this.lbSat.TabIndex = 34;
             this.lbSat.Text = "Samstag";
+            this.lbSat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbFri
             // 
@@ -303,6 +307,7 @@
             this.lbFri.Size = new System.Drawing.Size(51, 17);
             this.lbFri.TabIndex = 33;
             this.lbFri.Text = "Freitag";
+            this.lbFri.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbThu
             // 
@@ -314,6 +319,7 @@
             this.lbThu.Size = new System.Drawing.Size(80, 17);
             this.lbThu.TabIndex = 32;
             this.lbThu.Text = "Donnerstag";
+            this.lbThu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbMo
             // 
@@ -325,6 +331,7 @@
             this.lbMo.Size = new System.Drawing.Size(56, 17);
             this.lbMo.TabIndex = 29;
             this.lbMo.Text = "Montag";
+            this.lbMo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbAdminPanel
             // 
@@ -341,6 +348,7 @@
             this.lbAdminPanel.TabIndex = 21;
             this.lbAdminPanel.Text = "Admin-Panel";
             this.lbAdminPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbAdminPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
             // lbClose
             // 
