@@ -49,7 +49,8 @@ namespace CanteenVoter
             {
                 // Wähle 'Alle' Einträge von meiner UserTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
                 //
-                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = @Benutzername", db.getConnection());
+                MySqlCommand sqlCmd = new MySqlCommand("SELECT * FROM UserTable WHERE " +
+                                                       "Benutzername = @Benutzername", db.getConnection());
                 MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCmd);
 
                 sqlCmd.Parameters.AddWithValue("@Benutzername", getUsername);

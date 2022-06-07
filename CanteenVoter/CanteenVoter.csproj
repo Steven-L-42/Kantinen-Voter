@@ -147,6 +147,12 @@
     <Compile Include="Forms\MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MenueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MenueList.Designer.cs">
+      <DependentUpon>MenueList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RegAndLogin.cs">
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserMenue.resx">
       <DependentUpon>UserMenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenueList.resx">
+      <DependentUpon>MenueList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
