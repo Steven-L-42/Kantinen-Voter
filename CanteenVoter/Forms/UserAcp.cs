@@ -13,7 +13,6 @@ namespace CanteenVoter
         // Außerdem schränke ich die Get Methode ein, sodass die Information hier privat bleibt.
         //
         public string getUsername { private get; set; }
-       
 
         public UserAcp()
         {
@@ -23,6 +22,7 @@ namespace CanteenVoter
 
         private void UserAcp_Load(object sender, EventArgs e)
         {
+           
             getData();
 
             checkIfDataExist();
@@ -34,7 +34,8 @@ namespace CanteenVoter
 
 
         private void getData()
-        { 
+        {
+          
             // Hier werden alle TextBoxen und der
             // DateTimePicker mit den Daten aus der Datenbank befüllt.
             //
@@ -55,10 +56,15 @@ namespace CanteenVoter
                 sqlDa.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
+                    
                     txFirstName.Text = dt.Rows[0]["Vorname"].ToString(); // Zeigt mir die geforderte Spalte 'Vorname' in der TextBox an
                     txSurname.Text = dt.Rows[0]["Nachname"].ToString();
                     dateBorn.Text = dt.Rows[0]["Geburtsdatum"].ToString();
                     txAllergic.Text = dt.Rows[0]["Allergene"].ToString();
+                }
+                else
+                {
+                    dateBorn.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 }
             }
             catch (MySqlException ex)
@@ -142,8 +148,9 @@ namespace CanteenVoter
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txFirstName.Text.Length < 3||
-                txSurname.Text.Length < 3)
+            
+            if (txFirstName.Text.Trim().Split()[0].Length <3 ||
+                txSurname.Text.Trim().Split()[0].Length < 3)
             {
                 AlertClass.Show("Die Felder: Vorname\n" +
                                 "und Nachname müssen min.\n" +
@@ -151,11 +158,14 @@ namespace CanteenVoter
             }
             else
             {
+                txFirstName.Text = txFirstName.Text.Trim().Split()[0];
+                txSurname.Text = txSurname.Text.Trim().Split()[0];
                 var confirmResult = MessageBox.Show("Sind alle Angaben richtig?\n\n" +
                                                     "Du kannst Sie später 'nicht' mehr ändern!",
                                                     "Speichervorgang bestätigen!", MessageBoxButtons.YesNo, 
                                                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
+               
                 if (confirmResult == DialogResult.Yes)
                 {
                     Datenbank db = new Datenbank();
@@ -164,8 +174,8 @@ namespace CanteenVoter
                     // schreibe eingegeben Daten in die Datenbank.
                     // Diese Aktion wird nur Einträge bei dem Konto vornehmen, dessen Benutzername mit dem des Logins übereinstimmt.
                     //
-                    MySqlCommand command = new MySqlCommand(@"UPDATE UserTable SET Vorname='" + txFirstName.Text + "', " +
-                                                            "Nachname='" + txSurname.Text + "'," +
+                    MySqlCommand command = new MySqlCommand(@"UPDATE UserTable SET Vorname='" + txFirstName.Text.Trim().Split()[0] + "', " +
+                                                            "Nachname='" + txSurname.Text.Trim().Split()[0] + "'," +
                                                             "Geburtsdatum='" + dateBorn.Text + "', " +
                                                             "Allergene='" + txAllergic.Text + "' " +
                                                             "WHERE Benutzername='" + getUsername + "'",

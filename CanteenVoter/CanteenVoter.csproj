@@ -161,6 +161,12 @@
     <Compile Include="Forms\UserAcp.Designer.cs">
       <DependentUpon>UserAcp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserMenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserMenue.Designer.cs">
+      <DependentUpon>UserMenue.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserMenue.resx">
+      <DependentUpon>UserMenue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

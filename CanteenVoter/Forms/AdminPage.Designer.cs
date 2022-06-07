@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cmbMenue = new System.Windows.Forms.ComboBox();
             this.txSuturday = new System.Windows.Forms.RichTextBox();
             this.txFriday = new System.Windows.Forms.RichTextBox();
@@ -51,6 +50,7 @@
             this.lbMo = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
+            this.btnAdminPanel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
             this.AdminSplit.Panel1.SuspendLayout();
@@ -83,7 +83,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 606);
+            this.dataMenu.Size = new System.Drawing.Size(972, 618);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -106,7 +106,6 @@
             // 
             this.AdminSplit.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.AdminSplit.Panel2.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
-            this.AdminSplit.Panel2.Controls.Add(this.comboBox1);
             this.AdminSplit.Panel2.Controls.Add(this.cmbMenue);
             this.AdminSplit.Panel2.Controls.Add(this.txSuturday);
             this.AdminSplit.Panel2.Controls.Add(this.txFriday);
@@ -118,39 +117,29 @@
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
             this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 767);
-            this.AdminSplit.SplitterDistance = 606;
+            this.AdminSplit.SplitterDistance = 618;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.GhostWhite;
-            this.comboBox1.DropDownHeight = 150;
-            this.comboBox1.DropDownWidth = 170;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Location = new System.Drawing.Point(4, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 25);
-            this.comboBox1.TabIndex = 10;
-            // 
             // cmbMenue
             // 
             this.cmbMenue.BackColor = System.Drawing.Color.GhostWhite;
-            this.cmbMenue.DropDownHeight = 150;
+            this.cmbMenue.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbMenue.DropDownHeight = 205;
+            this.cmbMenue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMenue.DropDownWidth = 170;
             this.cmbMenue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbMenue.ForeColor = System.Drawing.Color.Black;
             this.cmbMenue.FormattingEnabled = true;
             this.cmbMenue.IntegralHeight = false;
-            this.cmbMenue.Location = new System.Drawing.Point(4, 18);
+            this.cmbMenue.ItemHeight = 40;
+            this.cmbMenue.Location = new System.Drawing.Point(4, 6);
             this.cmbMenue.Name = "cmbMenue";
-            this.cmbMenue.Size = new System.Drawing.Size(146, 25);
+            this.cmbMenue.Size = new System.Drawing.Size(146, 46);
             this.cmbMenue.TabIndex = 1;
-
+            this.cmbMenue.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMenue_DrawItem);
+            this.cmbMenue.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMenue_MeasureItem);
             // 
             // txSuturday
             // 
@@ -249,6 +238,7 @@
             // AdminPageHeader
             // 
             this.AdminPageHeader.BackColor = System.Drawing.Color.Transparent;
+            this.AdminPageHeader.Controls.Add(this.btnAdminPanel);
             this.AdminPageHeader.Controls.Add(this.lbMenu);
             this.AdminPageHeader.Controls.Add(this.lbWed);
             this.AdminPageHeader.Controls.Add(this.lbTue);
@@ -359,7 +349,7 @@
             this.lbAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lbAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lbAdminPanel.Location = new System.Drawing.Point(411, 5);
+            this.lbAdminPanel.Location = new System.Drawing.Point(420, 5);
             this.lbAdminPanel.Name = "lbAdminPanel";
             this.lbAdminPanel.Size = new System.Drawing.Size(127, 25);
             this.lbAdminPanel.TabIndex = 21;
@@ -382,6 +372,26 @@
             this.lbClose.Text = "X";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
+            // 
+            // btnAdminPanel
+            // 
+            this.btnAdminPanel.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdminPanel.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.FlatAppearance.BorderSize = 0;
+            this.btnAdminPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
+            this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAdminPanel.Name = "btnAdminPanel";
+            this.btnAdminPanel.Size = new System.Drawing.Size(85, 29);
+            this.btnAdminPanel.TabIndex = 100;
+            this.btnAdminPanel.Text = "> MENÜ&S";
+            this.btnAdminPanel.UseVisualStyleBackColor = false;
+            this.btnAdminPanel.Click += new System.EventHandler(this.btnAdminPanel_Click);
             // 
             // AdminPage
             // 
@@ -435,6 +445,6 @@
         private System.Windows.Forms.Label lbFri;
         private System.Windows.Forms.Label lbThu;
         private System.Windows.Forms.Label lbMo;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnAdminPanel;
     }
 }

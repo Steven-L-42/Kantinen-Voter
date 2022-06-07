@@ -76,7 +76,9 @@ namespace CanteenVoter
             DataTable table = new DataTable();
             using (MySqlDataAdapter adapter = new MySqlDataAdapter())
             {
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM CanteenTable", db.getConnection()))
+                using (MySqlCommand command = new MySqlCommand("SELECT " +
+                    "`Menues`,`Montag`, `Dienstag`,`Mittwoch`,`Donnerstag`," +
+                    "`Freitag`,`Samstag` FROM CanteenTable", db.getConnection()))
                 {
                     db.openConnection();
                     MySqlDataReader reader = command.ExecuteReader();
@@ -311,7 +313,8 @@ namespace CanteenVoter
 
         private void lbAdminPanel_Click(object sender, EventArgs e)
         {
-            var adminPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "AdminPage").FirstOrDefault();
+            this.Hide();
+            Form adminPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "AdminPage").FirstOrDefault();
             if (null != adminPageO)
             {
                 adminPageO.Close();

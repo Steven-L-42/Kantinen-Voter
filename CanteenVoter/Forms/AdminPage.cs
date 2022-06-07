@@ -120,6 +120,7 @@ namespace CanteenVoter
             dataMenu.DataSource = GetdataMenu();
             dataMenu.ClearSelection();
             dataMenu.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
+            dataMenu.RowsDefaultCellStyle.ForeColor = Color.Black;
             dataMenu.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
             dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
@@ -165,8 +166,11 @@ namespace CanteenVoter
             DataTable table = new DataTable();
             using (MySqlDataAdapter adapter = new MySqlDataAdapter())
             {
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM CanteenTable", db.getConnection()))
+                using (MySqlCommand command = new MySqlCommand("SELECT " +
+                    "`Menues`,`Montag`, `Dienstag`,`Mittwoch`,`Donnerstag`," +
+                    "`Freitag`,`Samstag` FROM CanteenTable", db.getConnection()))
                 {
+           
                     db.openConnection();
                     MySqlDataReader reader = command.ExecuteReader();
 
@@ -348,7 +352,64 @@ namespace CanteenVoter
 
         private void lbClose_Click(object sender, EventArgs e)
         {
+            Form mainPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "MainPage").FirstOrDefault();
+            if (null != mainPageO)
+            {
+                mainPageO.Show();
+
+            }
             this.Close();
+        }
+
+        private void cmbMenue_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            Brush myBrush = Brushes.Black;
+            Font ft = cmbMenue.Font; ;
+            e.Graphics.DrawString(cmbMenue.Items[e.Index].ToString(), ft, myBrush, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+
+            var combo = sender as ComboBox;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+            }
+
+            e.Graphics.DrawString(combo.Items[e.Index].ToString(),
+                                          e.Font,
+                                          new SolidBrush(Color.Black),
+                                          new Point(e.Bounds.X, e.Bounds.Y));
+        }
+
+        private void cmbMenue_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 40;
+        }
+
+        private void btnUserMenue_Click(object sender, EventArgs e)
+        {
+            
+          
+         
+        }
+
+        private void btnAdminPanel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var userMenuO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "UserMenue").FirstOrDefault();
+            if (null != userMenuO)
+            {
+                userMenuO.Close();
+                userMenuO = null;
+            }
+            UserMenue UserMenue = new UserMenue();
+            UserMenue.Owner = this;
+            UserMenue.Show();
         }
     }
 }
