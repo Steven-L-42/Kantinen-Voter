@@ -326,6 +326,7 @@ namespace CanteenVoter
         }
 
 
+        #region ComboBox DrawItem
         private void cmbMenue_DrawItem(object sender, DrawItemEventArgs e)
         {
             try
@@ -520,6 +521,7 @@ namespace CanteenVoter
 
             }
         }
+        #endregion
 
 
 

@@ -28,6 +28,7 @@ namespace CanteenVoter
             EnableDoubleBuffering();
         }
 
+
         private void EnableDoubleBuffering()
         {
             // --- CODE IST NICHT VON MIR ---
@@ -42,6 +43,8 @@ namespace CanteenVoter
             UpdateStyles();
 
         }
+
+
         private void RegLoginHeader_MouseDown(object sender, MouseEventArgs e)
         {
             // --- CODE IST NICHT VON MIR ---

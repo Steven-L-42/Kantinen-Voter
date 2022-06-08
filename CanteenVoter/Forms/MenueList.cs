@@ -1,12 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CanteenVoter
@@ -16,11 +12,15 @@ namespace CanteenVoter
 
         private string cellMenueA,cellMenueB,cellMenueC,cellMenueD;
         private bool dayLabel_ChangeLoc = false;
+
         public MenueList()
         {
             InitializeComponent();
             InitializeEvents();
         }
+
+
+        #region InitializeEvents
         private void InitializeEvents()
         {
 
@@ -83,13 +83,9 @@ namespace CanteenVoter
                 txMenueA.Text = "Menü A: Neues Gericht...";
         }
 
-       
+        #endregion
 
-     
 
-       
-
-      
         private void MenueList_Load(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
@@ -120,6 +116,7 @@ namespace CanteenVoter
             EnableDoubleBuffering();
         }
     
+
         private DataTable GetdataMenu()
         {
             Datenbank db = new Datenbank();
@@ -155,6 +152,8 @@ namespace CanteenVoter
             true);
             UpdateStyles();
         }
+
+
         private void AdminPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
             // --- CODE IST NICHT VON MIR ---
@@ -172,6 +171,7 @@ namespace CanteenVoter
             }
         }
 
+
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -187,6 +187,8 @@ namespace CanteenVoter
                 AlertClass.Show("Es können nur Reihen markiert werden!", Alert.enmType.Info);
             }
         }
+
+
         public void SqlInsert()
         {
             Datenbank db = new Datenbank();
@@ -231,16 +233,6 @@ namespace CanteenVoter
         }
 
 
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            SqlInsert();
-        }
-
-        private void lbClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnInformation_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Zum ändern von Gerichten:\n" +
@@ -250,6 +242,7 @@ namespace CanteenVoter
                             "editierte kann hinzugefügt werden",
                             "Ändern von bereits existierenden Gerichten");
         }
+
 
         public void SqlDelete(string id)
         {
@@ -275,6 +268,8 @@ namespace CanteenVoter
                 AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Warning);
             }
         }
+
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Sollen diese Gerichte wirklich gelöscht werden?",
@@ -292,9 +287,17 @@ namespace CanteenVoter
                 txMenueA.Text = cellMenueA;
                 txMenueB.Text = cellMenueB;
                 txMenueC.Text = cellMenueC;
-                txMenueD.Text = cellMenueD;
-               
-           
+                txMenueD.Text = cellMenueD; 
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            SqlInsert();
+        }
+
+        private void lbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

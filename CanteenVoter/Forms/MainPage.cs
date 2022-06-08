@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CanteenVoter
@@ -40,7 +39,7 @@ namespace CanteenVoter
             // welcher Benutzername als Admin in Frage kommt.
             // Mit Sicherheit, nicht die sicherste.
             //
-            if (getUsername == "ShiiikK" || getUsername == "AndreasK")
+            if (getUsername == "ShiiikK" || getUsername == "Admin")
             {
                 btnAdminPanel.Visible = true;
             }
