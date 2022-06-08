@@ -127,6 +127,13 @@ namespace CanteenVoter
                     txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
                     SetEmptyTextBoxes();
                 }
+                if(txMondayI.Text == String.Empty)
+                {
+                    Introducing introducing = new Introducing();
+                    introducing.TopMost = true;
+                    introducing.Show();
+                   
+                }
             }
             catch (MySqlException ex)
             {
