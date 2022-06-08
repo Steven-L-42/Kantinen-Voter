@@ -41,6 +41,7 @@
             this.dateBorn = new System.Windows.Forms.DateTimePicker();
             this.lbClose = new System.Windows.Forms.Label();
             this.btnYourPlan = new System.Windows.Forms.Button();
+            this.ACPToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
             this.SuspendLayout();
             // 
             // btnDecline
@@ -56,6 +57,7 @@
             this.btnDecline.Size = new System.Drawing.Size(99, 31);
             this.btnDecline.TabIndex = 7;
             this.btnDecline.Text = "Abbrechen";
+            this.ACPToolTip.SetToolTip(this.btnDecline, "Bricht ab und schließt das Fenster.");
             this.btnDecline.UseVisualStyleBackColor = false;
             this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
             // 
@@ -72,6 +74,8 @@
             this.btnSave.Size = new System.Drawing.Size(99, 31);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Speichern";
+            this.ACPToolTip.SetToolTip(this.btnSave, "Vor dem Speichern alle\r\nEingabefelder erneut checken. \r\n\r\nÄnderungen sind nur im " +
+        "\r\nAllergenen Feld möglich.");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -84,6 +88,8 @@
             this.txFirstName.Name = "txFirstName";
             this.txFirstName.Size = new System.Drawing.Size(207, 23);
             this.txFirstName.TabIndex = 1;
+            this.ACPToolTip.SetToolTip(this.txFirstName, "Gib deinen Vorname an.\r\n\r\nSoltest du einen Doppelnamen besitzen,\r\nso schreibe ihn" +
+        " mit einem Bindestrich.\r\n\r\nBsp.: Steven-Heiko\r\n");
             // 
             // txSurname
             // 
@@ -94,6 +100,8 @@
             this.txSurname.Name = "txSurname";
             this.txSurname.Size = new System.Drawing.Size(207, 23);
             this.txSurname.TabIndex = 2;
+            this.ACPToolTip.SetToolTip(this.txSurname, "Gib deinen Nachname an.\r\n\r\nSoltest du einen Doppelnamen besitzen,\r\nso schreibe ih" +
+        "n mit einem Bindestrich.");
             // 
             // txAllergic
             // 
@@ -105,6 +113,8 @@
             this.txAllergic.Size = new System.Drawing.Size(207, 63);
             this.txAllergic.TabIndex = 4;
             this.txAllergic.Text = "";
+            this.ACPToolTip.SetToolTip(this.txAllergic, "Die Angaben deiner Allergene,\r\nhilft uns noch besser auf\r\ndein Speisewunsch einzu" +
+        "gehen.");
             // 
             // label1
             // 
@@ -163,6 +173,8 @@
             this.dateBorn.Name = "dateBorn";
             this.dateBorn.Size = new System.Drawing.Size(99, 23);
             this.dateBorn.TabIndex = 3;
+            this.ACPToolTip.SetToolTip(this.dateBorn, "Gib dein Geburtsdatum an.\r\n\r\nNutze dazu die Dropdown \r\nmöglichkeit um dein korrek" +
+        "tes\r\nDatum zu erfassen.\r\n\r\nAlternativ kann auch manuell\r\ngetippt werden.\r\n");
             this.dateBorn.Value = new System.DateTime(2022, 5, 31, 0, 0, 0, 0);
             // 
             // lbClose
@@ -194,8 +206,16 @@
             this.btnYourPlan.Size = new System.Drawing.Size(99, 56);
             this.btnYourPlan.TabIndex = 6;
             this.btnYourPlan.Text = "Persönlicher\r\nSpeiseplan";
+            this.ACPToolTip.SetToolTip(this.btnYourPlan, "Um deinen Persönlichen Speiseplan\r\nzu erhalten, müssen vorher 6 Menüs\r\nausgewählt" +
+        " und dein Vorname\r\nsowie Nachname angeben sein.");
             this.btnYourPlan.UseVisualStyleBackColor = false;
             this.btnYourPlan.Click += new System.EventHandler(this.btnYourPlan_Click);
+            // 
+            // ACPToolTip
+            // 
+            this.ACPToolTip.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
+            this.ACPToolTip.StyleManager = null;
+            this.ACPToolTip.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Default;
             // 
             // UserAcp
             // 
@@ -245,5 +265,6 @@
         private System.Windows.Forms.DateTimePicker dateBorn;
         private System.Windows.Forms.Label lbClose;
         private System.Windows.Forms.Button btnYourPlan;
+        private ReaLTaiizor.Controls.PoisonToolTip ACPToolTip;
     }
 }

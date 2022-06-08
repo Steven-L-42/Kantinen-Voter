@@ -98,10 +98,10 @@ namespace CanteenVoter
              
                 txFirstName.Enabled = false;
                 txSurname.Enabled = false;
-                txAllergic.Enabled = false;
+               // txAllergic.Enabled = false;
                 dateBorn.Enabled = false;
-                btnSave.Enabled = false;
-                btnSave.BackColor = Color.LightGray;
+                //btnSave.Enabled = false;
+                //btnSave.BackColor = Color.LightGray;
             }
         }
 
@@ -162,7 +162,7 @@ namespace CanteenVoter
                 txFirstName.Text = txFirstName.Text.Trim().Split()[0];
                 txSurname.Text = txSurname.Text.Trim().Split()[0];
                 var confirmResult = MessageBox.Show("Sind alle Angaben richtig?\n\n" +
-                                                    "Du kannst Sie später 'nicht' mehr ändern!",
+                                                    "Du kannst später 'nur' das Allergenen Feld ändern!",
                                                     "Speichervorgang bestätigen!", MessageBoxButtons.YesNo, 
                                                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
@@ -193,10 +193,10 @@ namespace CanteenVoter
                         {
                             txFirstName.Enabled = false;
                             txSurname.Enabled = false;
-                            txAllergic.Enabled = false;
+                           // txAllergic.Enabled = false;
                             dateBorn.Enabled = false;
-                            btnSave.Enabled = false;
-                            btnSave.BackColor = Color.LightGray;
+                           // btnSave.Enabled = false;
+                           // btnSave.BackColor = Color.LightGray;
                             btnYourPlan.BackColor = Color.GhostWhite;
 
                             AlertClass.Show("Account Daten wurde aktualisiert!", Alert.enmType.Success);

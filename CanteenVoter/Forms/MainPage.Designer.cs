@@ -75,6 +75,7 @@
             this.lbThu = new System.Windows.Forms.Label();
             this.lbMo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.MainToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
@@ -218,7 +219,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 613);
+            this.dataMenu.Size = new System.Drawing.Size(972, 612);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -261,7 +262,7 @@
             this.MainSplit.Panel2.Controls.Add(this.label1);
             this.MainSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             this.MainSplit.Size = new System.Drawing.Size(972, 727);
-            this.MainSplit.SplitterDistance = 613;
+            this.MainSplit.SplitterDistance = 612;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -584,6 +585,8 @@
             this.btnUpdate.Size = new System.Drawing.Size(117, 28);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "&Aktualisieren";
+            this.MainToolTip.SetToolTip(this.btnUpdate, "Du kannst die Tabelle aktualisieren,\r\ndas hat keinen Effekt auf bereits\r\ngewählte" +
+        " Menüs!");
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -601,6 +604,8 @@
             this.btnMyAccount.Size = new System.Drawing.Size(117, 39);
             this.btnMyAccount.TabIndex = 2;
             this.btnMyAccount.Text = "&Mein Konto";
+            this.MainToolTip.SetToolTip(this.btnMyAccount, "Hier findest du die möglichkeit\r\ndeinen persönlichen Speiseplan\r\nals Bild herunte" +
+        "rzuladen.");
             this.btnMyAccount.UseVisualStyleBackColor = false;
             this.btnMyAccount.Click += new System.EventHandler(this.btnMyAccount_Click);
             // 
@@ -631,6 +636,7 @@
             this.lbClose.TabIndex = 99;
             this.lbClose.Text = "LOGOUT";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MainToolTip.SetToolTip(this.lbClose, "Meldet dich ab.");
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
             // 
             // MainPageHeader
@@ -671,6 +677,7 @@
             this.btnAdminPanel.TabIndex = 27;
             this.btnAdminPanel.Text = "> ADMI&N";
             this.btnAdminPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.MainToolTip.SetToolTip(this.btnAdminPanel, "Administrativer Zugang");
             this.btnAdminPanel.UseVisualStyleBackColor = false;
             this.btnAdminPanel.Visible = false;
             this.btnAdminPanel.Click += new System.EventHandler(this.lbAdminPanel_Click);
@@ -776,6 +783,12 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             // 
+            // MainToolTip
+            // 
+            this.MainToolTip.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
+            this.MainToolTip.StyleManager = null;
+            this.MainToolTip.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Default;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -855,6 +868,7 @@
         internal System.Windows.Forms.Label lbNameI;
         private ReaLTaiizor.Controls.SpaceSeparatorVertical spaceSeparatorVertical1;
         private System.Windows.Forms.Label label17;
+        private ReaLTaiizor.Controls.PoisonToolTip MainToolTip;
     }
 }
 

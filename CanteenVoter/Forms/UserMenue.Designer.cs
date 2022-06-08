@@ -40,9 +40,13 @@
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
             this.dataMenu = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.MenueToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
+            this.label1 = new System.Windows.Forms.Label();
             this.AdminPageHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
             this.AdminSplit.Panel1.SuspendLayout();
+            this.AdminSplit.Panel2.SuspendLayout();
             this.AdminSplit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             this.SuspendLayout();
@@ -176,11 +180,11 @@
             this.lbAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lbAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lbAdminPanel.Location = new System.Drawing.Point(428, 5);
+            this.lbAdminPanel.Location = new System.Drawing.Point(403, 4);
             this.lbAdminPanel.Name = "lbAdminPanel";
-            this.lbAdminPanel.Size = new System.Drawing.Size(120, 25);
+            this.lbAdminPanel.Size = new System.Drawing.Size(173, 25);
             this.lbAdminPanel.TabIndex = 21;
-            this.lbAdminPanel.Text = "Menü-Panel";
+            this.lbAdminPanel.Text = "Menüs der Nutzer";
             this.lbAdminPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbAdminPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
@@ -201,9 +205,11 @@
             // 
             this.AdminSplit.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.AdminSplit.Panel2.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
+            this.AdminSplit.Panel2.Controls.Add(this.label1);
+            this.AdminSplit.Panel2.Controls.Add(this.btnExport);
             this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 567);
-            this.AdminSplit.SplitterDistance = 535;
+            this.AdminSplit.SplitterDistance = 529;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 22;
             this.AdminSplit.TabStop = false;
@@ -232,10 +238,45 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 535);
+            this.dataMenu.Size = new System.Drawing.Size(972, 529);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
-            this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.Location = new System.Drawing.Point(833, 2);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(5);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(138, 25);
+            this.btnExport.TabIndex = 102;
+            this.btnExport.Text = "&Export to PDF";
+            this.MenueToolTip.SetToolTip(this.btnExport, "Exportiert die Tabelle in eine PDF Datei\r\n(Experimental)");
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // MenueToolTip
+            // 
+            this.MenueToolTip.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
+            this.MenueToolTip.StyleManager = null;
+            this.MenueToolTip.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Default;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(200, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(534, 17);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Diese Ansicht dient nur der Übersicht: Welcher Nutzer wünscht aktuell welches Men" +
+    "ü";
             // 
             // UserMenue
             // 
@@ -257,6 +298,8 @@
             this.AdminPageHeader.ResumeLayout(false);
             this.AdminPageHeader.PerformLayout();
             this.AdminSplit.Panel1.ResumeLayout(false);
+            this.AdminSplit.Panel2.ResumeLayout(false);
+            this.AdminSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).EndInit();
             this.AdminSplit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).EndInit();
@@ -278,5 +321,8 @@
         private System.Windows.Forms.Label lbAdminPanel;
         private System.Windows.Forms.SplitContainer AdminSplit;
         private System.Windows.Forms.DataGridView dataMenu;
+        private System.Windows.Forms.Button btnExport;
+        private ReaLTaiizor.Controls.PoisonToolTip MenueToolTip;
+        private System.Windows.Forms.Label label1;
     }
 }

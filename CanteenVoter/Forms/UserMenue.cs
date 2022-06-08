@@ -1,7 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +19,7 @@ namespace CanteenVoter
         {
             InitializeComponent();
         }
+
 
         private void AdminPageHeader_MouseDown(object sender, MouseEventArgs e)
         {
@@ -33,6 +37,7 @@ namespace CanteenVoter
                 MoveWindow.HT_CAPTION, 0);
             }
         }
+
 
         private void UserMenue_Load(object sender, EventArgs e)
         {
@@ -62,6 +67,8 @@ namespace CanteenVoter
 
             EnableDoubleBuffering();
         }
+
+
         private DataTable GetdataMenu()
         {
             Datenbank db = new Datenbank();
@@ -69,17 +76,14 @@ namespace CanteenVoter
             using (MySqlDataAdapter adapter = new MySqlDataAdapter())
             {
  
-
+                // Die Besonderheit ist hier das ich CONCAT nutze um 2 verschiedene Tabellen in einer Zelle zusammen zuführen.
+                // Dabei werden die die Spalten mit einem Tabellenkürzel versehen welchen ich zum schluss dann definiert habe.
+                // Mit 'INNER JOIN' werden dann letztendlich die beiden Tabellen beieinandner geführt.
+                //
                 using (MySqlCommand command = new MySqlCommand("SELECT CONCAT(us.Benutzername,'\n',us.Vorname,' ',us.Nachname), me.MontagGericht, me.DienstagGericht, " +
                                   "me.MittwochGericht, me.DonnerstagGericht, me.FreitagGericht, " +
                                   "me.SamstagGericht FROM UserTable us INNER JOIN UserMenueTable me " +
                                   "ON me.Benutzername= us.Benutzername", db.getConnection()))
-
-
-
-                    //"SELECT CONCAT(`Vorname`,' ',`Nachname`) as Benutzername FROM UserTable;" +
-                    //"SELECT `Benutzername`,`MontagGericht`, `DienstagGericht`,`MittwochGericht`,`DonnerstagGericht`," +
-                    //"`FreitagGericht`,`SamstagGericht` FROM UserMenueTable", db.getConnection()))
                 {
               
                     db.openConnection();
@@ -107,17 +111,6 @@ namespace CanteenVoter
             UpdateStyles();
         }
 
-        private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-               // cellID = dataMenu.Rows[e.RowIndex].Cells["Menues"].Value as string;
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                AlertClass.Show("Es können nur Reihen markiert werden!", Alert.enmType.Info);
-            }
-        }
 
         private void lbClose_Click(object sender, EventArgs e)
         {
@@ -128,6 +121,84 @@ namespace CanteenVoter
                 
             }
             this.Close();
+        }
+
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+
+            if (dataMenu.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Ausgewählte Menüs "+DateTime.Now.ToString("[dd-MM-yyyy]")+".pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            AlertClass.Show("Der Speicher-/ Schreibevorgang\n" +
+                                            "war nicht erfolgreich!", Alert.enmType.Error);
+                  
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataMenu.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            //foreach (DataGridViewColumn column in dataMenu.Columns)
+                            //{
+                            //    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                            //    pdfTable.AddCell(cell);
+                            //}
+
+                            foreach (DataGridViewRow row in dataMenu.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(cell.Value.ToString());
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+                            AlertClass.Show("PDF wurde erfolgreich erstellt\n" +
+                                            "und gesichert.", Alert.enmType.Success);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                AlertClass.Show("Es konnten keine Daten\n" +
+                                "gefunden werden!", Alert.enmType.Info);
+             
+            }
         }
     }
 }

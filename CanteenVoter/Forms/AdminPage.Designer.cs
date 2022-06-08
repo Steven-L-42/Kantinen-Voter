@@ -52,6 +52,8 @@
             this.lbMo = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AdminToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
             this.AdminSplit.Panel1.SuspendLayout();
@@ -84,7 +86,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 616);
+            this.dataMenu.Size = new System.Drawing.Size(972, 613);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -107,19 +109,20 @@
             // 
             this.AdminSplit.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.AdminSplit.Panel2.BackgroundImage = global::CanteenVoter.Properties.Resources.background;
+            this.AdminSplit.Panel2.Controls.Add(this.cmbThursday);
+            this.AdminSplit.Panel2.Controls.Add(this.cmbMonday);
+            this.AdminSplit.Panel2.Controls.Add(this.label1);
             this.AdminSplit.Panel2.Controls.Add(this.cmbSaturday);
             this.AdminSplit.Panel2.Controls.Add(this.cmbFriday);
-            this.AdminSplit.Panel2.Controls.Add(this.cmbThursday);
             this.AdminSplit.Panel2.Controls.Add(this.cmbWednesday);
             this.AdminSplit.Panel2.Controls.Add(this.cmbTuesday);
-            this.AdminSplit.Panel2.Controls.Add(this.cmbMonday);
             this.AdminSplit.Panel2.Controls.Add(this.btnMenueList);
             this.AdminSplit.Panel2.Controls.Add(this.cmbMenue);
             this.AdminSplit.Panel2.Controls.Add(this.btnInsert);
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
             this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 767);
-            this.AdminSplit.SplitterDistance = 616;
+            this.AdminSplit.SplitterDistance = 613;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
@@ -134,13 +137,14 @@
             this.cmbSaturday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbSaturday.ForeColor = System.Drawing.Color.Black;
             this.cmbSaturday.FormattingEnabled = true;
+            this.cmbSaturday.IntegralHeight = false;
             this.cmbSaturday.ItemHeight = 58;
             this.cmbSaturday.Location = new System.Drawing.Point(577, 76);
             this.cmbSaturday.MaxDropDownItems = 32;
             this.cmbSaturday.Name = "cmbSaturday";
             this.cmbSaturday.Size = new System.Drawing.Size(204, 64);
             this.cmbSaturday.TabIndex = 16;
-            this.cmbSaturday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbSaturday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbSaturday_DrawItem);
             this.cmbSaturday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // cmbFriday
@@ -153,13 +157,14 @@
             this.cmbFriday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFriday.ForeColor = System.Drawing.Color.Black;
             this.cmbFriday.FormattingEnabled = true;
+            this.cmbFriday.IntegralHeight = false;
             this.cmbFriday.ItemHeight = 58;
             this.cmbFriday.Location = new System.Drawing.Point(367, 76);
             this.cmbFriday.MaxDropDownItems = 32;
             this.cmbFriday.Name = "cmbFriday";
             this.cmbFriday.Size = new System.Drawing.Size(204, 64);
             this.cmbFriday.TabIndex = 15;
-            this.cmbFriday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbFriday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbFriday_DrawItem);
             this.cmbFriday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // cmbThursday
@@ -172,13 +177,14 @@
             this.cmbThursday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbThursday.ForeColor = System.Drawing.Color.Black;
             this.cmbThursday.FormattingEnabled = true;
+            this.cmbThursday.IntegralHeight = false;
             this.cmbThursday.ItemHeight = 58;
             this.cmbThursday.Location = new System.Drawing.Point(157, 75);
             this.cmbThursday.MaxDropDownItems = 32;
             this.cmbThursday.Name = "cmbThursday";
             this.cmbThursday.Size = new System.Drawing.Size(204, 64);
             this.cmbThursday.TabIndex = 14;
-            this.cmbThursday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbThursday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbThursday_DrawItem);
             this.cmbThursday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // cmbWednesday
@@ -191,13 +197,14 @@
             this.cmbWednesday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbWednesday.ForeColor = System.Drawing.Color.Black;
             this.cmbWednesday.FormattingEnabled = true;
+            this.cmbWednesday.IntegralHeight = false;
             this.cmbWednesday.ItemHeight = 58;
             this.cmbWednesday.Location = new System.Drawing.Point(577, 6);
             this.cmbWednesday.MaxDropDownItems = 32;
             this.cmbWednesday.Name = "cmbWednesday";
             this.cmbWednesday.Size = new System.Drawing.Size(204, 64);
             this.cmbWednesday.TabIndex = 13;
-            this.cmbWednesday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbWednesday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbWednesday_DrawItem);
             this.cmbWednesday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // cmbTuesday
@@ -210,13 +217,14 @@
             this.cmbTuesday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTuesday.ForeColor = System.Drawing.Color.Black;
             this.cmbTuesday.FormattingEnabled = true;
+            this.cmbTuesday.IntegralHeight = false;
             this.cmbTuesday.ItemHeight = 58;
             this.cmbTuesday.Location = new System.Drawing.Point(367, 6);
             this.cmbTuesday.MaxDropDownItems = 32;
             this.cmbTuesday.Name = "cmbTuesday";
             this.cmbTuesday.Size = new System.Drawing.Size(204, 64);
             this.cmbTuesday.TabIndex = 12;
-            this.cmbTuesday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbTuesday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbTuesday_DrawItem);
             this.cmbTuesday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // cmbMonday
@@ -229,6 +237,7 @@
             this.cmbMonday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMonday.ForeColor = System.Drawing.Color.Black;
             this.cmbMonday.FormattingEnabled = true;
+            this.cmbMonday.IntegralHeight = false;
             this.cmbMonday.ItemHeight = 58;
             this.cmbMonday.Location = new System.Drawing.Point(157, 6);
             this.cmbMonday.MaxDropDownItems = 32;
@@ -251,7 +260,8 @@
             this.btnMenueList.Name = "btnMenueList";
             this.btnMenueList.Size = new System.Drawing.Size(136, 36);
             this.btnMenueList.TabIndex = 10;
-            this.btnMenueList.Text = "&MenüListe";
+            this.btnMenueList.Text = "&Menü Auswahl";
+            this.AdminToolTip.SetToolTip(this.btnMenueList, "Hier kannst du für jedes Menü\r\neigene Gerichte erstellen.");
             this.btnMenueList.UseVisualStyleBackColor = false;
             this.btnMenueList.Click += new System.EventHandler(this.btnMenueList_Click);
             // 
@@ -283,12 +293,14 @@
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsert.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsert.ForeColor = System.Drawing.Color.Black;
-            this.btnInsert.Location = new System.Drawing.Point(807, 20);
+            this.btnInsert.Location = new System.Drawing.Point(808, 45);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(5);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(136, 36);
             this.btnInsert.TabIndex = 8;
             this.btnInsert.Text = "&Hinzufügen";
+            this.AdminToolTip.SetToolTip(this.btnInsert, "Vor dem hinzufügen sicher sein\r\ndas alle Felder wie gewünscht\r\nausgewählt wurden." +
+        "");
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -300,12 +312,13 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(807, 86);
+            this.btnDelete.Location = new System.Drawing.Point(808, 97);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(136, 36);
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "&Löschen";
+            this.AdminToolTip.SetToolTip(this.btnDelete, "Das löschen ist nicht umkehrbar.");
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -344,9 +357,10 @@
             this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
             this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdminPanel.Name = "btnAdminPanel";
-            this.btnAdminPanel.Size = new System.Drawing.Size(85, 29);
+            this.btnAdminPanel.Size = new System.Drawing.Size(198, 29);
             this.btnAdminPanel.TabIndex = 100;
-            this.btnAdminPanel.Text = "> MENÜ&S";
+            this.btnAdminPanel.Text = "> AUSGEWÄHLTE MENÜ&S";
+            this.AdminToolTip.SetToolTip(this.btnAdminPanel, "Hier gelangst du zu den von \r\nNutzer ausgewählten Menüs.");
             this.btnAdminPanel.UseVisualStyleBackColor = false;
             this.btnAdminPanel.Click += new System.EventHandler(this.btnAdminPanel_Click);
             // 
@@ -443,11 +457,11 @@
             this.lbAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lbAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lbAdminPanel.Location = new System.Drawing.Point(420, 5);
+            this.lbAdminPanel.Location = new System.Drawing.Point(387, 5);
             this.lbAdminPanel.Name = "lbAdminPanel";
-            this.lbAdminPanel.Size = new System.Drawing.Size(127, 25);
+            this.lbAdminPanel.Size = new System.Drawing.Size(229, 25);
             this.lbAdminPanel.TabIndex = 21;
-            this.lbAdminPanel.Text = "Admin-Panel";
+            this.lbAdminPanel.Text = "Kreiere einen Speiseplan";
             this.lbAdminPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbAdminPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             // 
@@ -466,6 +480,23 @@
             this.lbClose.Text = "X";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(785, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 30);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Erstelle hier den Speiseplan\r\nfür eine ganze Woche.";
+            // 
+            // AdminToolTip
+            // 
+            this.AdminToolTip.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
+            this.AdminToolTip.StyleManager = null;
+            this.AdminToolTip.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Default;
             // 
             // AdminPage
             // 
@@ -488,6 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).EndInit();
             this.AdminSplit.Panel1.ResumeLayout(false);
             this.AdminSplit.Panel2.ResumeLayout(false);
+            this.AdminSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).EndInit();
             this.AdminSplit.ResumeLayout(false);
             this.AdminPageHeader.ResumeLayout(false);
@@ -521,5 +553,7 @@
         private System.Windows.Forms.ComboBox cmbWednesday;
         private System.Windows.Forms.ComboBox cmbTuesday;
         private System.Windows.Forms.ComboBox cmbMonday;
+        private System.Windows.Forms.Label label1;
+        private ReaLTaiizor.Controls.PoisonToolTip AdminToolTip;
     }
 }

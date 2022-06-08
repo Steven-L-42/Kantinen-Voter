@@ -13,7 +13,8 @@ namespace CanteenVoter
 {
     public partial class MenueList : Form
     {
-        private string cellText;
+
+        private string cellMenueA,cellMenueB,cellMenueC,cellMenueD;
         private bool dayLabel_ChangeLoc = false;
         public MenueList()
         {
@@ -175,7 +176,11 @@ namespace CanteenVoter
         {
             try
             {
-                cellText = dataMenu.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as string;
+               cellMenueA = dataMenu.Rows[e.RowIndex].Cells[0].Value as string;
+                cellMenueB = dataMenu.Rows[e.RowIndex].Cells[1].Value as string;
+                cellMenueC = dataMenu.Rows[e.RowIndex].Cells[2].Value as string;
+                cellMenueD = dataMenu.Rows[e.RowIndex].Cells[3].Value as string;
+                //cellText = dataMenu.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as string;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -203,13 +208,13 @@ namespace CanteenVoter
                 //
                 if (command.ExecuteNonQuery() == 1)
                 {
-                    AlertClass.Show("Menü wurde hinzugefügt", Alert.enmType.Success);
+                    AlertClass.Show("Gerichte wurden hinzugefügt", Alert.enmType.Success);
                     dataMenu.DataSource = GetdataMenu();
                     dataMenu.ClearSelection();
                 }
                 else
                 {
-                    AlertClass.Show("Fehler beim hinzufügen des Menüs!", Alert.enmType.Error);
+                    AlertClass.Show("Fehler beim hinzufügen der Gerichte!", Alert.enmType.Error);
                     dataMenu.DataSource = GetdataMenu();
                     dataMenu.ClearSelection();
                 }
@@ -236,6 +241,60 @@ namespace CanteenVoter
             this.Close();
         }
 
-       
+        private void btnInformation_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Zum ändern von Gerichten:\n" +
+                            "Doppel Klick auf die Zeile, alle Daten werden dann\n" +
+                            "auf das Eingabefeld übernommen.\n\n" +
+                            "Anschließend kann die Zeile gelöscht und die neu\n" +
+                            "editierte kann hinzugefügt werden",
+                            "Ändern von bereits existierenden Gerichten");
+        }
+
+        public void SqlDelete(string id)
+        {
+            try
+            {
+                Datenbank db = new Datenbank();
+                db.openConnection();
+                try
+                {
+                    MySqlCommand command = new MySqlCommand("DELETE FROM `MenuesTable` WHERE `Menü A` = '" + id + "'", db.getConnection());
+                    command.ExecuteNonQuery();
+                    dataMenu.DataSource = GetdataMenu();
+                    dataMenu.ClearSelection();
+                }
+                finally
+                {
+                    db.closeConnection();
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Warning);
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Sollen diese Gerichte wirklich gelöscht werden?",
+                                               "Löschvorgang bestätigen!", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                SqlDelete(cellMenueA);
+            }
+        }
+
+        private void dataMenu_DoubleClick(object sender, EventArgs e)
+        {
+           
+                txMenueA.Text = cellMenueA;
+                txMenueB.Text = cellMenueB;
+                txMenueC.Text = cellMenueC;
+                txMenueD.Text = cellMenueD;
+               
+           
+        }
     }
 }

@@ -15,104 +15,8 @@ namespace CanteenVoter
         public AdminPage()
         {
             InitializeComponent();
-            //InitializeEvents();
+           
         }
-
-
-        //#region InitializeEvents
-        //private void InitializeEvents()
-        //{
-
-        //    txMonday.GotFocus += TxMonday_GotFocus;
-        //    txMonday.LostFocus += TxMonday_LostFocus;
-        //    txTuesday.GotFocus += TxTuesday_GotFocus;
-        //    txTuesday.LostFocus += TxTuesday_LostFocus;
-        //    txWednesday.GotFocus += TxWednesday_GotFocus;
-        //    txWednesday.LostFocus += TxWednesday_LostFocus;
-        //    txThursday.GotFocus += TxThursday_GotFocus;
-        //    txThursday.LostFocus += TxThursday_LostFocus;
-        //    txFriday.GotFocus += TxFriday_GotFocus;
-        //    txFriday.LostFocus += TxFriday_LostFocus;
-        //    txSuturday.GotFocus += TxSuturday_GotFocus;
-        //    txSuturday.LostFocus += TxSuturday_LostFocus;
-        //}
-
-        //// Got Focus soll die RichTextBox Clearen wenn sie den Focus hat
-        //// und exakt den Text enthält der im If Statement gefordert wird
-        ////
-        //// Lost Focus macht exakt das Gegenteil, wenn Sie den Focus verliert
-        //// und die RichTextBox leer ist, wird sie mit ihren vorbestimmten Text befüllt.
-        ////
-        //private void TxFriday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txFriday.Text == "FREITAG")
-        //        txFriday.Text = String.Empty;
-        //}
-
-        //private void TxFriday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txFriday.Text == String.Empty)
-        //        txFriday.Text = "FREITAG";
-        //}
-
-        //private void TxMonday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txMonday.Text == "MONTAG")
-        //        txMonday.Text = String.Empty;
-        //}
-
-        //private void TxMonday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txMonday.Text == String.Empty)
-        //        txMonday.Text = "MONTAG";
-        //}
-
-        //private void TxSuturday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txSuturday.Text == "SAMSTAG")
-        //        txSuturday.Text = String.Empty;
-        //}
-
-        //private void TxSuturday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txSuturday.Text == String.Empty)
-        //        txSuturday.Text = "SAMSTAG";
-        //}
-        //private void TxThursday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txThursday.Text == "DONNERSTAG")
-        //        txThursday.Text = String.Empty;
-        //}
-
-        //private void TxThursday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txThursday.Text == String.Empty)
-        //        txThursday.Text = "DONNERSTAG";
-        //}
-        //private void TxTuesday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txTuesday.Text == "DIENSTAG")
-        //        txTuesday.Text = String.Empty;
-        //}
-
-        //private void TxTuesday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txTuesday.Text == String.Empty)
-        //        txTuesday.Text = "DIENSTAG";
-        //}
-
-        //private void TxWednesday_GotFocus(object sender, EventArgs e)
-        //{
-        //    if (txWednesday.Text == "MITTWOCH")
-        //        txWednesday.Text = String.Empty;
-        //}
-
-        //private void TxWednesday_LostFocus(object sender, EventArgs e)
-        //{
-        //    if (txWednesday.Text == String.Empty)
-        //        txWednesday.Text = "MITTWOCH";
-        //}
-        //#endregion InitializeEvents
 
 
         private void AdminPage_Load(object sender, EventArgs e)
@@ -139,8 +43,10 @@ namespace CanteenVoter
                                 "(Gluten-/Lak.- Frei)");
             cmbMenue.SelectedIndex = 0;
 
+           
 
             resetDayCmb();
+            setDefaultCmb();
             setIndexDayCmb(0);
 
             // Sollte ScrollBar erscheinen werden die label diese die Tage anzeigen,
@@ -163,9 +69,11 @@ namespace CanteenVoter
             EnableDoubleBuffering();
         }
 
+     
 
         private DataTable GetdataMenu()
         {
+
             Datenbank db = new Datenbank();
             DataTable table = new DataTable();
             using (MySqlDataAdapter adapter = new MySqlDataAdapter())
@@ -299,6 +207,71 @@ namespace CanteenVoter
         }
 
 
+        private void changeMenues()
+        {
+            if (cmbMenue.Text == "Menü wählen...")
+            {
+                resetDayCmb();
+                setDefaultCmb();
+                setIndexDayCmb(0);
+            }
+            else
+            {
+
+                // Hier werden alle TextBoxen und der
+                // DateTimePicker mit den Daten aus der Datenbank befüllt.
+                //
+                Datenbank db = new Datenbank();
+                MySqlDataAdapter da;
+                int cmbMenueIndex = cmbMenue.SelectedIndex - 1;
+                // Öffnet die DB Verbindung
+                //
+
+                try
+                {
+                    // Wähle 'Alle' Einträge von meiner UserTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
+                    //
+
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT `Menü A`,`Menü B`,`Menü C`,`Menü D` FROM MenuesTable", db.getConnection()))
+                    {
+                        db.openConnection();
+                        da = new MySqlDataAdapter(cmd);
+
+                        DataSet ds = new DataSet();
+
+                        da.Fill(ds);
+                        resetDayCmb();
+                        setDayNameCmb();
+                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+
+                        {
+
+
+                            cmbMonday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+                            cmbTuesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+                            cmbWednesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+                            cmbThursday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+                            cmbFriday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+                            cmbSaturday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
+
+
+                        }
+                        setIndexDayCmb(0);
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
+                }
+                finally
+                {
+                    db.closeConnection();
+                }
+            }
+        }
+
+       
         private void btnInsert_Click(object sender, EventArgs e)
         {
             SqlInsert();
@@ -353,17 +326,6 @@ namespace CanteenVoter
         }
 
 
-        private void lbClose_Click(object sender, EventArgs e)
-        {
-            Form mainPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "MainPage").FirstOrDefault();
-            if (null != mainPageO)
-            {
-                mainPageO.Show();
-
-            }
-            this.Close();
-        }
-
         private void cmbMenue_DrawItem(object sender, DrawItemEventArgs e)
         {
             try
@@ -389,6 +351,8 @@ namespace CanteenVoter
 
             }
         }
+
+
         private void cmbMonday_DrawItem(object sender, DrawItemEventArgs e)
         {
             try
@@ -417,17 +381,148 @@ namespace CanteenVoter
             }
         }
 
-        private void cmbMenue_MeasureItem(object sender, MeasureItemEventArgs e)
+        private void cmbTuesday_DrawItem(object sender, DrawItemEventArgs e)
         {
-            e.ItemHeight = 40;
+            try
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle();
 
+                var combo = sender as ComboBox;
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                }
+
+                e.Graphics.DrawString(cmbTuesday.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+            }
         }
-        private void cmbMonday_MeasureItem(object sender, MeasureItemEventArgs e)
+
+        private void cmbWednesday_DrawItem(object sender, DrawItemEventArgs e)
         {
-            
-           e.ItemHeight = (int)e.Graphics.MeasureString(cmbMonday.Items[e.Index].ToString(), cmbMonday.Font, cmbMonday.Width).Height;
+            try
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle();
+
+                var combo = sender as ComboBox;
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                }
+
+                e.Graphics.DrawString(cmbWednesday.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+            }
         }
-     
+
+        private void cmbThursday_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            try
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle();
+
+                var combo = sender as ComboBox;
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                }
+
+                e.Graphics.DrawString(cmbThursday.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+            }
+        }
+
+        private void cmbFriday_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            try
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle();
+
+                var combo = sender as ComboBox;
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                }
+
+                e.Graphics.DrawString(cmbFriday.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+            }
+        }
+
+        private void cmbSaturday_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            try
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle();
+
+                var combo = sender as ComboBox;
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(SystemColors.Window), e.Bounds);
+                }
+
+                e.Graphics.DrawString(cmbSaturday.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+
+            }
+        }
+
+
+
         private void btnAdminPanel_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -455,72 +550,6 @@ namespace CanteenVoter
             menuList.Show();
         }
 
-        private void cmbMenue_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            changeMenues();
-        }
-       
-        private void changeMenues()
-        {
-            if (cmbMenue.Text == "Menü wählen...")
-            {
-                resetDayCmb();
-                setIndexDayCmb(0);
-            }
-            else
-            {
-
-                // Hier werden alle TextBoxen und der
-                // DateTimePicker mit den Daten aus der Datenbank befüllt.
-                //
-                Datenbank db = new Datenbank();
-                MySqlDataAdapter da;
-                int cmbMenueIndex = cmbMenue.SelectedIndex - 1;
-                // Öffnet die DB Verbindung
-                //
-
-                try
-                {
-                    // Wähle 'Alle' Einträge von meiner UserTable aus dessen Benutzername mit dem des Logins ubereinstimmt.
-                    //
-
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT `Menü A`,`Menü B`,`Menü C`,`Menü D` FROM MenuesTable", db.getConnection()))
-                    {
-                        db.openConnection();
-                        da = new MySqlDataAdapter(cmd);
-
-                        DataSet ds = new DataSet();
-
-                        da.Fill(ds);
-                        resetDayCmb();
-                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-
-                        {
-
-
-                            cmbMonday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            cmbTuesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            cmbWednesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            cmbThursday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            cmbFriday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            cmbSaturday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-                            
-
-                        }
-                        setIndexDayCmb(1);
-                    }
-
-                }
-                catch (MySqlException ex)
-                {
-                    AlertClass.Show("MySQL Verbindungsproblem!", Alert.enmType.Error);
-                }
-                finally
-                {
-                    db.closeConnection();
-                }
-            }
-        }
 
         private void resetDayCmb()
         {
@@ -530,24 +559,65 @@ namespace CanteenVoter
             cmbWednesday.Items.Clear();
             cmbTuesday.Items.Clear();
             cmbMonday.Items.Clear();
+        }
 
-            cmbMonday.Items.Add("Menü wählen...");
-            cmbTuesday.Items.Add("Menü wählen...");
-            cmbWednesday.Items.Add("Menü wählen...");
-            cmbThursday.Items.Add("Menü wählen...");
-            cmbFriday.Items.Add("Menü wählen...");
-            cmbSaturday.Items.Add("Menü wählen...");
-            
+        private void setDefaultCmb()
+        {
+            cmbMonday.Items.Add("Wähle zuerst ein\nMenü aus...");
+            cmbTuesday.Items.Add("Wähle zuerst ein\nMenü aus...");
+            cmbWednesday.Items.Add("Wähle zuerst ein\nMenü aus...");
+            cmbThursday.Items.Add("Wähle zuerst ein\nMenü aus...");
+            cmbFriday.Items.Add("Wähle zuerst ein\nMenü aus...");
+            cmbSaturday.Items.Add("Wähle zuerst ein\nMenü aus...");
+        }
+
+        private void setDayNameCmb()
+        {
+            cmbMonday.Items.Add("Montag auswählen...");
+            cmbTuesday.Items.Add("Dienstag auswählen...");
+            cmbWednesday.Items.Add("Mittwoch auswählen...");
+            cmbThursday.Items.Add("Donnerstag auswählen...");
+            cmbFriday.Items.Add("Freitag auswählen...");
+            cmbSaturday.Items.Add("Samstag auswählen...");
         }
 
         private void setIndexDayCmb(int index)
         {
             cmbSaturday.SelectedIndex =
-                            cmbFriday.SelectedIndex =
-                            cmbThursday.SelectedIndex =
-                            cmbWednesday.SelectedIndex =
-                            cmbTuesday.SelectedIndex =
-                            cmbMonday.SelectedIndex = index;
+            cmbFriday.SelectedIndex =
+            cmbThursday.SelectedIndex =
+            cmbWednesday.SelectedIndex =
+            cmbTuesday.SelectedIndex =
+            cmbMonday.SelectedIndex = index;
+        }
+
+
+        private void cmbMenue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changeMenues();
+        }
+
+        private void cmbMenue_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 40;
+
+        }
+        private void cmbMonday_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+
+            e.ItemHeight = (int)e.Graphics.MeasureString(cmbMonday.Items[e.Index].ToString(), cmbMonday.Font, cmbMonday.Width).Height;
+        }
+
+
+        private void lbClose_Click(object sender, EventArgs e)
+        {
+            Form mainPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "MainPage").FirstOrDefault();
+            if (null != mainPageO)
+            {
+                mainPageO.Show();
+
+            }
+            this.Close();
         }
     }
 }
