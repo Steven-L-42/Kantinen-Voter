@@ -219,7 +219,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 612);
+            this.dataMenu.Size = new System.Drawing.Size(972, 611);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -262,7 +262,7 @@
             this.MainSplit.Panel2.Controls.Add(this.label1);
             this.MainSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             this.MainSplit.Size = new System.Drawing.Size(972, 727);
-            this.MainSplit.SplitterDistance = 612;
+            this.MainSplit.SplitterDistance = 611;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -669,7 +669,7 @@
             this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.ForeColor = System.Drawing.Color.Coral;
             this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
             this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdminPanel.Name = "btnAdminPanel";

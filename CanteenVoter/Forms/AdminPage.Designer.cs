@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPage));
             this.dataMenu = new System.Windows.Forms.DataGridView();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
+            this.cmbThursday = new System.Windows.Forms.ComboBox();
+            this.cmbMonday = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbSaturday = new System.Windows.Forms.ComboBox();
             this.cmbFriday = new System.Windows.Forms.ComboBox();
-            this.cmbThursday = new System.Windows.Forms.ComboBox();
             this.cmbWednesday = new System.Windows.Forms.ComboBox();
             this.cmbTuesday = new System.Windows.Forms.ComboBox();
-            this.cmbMonday = new System.Windows.Forms.ComboBox();
             this.btnMenueList = new System.Windows.Forms.Button();
             this.cmbMenue = new System.Windows.Forms.ComboBox();
             this.btnInsert = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.lbMo = new System.Windows.Forms.Label();
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.lbClose = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.AdminToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.dataMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
@@ -86,7 +86,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 613);
+            this.dataMenu.Size = new System.Drawing.Size(972, 610);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -122,10 +122,61 @@
             this.AdminSplit.Panel2.Controls.Add(this.btnDelete);
             this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 767);
-            this.AdminSplit.SplitterDistance = 613;
+            this.AdminSplit.SplitterDistance = 610;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 5;
             this.AdminSplit.TabStop = false;
+            // 
+            // cmbThursday
+            // 
+            this.cmbThursday.BackColor = System.Drawing.Color.GhostWhite;
+            this.cmbThursday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbThursday.DropDownHeight = 205;
+            this.cmbThursday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbThursday.DropDownWidth = 170;
+            this.cmbThursday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbThursday.ForeColor = System.Drawing.Color.Black;
+            this.cmbThursday.FormattingEnabled = true;
+            this.cmbThursday.IntegralHeight = false;
+            this.cmbThursday.ItemHeight = 58;
+            this.cmbThursday.Location = new System.Drawing.Point(157, 75);
+            this.cmbThursday.MaxDropDownItems = 32;
+            this.cmbThursday.Name = "cmbThursday";
+            this.cmbThursday.Size = new System.Drawing.Size(204, 64);
+            this.cmbThursday.TabIndex = 14;
+            this.cmbThursday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbThursday_DrawItem);
+            this.cmbThursday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
+            // 
+            // cmbMonday
+            // 
+            this.cmbMonday.BackColor = System.Drawing.Color.GhostWhite;
+            this.cmbMonday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbMonday.DropDownHeight = 205;
+            this.cmbMonday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMonday.DropDownWidth = 170;
+            this.cmbMonday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbMonday.ForeColor = System.Drawing.Color.Black;
+            this.cmbMonday.FormattingEnabled = true;
+            this.cmbMonday.IntegralHeight = false;
+            this.cmbMonday.ItemHeight = 58;
+            this.cmbMonday.Location = new System.Drawing.Point(157, 6);
+            this.cmbMonday.MaxDropDownItems = 32;
+            this.cmbMonday.Name = "cmbMonday";
+            this.cmbMonday.Size = new System.Drawing.Size(204, 64);
+            this.cmbMonday.TabIndex = 11;
+            this.cmbMonday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
+            this.cmbMonday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(785, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 30);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Erstelle hier den Speiseplan\r\nfür eine ganze Woche.";
             // 
             // cmbSaturday
             // 
@@ -167,26 +218,6 @@
             this.cmbFriday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbFriday_DrawItem);
             this.cmbFriday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
-            // cmbThursday
-            // 
-            this.cmbThursday.BackColor = System.Drawing.Color.GhostWhite;
-            this.cmbThursday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cmbThursday.DropDownHeight = 205;
-            this.cmbThursday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbThursday.DropDownWidth = 170;
-            this.cmbThursday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbThursday.ForeColor = System.Drawing.Color.Black;
-            this.cmbThursday.FormattingEnabled = true;
-            this.cmbThursday.IntegralHeight = false;
-            this.cmbThursday.ItemHeight = 58;
-            this.cmbThursday.Location = new System.Drawing.Point(157, 75);
-            this.cmbThursday.MaxDropDownItems = 32;
-            this.cmbThursday.Name = "cmbThursday";
-            this.cmbThursday.Size = new System.Drawing.Size(204, 64);
-            this.cmbThursday.TabIndex = 14;
-            this.cmbThursday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbThursday_DrawItem);
-            this.cmbThursday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
-            // 
             // cmbWednesday
             // 
             this.cmbWednesday.BackColor = System.Drawing.Color.GhostWhite;
@@ -226,26 +257,6 @@
             this.cmbTuesday.TabIndex = 12;
             this.cmbTuesday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbTuesday_DrawItem);
             this.cmbTuesday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
-            // 
-            // cmbMonday
-            // 
-            this.cmbMonday.BackColor = System.Drawing.Color.GhostWhite;
-            this.cmbMonday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cmbMonday.DropDownHeight = 205;
-            this.cmbMonday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMonday.DropDownWidth = 170;
-            this.cmbMonday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbMonday.ForeColor = System.Drawing.Color.Black;
-            this.cmbMonday.FormattingEnabled = true;
-            this.cmbMonday.IntegralHeight = false;
-            this.cmbMonday.ItemHeight = 58;
-            this.cmbMonday.Location = new System.Drawing.Point(157, 6);
-            this.cmbMonday.MaxDropDownItems = 32;
-            this.cmbMonday.Name = "cmbMonday";
-            this.cmbMonday.Size = new System.Drawing.Size(204, 64);
-            this.cmbMonday.TabIndex = 11;
-            this.cmbMonday.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbMonday_DrawItem);
-            this.cmbMonday.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.cmbMonday_MeasureItem);
             // 
             // btnMenueList
             // 
@@ -353,7 +364,7 @@
             this.btnAdminPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAdminPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdminPanel.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnAdminPanel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btnAdminPanel.ForeColor = System.Drawing.Color.Coral;
             this.btnAdminPanel.Location = new System.Drawing.Point(0, 1);
             this.btnAdminPanel.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdminPanel.Name = "btnAdminPanel";
@@ -480,17 +491,6 @@
             this.lbClose.Text = "X";
             this.lbClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(785, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 30);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Erstelle hier den Speiseplan\r\nfür eine ganze Woche.";
             // 
             // AdminToolTip
             // 

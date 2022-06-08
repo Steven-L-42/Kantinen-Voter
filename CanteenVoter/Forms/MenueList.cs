@@ -213,6 +213,11 @@ namespace CanteenVoter
                     AlertClass.Show("Gerichte wurden hinzugefügt", Alert.enmType.Success);
                     dataMenu.DataSource = GetdataMenu();
                     dataMenu.ClearSelection();
+                    txMenueA.Text = "Menü A: Neues Gericht...";
+                    txMenueB.Text = "Menü B: Neues Gericht...";
+                    txMenueC.Text = "Menü C: Neues Gericht...";
+                    txMenueD.Text = "Menü D: Neues Gericht...";
+
                 }
                 else
                 {
@@ -255,6 +260,7 @@ namespace CanteenVoter
                     MySqlCommand command = new MySqlCommand("DELETE FROM `MenuesTable` WHERE `Menü A` = '" + id + "'", db.getConnection());
                     command.ExecuteNonQuery();
                     dataMenu.DataSource = GetdataMenu();
+                    cellMenueA = null;
                     dataMenu.ClearSelection();
                 }
                 finally
@@ -272,13 +278,23 @@ namespace CanteenVoter
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Sollen diese Gerichte wirklich gelöscht werden?",
+            if(cellMenueA == null)
+            {
+                AlertClass.Show("Wähle zuerst eine Spalte aus!", Alert.enmType.Info);
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Sollen diese Gerichte wirklich gelöscht werden?\n\n" +
+                                                "Alternativ können Gerichte auch bearbeitet werden,\n" +
+                                                "für mehr Informationen darüber klicke auf den Information Button",
                                                "Löschvorgang bestätigen!", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
 
-            if (confirmResult == DialogResult.Yes)
-            {
-                SqlDelete(cellMenueA);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    SqlDelete(cellMenueA);
+                }
             }
+            
         }
 
         private void dataMenu_DoubleClick(object sender, EventArgs e)
