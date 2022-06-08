@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Introducing));
             this.MainPageHeader = new System.Windows.Forms.Panel();
             this.lbClose = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -277,9 +276,10 @@
             this.label11.ForeColor = System.Drawing.Color.GhostWhite;
             this.label11.Location = new System.Drawing.Point(467, 262);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(441, 125);
+            this.label11.Size = new System.Drawing.Size(374, 100);
             this.label11.TabIndex = 113;
-            this.label11.Text = resources.GetString("label11.Text");
+            this.label11.Text = "Wir sind flexibel und darum geben wir\r\njedem die Chance sich neu zu entscheiden.\r" +
+    "\nKlicke erneut auf die Tabellen Oberfläche,\r\nund beginne mit deiner Wahl";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label2_MouseDown);
             // 
