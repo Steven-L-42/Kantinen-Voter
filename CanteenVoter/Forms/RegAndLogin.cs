@@ -229,8 +229,6 @@ namespace CanteenVoter
                                                         "AND Passwort =@Password", db.getConnection());
                 MySqlCommand commandMenue = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername =@Username COLLATE latin1_bin", db.getConnection());
 
-
-
                 command.Parameters.AddWithValue("@Username", username);
                 command.Parameters.AddWithValue("@Password", cryp.MD5Hash(password));
                 commandMenue.Parameters.AddWithValue("@Username", username);
@@ -266,8 +264,6 @@ namespace CanteenVoter
                     AlertClass.Show("Bitte kontaktiere den Support!\n\n" +
                                     "Bei der Account erstellung gab es Probleme.", Alert.enmType.Error);
                 }
-               
-
             }
             else
             {

@@ -98,7 +98,7 @@ namespace CanteenVoter
              
                 txFirstName.Enabled = false;
                 txSurname.Enabled = false;
-               // txAllergic.Enabled = false;
+                // txAllergic.Enabled = false;
                 dateBorn.Enabled = false;
                 //btnSave.Enabled = false;
                 //btnSave.BackColor = Color.LightGray;

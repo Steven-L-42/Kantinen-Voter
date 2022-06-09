@@ -45,9 +45,9 @@ namespace CanteenVoter
 
            
 
-            resetDayCmb();
-            setDefaultCmb();
-            setIndexDayCmb(0);
+            ResetDayCmb();
+            SetDefaultCmb();
+            SetIndexDayCmb(0);
 
             // Sollte ScrollBar erscheinen werden die label diese die Tage anzeigen,
             // um wenige pixel versetzt, damit eine sauber zentrierte UI hinterlassen wird.
@@ -207,13 +207,13 @@ namespace CanteenVoter
         }
 
 
-        private void changeMenues()
+        private void ChangeMenues()
         {
             if (cmbMenue.Text == "Menü wählen...")
             {
-                resetDayCmb();
-                setDefaultCmb();
-                setIndexDayCmb(0);
+                ResetDayCmb();
+                SetDefaultCmb();
+                SetIndexDayCmb(0);
             }
             else
             {
@@ -240,23 +240,18 @@ namespace CanteenVoter
                         DataSet ds = new DataSet();
 
                         da.Fill(ds);
-                        resetDayCmb();
-                        setDayNameCmb();
+                        ResetDayCmb();
+                        SetDayNameCmb();
                         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-
                         {
-
-
                             cmbMonday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
                             cmbTuesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
                             cmbWednesday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
                             cmbThursday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
                             cmbFriday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
                             cmbSaturday.Items.Add(ds.Tables[0].Rows[i][cmbMenueIndex]);
-
-
                         }
-                        setIndexDayCmb(0);
+                        SetIndexDayCmb(0);
                     }
 
                 }
@@ -553,7 +548,7 @@ namespace CanteenVoter
         }
 
 
-        private void resetDayCmb()
+        private void ResetDayCmb()
         {
             cmbSaturday.Items.Clear();
             cmbFriday.Items.Clear();
@@ -563,7 +558,7 @@ namespace CanteenVoter
             cmbMonday.Items.Clear();
         }
 
-        private void setDefaultCmb()
+        private void SetDefaultCmb()
         {
             cmbMonday.Items.Add("Wähle zuerst ein\nMenü aus...");
             cmbTuesday.Items.Add("Wähle zuerst ein\nMenü aus...");
@@ -573,7 +568,7 @@ namespace CanteenVoter
             cmbSaturday.Items.Add("Wähle zuerst ein\nMenü aus...");
         }
 
-        private void setDayNameCmb()
+        private void SetDayNameCmb()
         {
             cmbMonday.Items.Add("Montag auswählen...");
             cmbTuesday.Items.Add("Dienstag auswählen...");
@@ -583,7 +578,7 @@ namespace CanteenVoter
             cmbSaturday.Items.Add("Samstag auswählen...");
         }
 
-        private void setIndexDayCmb(int index)
+        private void SetIndexDayCmb(int index)
         {
             cmbSaturday.SelectedIndex =
             cmbFriday.SelectedIndex =
@@ -596,7 +591,7 @@ namespace CanteenVoter
 
         private void cmbMenue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changeMenues();
+            ChangeMenues();
         }
 
         private void cmbMenue_MeasureItem(object sender, MeasureItemEventArgs e)

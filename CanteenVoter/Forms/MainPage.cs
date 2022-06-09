@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace CanteenVoter
         private void MainPage_Load(object sender, EventArgs e)
         {
             dataMenu.DataSource = GetdataMenu();
-            getDataSelectedMenue();
+            GetDataSelectedMenue();
             dataMenu.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             dataMenu.DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
             dataMenu.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -90,7 +91,7 @@ namespace CanteenVoter
         }
 
 
-        private void getDataSelectedMenue()
+        private void GetDataSelectedMenue()
         {
             // Lädt zu beginn die hinterlegten bereits ausgewählten Gerichte und
             // macht sie auf TextBoxen sichtbar und auch für den Persönlichen Speiseplan Abruf bereit.
@@ -125,7 +126,19 @@ namespace CanteenVoter
                     txThursday.Text = dt.Rows[0]["Donnerstag"].ToString();
                     txFriday.Text = dt.Rows[0]["Freitag"].ToString();
                     txSaturday.Text = dt.Rows[0]["Samstag"].ToString();
-                    SetEmptyTextBoxes();
+
+                    List<RichTextBox> tb = new List<RichTextBox>();
+                    tb.Add(txMonday);
+                    tb.Add(txTuesday);
+                    tb.Add(txWednesday);
+                    tb.Add(txThursday);
+                    tb.Add(txFriday);
+                    tb.Add(txSaturday);
+
+                    foreach (RichTextBox tbs in tb)
+                    {
+                        SetEmptyTextBoxes(tbs.Text,tbs) ;
+                    }
                 }
                 if(txMondayI.Text == String.Empty)
                 {
@@ -231,7 +244,7 @@ namespace CanteenVoter
          
         }
 
-   
+
         private void dataMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -256,52 +269,52 @@ namespace CanteenVoter
                 }
                 if (menuChange_OnClick)
                 {
-                    
-                        day_Selected = dataMenu.Columns[e.ColumnIndex].HeaderText;
-                        gericht_Selected = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
-                        menues_Selected = dataMenu.CurrentRow.Cells[0].Value as string;
 
-                        if (day_Selected == "Menues")
+                    day_Selected = dataMenu.Columns[e.ColumnIndex].HeaderText;
+                    gericht_Selected = dataMenu.CurrentRow.Cells[e.ColumnIndex].Value as string;
+                    menues_Selected = dataMenu.CurrentRow.Cells[0].Value as string;
+
+                    if (day_Selected == "Menues")
+                    {
+                        AlertClass.Show("Du kannst eine Kategorie\n" +
+                            "nicht als Menü speichern!", Alert.enmType.Warning);
+                        day_Selected = null;
+                        dataMenu.ClearSelection();
+                    }
+                    else
+                    {
+                        SelectMenu(menues_Selected);
+
+
+                        // Habe diesbezüglich bei StackOverFlow eine Frage gestellt und diesen Code als Antwort erhalten.
+                        //
+                        // Ich möchte das wenn ich auf eine einzelne Zelle auswähle,
+                        // diese farbig markiert wird und das selbe dann auch mit den nächsten Zellen (bei auswahl) passiert.
+                        // Auch soll immer nur eine Zelle innerhalb einer Column markiert sein können, so wurde der Code
+                        // dann um die Eigenschaft 'HasStyle' Erweitert und 'Style' auf 'null' gesetzt wenn bereits eine markiert war.
+                        // 
+                        if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
                         {
-                            AlertClass.Show("Du kannst eine Kategorie\n" +
-                                "nicht als Menü speichern!", Alert.enmType.Warning);
-                            day_Selected = null;
-                            dataMenu.ClearSelection();
+                            return;
                         }
-                        else
+                        for (int i = 0; i < dataMenu.Rows.Count; i++)
                         {
-                            SelectMenu(menues_Selected);
-
-
-                            // Habe diesbezüglich bei StackOverFlow eine Frage gestellt und diesen Code als Antwort erhalten.
-                            //
-                            // Ich möchte das wenn ich auf eine einzelne Zelle auswähle,
-                            // diese farbig markiert wird und das selbe dann auch mit den nächsten Zellen (bei auswahl) passiert.
-                            // Auch soll immer nur eine Zelle innerhalb einer Column markiert sein können, so wurde der Code
-                            // dann um die Eigenschaft 'HasStyle' Erweitert und 'Style' auf 'null' gesetzt wenn bereits eine markiert war.
-                            // 
-                            if (e.ColumnIndex < 0 || e.RowIndex < 0 || e.RowIndex == dataMenu.NewRowIndex)
+                            var cell = dataMenu[e.ColumnIndex, i];
+                            if (cell.HasStyle)
                             {
-                                return;
+                                cell.Style = null;
                             }
-                            for (int i = 0; i < dataMenu.Rows.Count; i++)
-                            {
-                                var cell = dataMenu[e.ColumnIndex, i];
-                                if (cell.HasStyle)
-                                {
-                                    cell.Style = null;
-                                }
-                            }
-                            var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
-                            {
-                                BackColor = Color.CornflowerBlue,
-                                ForeColor = Color.GhostWhite
-                            };
-                            dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
-
                         }
-                    
-                   
+                        var style = new DataGridViewCellStyle(dataMenu.DefaultCellStyle)
+                        {
+                            BackColor = Color.CornflowerBlue,
+                            ForeColor = Color.GhostWhite
+                        };
+                        dataMenu[e.ColumnIndex, e.RowIndex].Style = style;
+
+                    }
+
+
                 }
 
             }
@@ -314,7 +327,7 @@ namespace CanteenVoter
                 AlertClass.Show("Du kannst diese Spalte\n" +
                                 "nicht auswählen!", Alert.enmType.Info);
             }
-}
+        }
 
 
         private void lbAdminPanel_Click(object sender, EventArgs e)
@@ -386,6 +399,8 @@ namespace CanteenVoter
                     // Gibt das Menü in die TextBox im unteren Panel und
                     // das Gericht in die TextBox für den Persönlichen Speiseplan aus.
                     //
+
+                 
                     switch (day_Selected)
                     {
                         case "Montag":
@@ -439,41 +454,19 @@ namespace CanteenVoter
         }
 
         #region SetEmptyTextBoxes
-        private void SetEmptyTextBoxes()
+        private void SetEmptyTextBoxes(string st, RichTextBox tb)
         {
-            // Wenn ein Menü noch nicht gewählt wurde,
+            //Wenn ein Menü noch nicht gewählt wurde,
             // das wird das im unteren Panel in den TextBoxen ausgegeben.
             // Zu sehen ist das bei einem frisch erstellten Account.
-            //
-            if (txMonday.Text == string.Empty)
+
+            switch (st)
             {
-                txMonday.Text = "Menü wurde noch\n" +
+                case "":
+                    tb.Text = "Menü wurde noch\n" +
                                 "nicht gewählt.";
-            }
-            if (txTuesday.Text == string.Empty)
-            {
-                txTuesday.Text = "Menü wurde noch\n" +
-                                "nicht gewählt.";
-            }
-            if (txWednesday.Text == string.Empty)
-            {
-                txWednesday.Text = "Menü wurde noch\n" +
-                                "nicht gewählt.";
-            }
-            if (txThursday.Text == string.Empty)
-            {
-                txThursday.Text = "Menü wurde noch\n" +
-                                "nicht gewählt.";
-            }
-            if (txFriday.Text == string.Empty)
-            {
-                txFriday.Text = "Menü wurde noch\n" +
-                                "nicht gewählt.";
-            }
-            if (txSaturday.Text == string.Empty)
-            {
-                txSaturday.Text = "Menü wurde noch\n" +
-                                "nicht gewählt.";
+                    break;
+
             }
         }
         #endregion
