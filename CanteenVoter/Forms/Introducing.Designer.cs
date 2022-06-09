@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Introducing));
             this.MainPageHeader = new System.Windows.Forms.Panel();
             this.lbClose = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -357,10 +358,12 @@
             this.Controls.Add(this.MainPageHeader);
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Introducing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Introducing";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label2_MouseDown);
             this.MainPageHeader.ResumeLayout(false);
             this.MainPageHeader.PerformLayout();
             this.ResumeLayout(false);

@@ -333,9 +333,14 @@ namespace CanteenVoter
 
         private void lbClose_Click(object sender, EventArgs e)
         {
+            var IntroducingO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Introducing").FirstOrDefault();
             var adminPageO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "AdminPage").FirstOrDefault();
             var userAcpO = Application.OpenForms.Cast<Form>().Where(x => x.Name == "UserAcp").FirstOrDefault();
-
+            if (null != IntroducingO)
+            {
+                IntroducingO.Close();
+                IntroducingO = null;
+            }
             if (null != adminPageO)
             {
                 adminPageO.Close();
