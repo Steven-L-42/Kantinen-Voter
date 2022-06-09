@@ -254,10 +254,9 @@ namespace CanteenVoter
                 {
                     // Mit 'Owner as' übegebe ich die Berechtigung als Owner auf diese Controls
                     // zuzugreifen und übergebe hier den Vor- und Nachnamen auf den angeforderten Plan.
-                    // Das hätte man auch wieder mit MySQL lösen können, aber ich wollte diesen Weg mal ausprobieren.
                     //
                     (Owner as MainPage).lbNameI.Text = txFirstName.Text + ", "+ txSurname.Text;
-                    (Owner as MainPage).ImagePanel.Visible = true;
+
 
                     int width = (Owner as MainPage).ImagePanel.Width;
                     int height = (Owner as MainPage).ImagePanel.Height;
@@ -267,7 +266,7 @@ namespace CanteenVoter
 
                     bmp.Save(dialog.FileName, ImageFormat.Jpeg);
 
-                    (Owner as MainPage).ImagePanel.Visible = false;
+                  
                 }
             }
             

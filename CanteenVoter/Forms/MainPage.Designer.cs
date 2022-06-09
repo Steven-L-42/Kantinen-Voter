@@ -219,7 +219,7 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 611);
+            this.dataMenu.Size = new System.Drawing.Size(972, 610);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
             this.dataMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMenu_CellClick);
@@ -262,7 +262,7 @@
             this.MainSplit.Panel2.Controls.Add(this.label1);
             this.MainSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPageHeader_MouseDown);
             this.MainSplit.Size = new System.Drawing.Size(972, 727);
-            this.MainSplit.SplitterDistance = 611;
+            this.MainSplit.SplitterDistance = 610;
             this.MainSplit.SplitterWidth = 5;
             this.MainSplit.TabIndex = 4;
             this.MainSplit.TabStop = false;
@@ -290,7 +290,6 @@
             this.ImagePanel.Name = "ImagePanel";
             this.ImagePanel.Size = new System.Drawing.Size(972, 285);
             this.ImagePanel.TabIndex = 20;
-            this.ImagePanel.Visible = false;
             // 
             // label17
             // 

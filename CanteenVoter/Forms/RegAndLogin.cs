@@ -104,10 +104,12 @@ namespace CanteenVoter
                             if (command.ExecuteNonQuery() == 2)
                             {
                                 AlertClass.Show("Dein Account wurde erstellt.", Alert.enmType.Success);
-                                chBoxPasswordShowL.Visible = lbNoAccount.Visible = lbRegisterTab.Visible = btnLogin.Visible = true;
+                                lbLoginArea.Visible = chBoxPasswordShowL.Visible = lbNoAccount.Visible = 
+                                    lbRegisterTab.Visible = btnLogin.Visible = true;
 
-                                lbExistAccount.Visible = lbAccountExist.Visible = btnRegister.Visible =
-                                    lbPasswordCompare.Visible = txPasswordCompare.Visible = chBoxPasswordShow.Visible = false;
+                                lbRegisterArea.Visible = lbExistAccount.Visible = lbAccountExist.Visible =
+                                btnRegister.Visible = lbPasswordCompare.Visible = txPasswordCompare.Visible = 
+                                chBoxPasswordShow.Visible = false;
                             }
                             // Andernfalls kann davon ausgegangen werden das mindestens eine Datenbank Tabelle nicht zugänglich war.
                             // Wenn nur eine von 2 verfügbar waren, wurde der Eintrag dennoch in diese eine verfügbare getätigt.
@@ -214,18 +216,33 @@ namespace CanteenVoter
 
             Datenbank db = new Datenbank();
             Encryptor cryp = new Encryptor();
+
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
+            DataTable tableMenue = new DataTable();
+            MySqlDataAdapter adapterMenue = new MySqlDataAdapter();
+
             if (!checkTextBoxesValues())
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername = '" + username + "' " +
-                                                        "AND Passwort = '" + cryp.MD5Hash(password) + "'", db.getConnection());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM UserTable WHERE Benutzername =@Username COLLATE latin1_bin " +
+                                                        "AND Passwort =@Password", db.getConnection());
+                MySqlCommand commandMenue = new MySqlCommand("SELECT * FROM UserMenueTable WHERE Benutzername =@Username COLLATE latin1_bin", db.getConnection());
+
+
+
+                command.Parameters.AddWithValue("@Username", username);
+                command.Parameters.AddWithValue("@Password", cryp.MD5Hash(password));
+                commandMenue.Parameters.AddWithValue("@Username", username);
 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
+
+                adapterMenue.SelectCommand = commandMenue;
+                adapterMenue.Fill(tableMenue);
+
             }
-            if (table.Rows.Count == 1)
+            if (table.Rows.Count == 1 && tableMenue.Rows.Count == 1)
             {
                 Properties.Settings.Default.txUsername = username;
                 Properties.Settings.Default.txPassword = password;
@@ -235,6 +252,22 @@ namespace CanteenVoter
                 mainPage.getUsername = getUsernameL;
                 mainPage.Show();
                 Hide();
+            }
+            else
+            if (table.Rows.Count == 1 && tableMenue.Rows.Count == 0 ||
+                table.Rows.Count == 0 && tableMenue.Rows.Count == 1)
+            {
+                if(table.Rows.Count == 0)
+                {
+                    AlertClass.Show("Bitte überprüfe deine Login Daten!", Alert.enmType.Warning);
+                }
+                else
+                {
+                    AlertClass.Show("Bitte kontaktiere den Support!\n\n" +
+                                    "Bei der Account erstellung gab es Probleme.", Alert.enmType.Error);
+                }
+               
+
             }
             else
             {

@@ -40,9 +40,9 @@
             this.lbAdminPanel = new System.Windows.Forms.Label();
             this.AdminSplit = new System.Windows.Forms.SplitContainer();
             this.dataMenu = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.MenueToolTip = new ReaLTaiizor.Controls.PoisonToolTip();
-            this.label1 = new System.Windows.Forms.Label();
             this.AdminPageHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminSplit)).BeginInit();
             this.AdminSplit.Panel1.SuspendLayout();
@@ -209,7 +209,7 @@
             this.AdminSplit.Panel2.Controls.Add(this.btnExport);
             this.AdminSplit.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPageHeader_MouseDown);
             this.AdminSplit.Size = new System.Drawing.Size(972, 567);
-            this.AdminSplit.SplitterDistance = 529;
+            this.AdminSplit.SplitterDistance = 526;
             this.AdminSplit.SplitterWidth = 7;
             this.AdminSplit.TabIndex = 22;
             this.AdminSplit.TabStop = false;
@@ -238,9 +238,21 @@
             this.dataMenu.ShowCellErrors = false;
             this.dataMenu.ShowEditingIcon = false;
             this.dataMenu.ShowRowErrors = false;
-            this.dataMenu.Size = new System.Drawing.Size(972, 529);
+            this.dataMenu.Size = new System.Drawing.Size(972, 526);
             this.dataMenu.TabIndex = 3;
             this.dataMenu.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(200, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(534, 17);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Diese Ansicht dient nur der Übersicht: Welcher Nutzer wünscht aktuell welches Men" +
+    "ü";
             // 
             // btnExport
             // 
@@ -250,7 +262,7 @@
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Location = new System.Drawing.Point(833, 2);
+            this.btnExport.Location = new System.Drawing.Point(832, 5);
             this.btnExport.Margin = new System.Windows.Forms.Padding(5);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(138, 25);
@@ -265,18 +277,6 @@
             this.MenueToolTip.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
             this.MenueToolTip.StyleManager = null;
             this.MenueToolTip.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Default;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(200, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(534, 17);
-            this.label1.TabIndex = 103;
-            this.label1.Text = "Diese Ansicht dient nur der Übersicht: Welcher Nutzer wünscht aktuell welches Men" +
-    "ü";
             // 
             // UserMenue
             // 
